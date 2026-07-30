@@ -1,57 +1,64 @@
 # Klant-interview — De Badgast (Gerard Bartels)
 
-> Vragenlijst voor het contentgesprek. Doel: echte cijfers, echt verhaal en
-> echt bewijs voor de website — alle placeholders vervangen.
-> Tip: neem het gesprek op; letterlijke quotes zijn de beste copy.
+> Afgenomen 30-07-2026. Antwoorden verwerkt in design.md en site-content.
+> Nog open: voor-na foto's en reviews (zie onderaan).
 
-## Cijfers & bewijs (hero + USP's)
+## Cijfers & bewijs
 
-- [ ] Hoeveel badkamers heb je in totaal gerenoveerd, ongeveer?
-- [ ] Hoe lang zit je al in het vak, inclusief je loodgietersjaren?
-- [ ] Sinds wanneer bestaat De Badgast als bedrijf?
-- [ ] Hoeveel projecten doe je gemiddeld per jaar?
-- [ ] Waar staan je reviews (Google, Werkspot...) en wat is je score daar?
+- [x] **Aantal badkamers gerenoveerd:** ±500
+- [x] **Jaren in het vak (incl. loodgieterswerk):** 45 jaar
+- [x] **De Badgast opgericht:** september 2007
+- [x] **Projecten per jaar:** 27-30
+- [ ] Reviewscore (Google/Werkspot): nog uitzoeken
 
 ## Het verhaal (Over Gerard)
 
-- [ ] Hoe ben je begonnen — opleiding, leermeester, eerste klus?
-- [ ] Waarom bewust een eenmansbedrijf gebleven? Wat levert dat de klant op?
-- [ ] Op welk project ben je het meest trots, en waarom?
-- [ ] Wat zeggen klanten het vaakst over je als de klus klaar is?
+- [x] **Achtergrond:** watertechnisch installateur, vooral loodgieterswerk
+- [x] **Waarom eenmansbedrijf:** perfectionist — wil geen verantwoording dragen
+      voor andermans werk. Klant heeft van A tot Z alleen met Gerard te maken;
+      misverstanden en miscommunicatie nagenoeg uitgesloten.
+- [x] **Trots op:** ieder project met een blije, tevreden klant
+- [x] **Wat klanten zeggen:** alles gaat in overleg, en de badkamer of het
+      toilet is precies geworden zoals ze het voor ogen hadden
 
 ## Diensten & scope
 
-- [ ] Wat doe je zelf, en voor welke onderdelen schakel je vaste vakmensen in
-      (tegelzetter, elektricien)?
-- [ ] Alleen totaalrenovaties, of ook kleinere klussen en reparaties?
-- [ ] Tot hoe ver buiten Roosendaal werk je?
-- [ ] Met welke merken of showrooms werk je graag samen (sanitair, tegels)?
+- [x] **Zelf vs uitbesteed:** alle voorkomende werkzaamheden doet Gerard zelf
+- [x] **Scope:** bij voorkeur alleen totaalrenovaties (geen kleine klussen)
+- [x] **Werkgebied:** straal van 15-20 km rond Roosendaal
+- [x] **Materialen:** klant koopt zelf bij kwaliteits-showrooms
+      (Maxaro, Jan van Zundert, Brugman, e.d.)
 
-## Werkwijze (1-2-3-4 sectie)
+## Werkwijze
 
-- [ ] Hoe loopt een traject van eerste telefoontje tot oplevering?
-- [ ] Hoe lang duurt een gemiddelde badkamerrenovatie? En een toilet?
-- [ ] Wat is je wachttijd — hoe ver van tevoren boeken?
-- [ ] Vaste prijs of nacalculatie? Wat zit er in de offerte?
-- [ ] Prijsindicatie complete badkamer ("vanaf €...")? Op de site tonen?
-- [ ] Garantie op je werk — wat en hoe lang?
-- [ ] Hoe blijft het huis leefbaar tijdens de klus (stof, water, wc)?
+- [x] **Traject:** 1) vrijblijvend bezoek — meedenken in mogelijkheden +
+      totaalindicatie installatie/uitvoering → 2) klant kiest en koopt
+      sanitair/tegels bij showroom → 3) uitvoering → 4) oplevering
+- [x] **Doorlooptijd:** badkamer 3-3,5 week (40-urig); toilet max 40 uur
+- [x] **Wachttijd:** momenteel ±6 maanden
+- [x] **Prijsmodel:** volledig transparant — wekelijkse factuur met alle uren
+      en materialen gespecificeerd (géén vaste aanneemsom)
+- [x] **Prijsindicatie:** meestal €10.000-€15.000 — NIET op de site (wens Gerard)
+- [x] **Garantie:** 2 jaar op uitgevoerde werkzaamheden; bij nalatigheid ook
+      daarna altijd opgelost
+- [x] **Leefbaarheid tijdens klus:** looproute en trap afgedekt met board,
+      verdere maatregelen in overleg met klant
 
-## Bewijs & beeldmateriaal (projecten + reviews)
+## Praktisch & conversie
 
-- [ ] Voor-na foto's beschikbaar? Top 3 projecten om te tonen?
-- [ ] Welke oud-klanten kunnen we om een review of quote vragen?
-- [ ] Bestaat er al een logo/huisstijl (busje, visitekaartje, werkkleding)?
-- [ ] Portretfoto van Gerard (laten) maken — akkoord?
+- [x] **Voorkeursactie:** formulier invullen primair, bellen mag altijd
 
-## Praktisch & conversie (contact/footer)
+## Nog open (actielijst)
 
-- [ ] Telefoonnummer en e-mailadres voor op de site? Ook WhatsApp?
-- [ ] KvK-nummer, certificeringen of erkenningen (erkend installateur, verzekerd)?
-- [ ] Bereikbaarheid — wat gebeurt er als iemand belt tijdens een klus?
-- [ ] Voorkeursactie voor bezoekers: bellen of formulier?
+- [ ] Voor-na foto's uitzoeken — top 3 projecten
+- [ ] Oud-klanten benaderen voor reviews/quotes
+- [ ] Reviewscore + platform checken
+- [ ] Telefoonnummer, e-mail, KvK voor op de site bevestigen
+- [ ] Logo/huisstijl checken (busje, visitekaartje)
+- [ ] Portretfoto van Gerard
 
 ## Regels voor de site
 
 - Alleen échte cijfers en échte reviews publiceren — placeholders duidelijk
   gemarkeerd houden tot ze vervangen zijn.
+- Geen prijzen op de site (wens Gerard).

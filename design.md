@@ -18,9 +18,22 @@
 - Contact met telefoonnummer prominent aanwezig
 - Reviews / referenties
 
+## Feiten (uit klant-interview, 30-07-2026)
+
+- **±500 badkamers** gerenoveerd · **45 jaar** in het vak · De Badgast sinds **2007**
+- 27-30 projecten per jaar · wachttijd momenteel ±6 maanden
+- Alles zelf, geen onderaannemers — perfectionist, van A tot Z één aanspreekpunt
+- Werkgebied: straal 15-20 km rond Roosendaal
+- Alleen totaalrenovaties (badkamer 3-3,5 week, toilet max 40 uur)
+- Klant koopt zelf sanitair/tegels bij kwaliteits-showroom (Maxaro, Jan van Zundert, Brugman)
+- **Volledig transparant:** wekelijkse factuur, alle uren + materialen gespecificeerd — géén "vaste prijs" claimen
+- 2 jaar garantie; bij eigen nalatigheid ook daarna opgelost
+- Geen prijzen op de site (wens Gerard)
+- **CTA-hiërarchie: formulier primair, bellen secundair**
+
 ## Content-status
 
-Deels aanwezig, rest placeholder — foto's, exacte reviews en dienstteksten worden later aangevuld.
+Nog placeholder: voor-na foto's, reviews (+ score), portretfoto, logo, telefoonnummer/e-mail/KvK.
 
 ## Toon & stijl
 
