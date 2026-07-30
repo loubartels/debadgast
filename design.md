@@ -34,7 +34,13 @@ Deels aanwezig, rest placeholder — foto's, exacte reviews en dienstteksten wor
 
 ## Kleuren
 
-_Nog te kiezen via de designpicker — hier invullen zodra gekozen (exacte hex codes)._
+| Naam | Hex | Gebruik |
+|------|-----|---------|
+| Badgast-blauw | `#0f84bf` | Hoofdkleur — CTA's, accenten, links, iconen |
+| Wit | `#ffffff` | Achtergronden, ruimte, kaarten |
+| Zwart | `#0a0a0a` | Tekst en details (net-niet-puur zwart, oogt rustiger) |
+
+**Regels:** blauw is de enige kleur — spaarzaam inzetten, dan knalt 'ie. Veel wit laten ademen (premium gevoel). Foto's leveren de warmte; het palet blijft strak.
 
 ## Typografie
 
@@ -42,4 +48,4 @@ _Nog te kiezen via de designpicker — hier invullen zodra gekozen (font-namen +
 
 ## Volgende stap
 
-Visuele richting (kleur, typografie) kiezen via de designpicker, daarna dit bestand aanvullen.
+Typografie kiezen via de designpicker, daarna dit bestand aanvullen. Kleuren zijn gekozen.
