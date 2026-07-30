@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>De Badgast — Strandpaviljoen aan zee</title>
+  <meta name="description" content="De Badgast is een strandpaviljoen aan de Nederlandse kust. Koffie in de ochtend, lunch met je voeten in het zand, borrel tot de zon in zee zakt.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,600..900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='14' r='9' fill='%23e8632c'/%3E%3Cpath d='M2 26q4-4 8 0t8 0t8 0t4 0' stroke='%23123c4f' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --zand: #f4ecdd;
+      --wit: #fbf7ee;
+      --inkt: #123c4f;
+      --diepzee: #0c2b3a;
+      --zon: #e8632c;
+      --schuim: #c9dcd2;
+      --radius: 24px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Instrument Sans", system-ui, sans-serif;
+      background: var(--zand);
+      color: var(--inkt);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--zon); color: var(--wit); }
+
+    h1, h2, h3 {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+    .accent {
+      font-style: italic;
+      font-weight: 700;
+      color: var(--zon);
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .label {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 20px;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 110px 0; }
+
+    /* ---------- Nav ---------- */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--zand) 82%, transparent);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid color-mix(in srgb, var(--inkt) 12%, transparent);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 24px; max-width: 1100px; margin: 0 auto;
+    }
+    .logo {
+      font-family: "Fraunces", serif; font-weight: 900; font-size: 20px;
+      text-transform: uppercase; letter-spacing: -0.01em;
+      color: var(--inkt); text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .logo svg { display: block; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a {
+      color: var(--inkt); text-decoration: none; font-weight: 500; font-size: 15px;
+      transition: color 150ms ease;
+    }
+    .nav-links a:hover { color: var(--zon); }
+    .btn {
+      display: inline-block;
+      background: var(--zon); color: var(--wit);
+      font-weight: 600; font-size: 15px;
+      padding: 12px 26px; border-radius: 999px;
+      text-decoration: none;
+      transition: transform 150ms ease, background 150ms ease;
+    }
+    .btn:hover { background: var(--inkt); transform: translateY(-2px); }
+    .btn.licht { background: var(--wit); color: var(--inkt); }
+    .btn.licht:hover { background: var(--zon); color: var(--wit); }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 90px 0 0; overflow: hidden; }
+    .hero .wrap { text-align: center; }
+    .hero h1 {
+      font-size: clamp(64px, 12vw, 168px);
+      margin: 24px 0 28px;
+    }
+    .hero h1 .accent { display: block; font-size: 0.42em; margin-top: 18px; }
+    .hero p.intro {
+      max-width: 480px; margin: 0 auto 36px; font-size: 19px;
+    }
+    .hero .sun {
+      width: clamp(72px, 10vw, 120px); height: auto; margin: 0 auto;
+      animation: rijzen 1.2s ease-out both;
+    }
+    @keyframes rijzen {
+      from { transform: translateY(24px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+    .golven { display: block; width: 100%; margin-top: 70px; }
+
+    /* ---------- Donkere secties ---------- */
+    .donker { background: var(--inkt); color: var(--wit); }
+    .donker .label { color: var(--schuim); }
+    .donker h2 .accent { color: var(--zon); }
+
+    h2 { font-size: clamp(38px, 6vw, 64px); margin-bottom: 28px; }
+
+    /* ---------- Over ---------- */
+    .over-grid {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center;
+    }
+    .over-grid p + p { margin-top: 18px; }
+    .over-kader {
+      border: 1px solid color-mix(in srgb, var(--schuim) 40%, transparent);
+      border-radius: var(--radius);
+      padding: 40px;
+    }
+    .over-kader ul { list-style: none; }
+    .over-kader li {
+      display: flex; gap: 14px; align-items: baseline;
+      padding: 14px 0;
+    }
+    .over-kader li + li { border-top: 1px solid color-mix(in srgb, var(--schuim) 25%, transparent); }
+    .over-kader li::before { content: "—"; color: var(--zon); font-weight: 600; }
+
+    /* ---------- Menu ---------- */
+    .kaarten {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px;
+    }
+    .kaart {
+      background: var(--wit);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      display: flex; flex-direction: column; gap: 14px;
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+    .kaart:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px -20px color-mix(in srgb, var(--inkt) 45%, transparent);
+    }
+    .kaart .tijd {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--zon);
+    }
+    .kaart h3 { font-size: 26px; }
+    .kaart p { font-size: 16px; }
+
+    /* ---------- Praktisch ---------- */
+    .praktisch-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px;
+    }
+    .blok {
+      border: 1px solid color-mix(in srgb, var(--schuim) 40%, transparent);
+      border-radius: var(--radius); padding: 32px;
+    }
+    .blok h3 { font-size: 20px; margin-bottom: 16px; color: var(--schuim); }
+    .blok p { font-size: 16px; }
+    .blok a { color: var(--wit); text-decoration-color: var(--zon); text-underline-offset: 3px; }
+    .blok a:hover { color: var(--zon); }
+    dl.tijden { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; font-size: 16px; }
+    dl.tijden dt { font-weight: 600; }
+    dl.tijden dd { text-align: right; }
+
+    /* ---------- CTA / footer ---------- */
+    .cta { text-align: center; background: var(--diepzee); color: var(--wit); }
+    .cta h2 { font-size: clamp(44px, 8vw, 96px); }
+    .cta p { max-width: 440px; margin: 0 auto 36px; }
+    footer {
+      background: var(--diepzee); color: var(--schuim);
+      font-size: 14px; text-align: center;
+      padding: 28px 24px 40px;
+      border-top: 1px solid color-mix(in srgb, var(--schuim) 20%, transparent);
+    }
+
+    /* ---------- Scroll-reveal ---------- */
+    .reveal { opacity: 0; transform: translateY(12px); transition: opacity 500ms ease-out, transform 500ms ease-out; }
+    .reveal.zichtbaar { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hero .sun { animation: none; }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 860px) {
+      section { padding: 80px 0; }
+      .nav-links a:not(.btn) { display: none; }
+      .over-grid, .kaarten, .praktisch-grid { grid-template-columns: 1fr; }
+      .over-grid { gap: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="logo" href="#top">
+        <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="14" r="9" fill="#e8632c"/>
+          <path d="M2 26q4-4 8 0t8 0t8 0t4 0" stroke="#123c4f" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+        De Badgast
+      </a>
+      <div class="nav-links">
+        <a href="#over">Over</a>
+        <a href="#menu">Menu</a>
+        <a href="#praktisch">Praktisch</a>
+        <a class="btn" href="#praktisch">Reserveer</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <svg class="sun" viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="34" fill="#e8632c"/>
+        <g stroke="#e8632c" stroke-width="5" stroke-linecap="round">
+          <line x1="60" y1="6"  x2="60" y2="20"/>
+          <line x1="60" y1="100" x2="60" y2="114"/>
+          <line x1="6"  y1="60" x2="20" y2="60"/>
+          <line x1="100" y1="60" x2="114" y2="60"/>
+          <line x1="22" y1="22" x2="32" y2="32"/>
+          <line x1="88" y1="88" x2="98" y2="98"/>
+          <line x1="98" y1="22" x2="88" y2="32"/>
+          <line x1="32" y1="88" x2="22" y2="98"/>
+        </g>
+      </svg>
+      <h1>De Badgast <span class="accent">strandpaviljoen aan zee</span></h1>
+      <p class="intro">Koffie als de zon opkomt, lunch met je voeten in het zand, borrel tot ‘ie weer in zee zakt. Je bent er.</p>
+      <a class="btn" href="#menu">Bekijk het menu</a>
+    </div>
+    <svg class="golven" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 55 Q 60 25 120 55 T 240 55 T 360 55 T 480 55 T 600 55 T 720 55 T 840 55 T 960 55 T 1080 55 T 1200 55 T 1320 55 T 1440 55 V 90 H 0 Z" fill="#123c4f"/>
+      <path d="M0 55 Q 60 25 120 55 T 240 55 T 360 55 T 480 55 T 600 55 T 720 55 T 840 55 T 960 55 T 1080 55 T 1200 55 T 1320 55 T 1440 55" stroke="#c9dcd2" stroke-width="2" fill="none" opacity="0.5"/>
+    </svg>
+  </header>
+
+  <section class="donker" id="over">
+    <div class="wrap reveal">
+      <span class="label">Over De Badgast</span>
+      <div class="over-grid">
+        <div>
+          <h2>Iedereen is hier <span class="accent">te gast</span></h2>
+          <p>De Badgast is een strandpaviljoen zoals een strandpaviljoen hoort te zijn: het zand loopt gewoon door tot aan de bar, de stoelen staan richting zee en niemand kijkt raar op van een nat badpak.</p>
+          <p>We houden het simpel. Goede koffie, eerlijk eten, koud bier — en verder vooral rust, ruimte en uitzicht. De rest regelt de zee.</p>
+        </div>
+        <div class="over-kader">
+          <ul>
+            <li>Het hele jaar open, weer of geen weer</li>
+            <li>Terras op het zand, kachel aan in de winter</li>
+            <li>Honden welkom, zeker de natte</li>
+            <li>Strandstoelen en parasols te huur</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="wrap reveal">
+      <span class="label">Van vroeg tot laat</span>
+      <h2>Eten met <span class="accent">uitzicht</span></h2>
+      <div class="kaarten">
+        <article class="kaart">
+          <span class="tijd">Ochtend · vanaf 9:00</span>
+          <h3>Koffie &amp; zoet</h3>
+          <p>Verse koffie, appeltaart van eigen bodem en croissants voor wie de zonsopkomst heeft gehaald. Ochtendzwemmers krijgen de eerste koffie het warmst.</p>
+        </article>
+        <article class="kaart">
+          <span class="tijd">Middag · 12:00 – 17:00</span>
+          <h3>Lunch in het zand</h3>
+          <p>Broodje gerookte makreel, tosti's, soep van het seizoen en een eerlijke burger. Alles ook om mee te nemen naar je strandstoel.</p>
+        </article>
+        <article class="kaart">
+          <span class="tijd">Avond · tot zonsondergang</span>
+          <h3>Borrel &amp; zee</h3>
+          <p>Bitterballen, oesters als ze er zijn, koud bier van de tap en wijn per glas of fles. De beste plek is aan de reling, richting het westen.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="donker" id="praktisch">
+    <div class="wrap reveal">
+      <span class="label">Praktisch</span>
+      <h2>Kom <span class="accent">langs</span></h2>
+      <div class="praktisch-grid">
+        <div class="blok">
+          <h3>Openingstijden</h3>
+          <dl class="tijden">
+            <dt>Ma – Vr</dt><dd>9:00 – 22:00</dd>
+            <dt>Za – Zo</dt><dd>9:00 – 23:00</dd>
+          </dl>
+          <p style="margin-top:16px">Bij storm bellen we het af — check even onze socials.</p>
+        </div>
+        <div class="blok">
+          <h3>Vind ons</h3>
+          <p>Aan het strand, onderaan de strandopgang. Volg het geluid van de zee — wij zitten waar het zand begint.</p>
+        </div>
+        <div class="blok">
+          <h3>Reserveren</h3>
+          <p>Mail naar <a href="mailto:hallo@debadgast.nl">hallo@debadgast.nl</a> of loop gewoon binnen. Voor groepen vanaf 8 horen we het graag even van tevoren.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap reveal">
+      <h2>Tot op het <span class="accent">strand</span></h2>
+      <p>De zee ligt er toch al. Nu jij nog.</p>
+      <a class="btn licht" href="mailto:hallo@debadgast.nl">Reserveer een tafel</a>
+    </div>
+  </section>
+
+  <footer>
+    De Badgast · strandpaviljoen aan zee · <a href="mailto:hallo@debadgast.nl" style="color:inherit">hallo@debadgast.nl</a>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add("zichtbaar"); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.15 });
+      reveals.forEach((el) => io.observe(el));
+    } else {
+      reveals.forEach((el) => el.classList.add("zichtbaar"));
+    }
+  </script>
+</body>
+</html>
