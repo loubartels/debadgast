@@ -48,6 +48,17 @@
 
 - [x] **Voorkeursactie:** formulier invullen primair, bellen mag altijd
 
+## De formule (nagestuurd door Gerard)
+
+- [x] **Kern-USP:** volledige transparantie i.p.v. vaste aanneemsom — geen
+      verborgen marges, inzicht in uren én materiaalkosten
+- [x] **Meewerken mag:** klant kan niet-specialistisch werk zelf doen
+      (badkamer leeghalen, sloopwerk, vloeren/trappen beschermen, puin
+      afvoeren, tegels/materialen naar boven brengen) en bespaart zo op
+      arbeidskosten. Niets verplicht — klant bepaalt.
+- [x] **Gekozen slogan:** "Vakwerk waar nodig, zelf doen waar mogelijk"
+- Krijgt een eigen sectie op de site, copy in ik-vorm (niet "wij/u")
+
 ## Nog open (actielijst)
 
 - [ ] Voor-na foto's uitzoeken — top 3 projecten

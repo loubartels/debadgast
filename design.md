@@ -27,6 +27,10 @@
 - Alleen totaalrenovaties (badkamer 3-3,5 week, toilet max 40 uur)
 - Klant koopt zelf sanitair/tegels bij kwaliteits-showroom (Maxaro, Jan van Zundert, Brugman)
 - **Volledig transparant:** wekelijkse factuur, alle uren + materialen gespecificeerd — géén "vaste prijs" claimen
+- **De formule (kern-USP):** "Vakwerk waar nodig, zelf doen waar mogelijk" — klant mag
+  niet-specialistisch werk zelf doen (leeghalen, sloop, beschermen, puin afvoeren,
+  materialen sjouwen) en betaalt alleen Gerards uren. Niets verplicht. Eigen sectie op de site.
+- **Taalregel:** altijd ik-vorm van Gerard en "je/jij" — nooit "wij" (eenmansbedrijf!) of "u"
 - 2 jaar garantie; bij eigen nalatigheid ook daarna opgelost
 - Geen prijzen op de site (wens Gerard)
 - **CTA-hiërarchie: formulier primair, bellen secundair**
