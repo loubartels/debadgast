@@ -43,8 +43,9 @@
     if (next) next.addEventListener('click', function () { scrollRail(1); });
   }
 
-  // Offerteformulier: toon bevestiging na versturen.
-  // Let op: er is nog geen backend gekoppeld — zie README.md.
+  // Offerteformulier: verstuurt via FormSubmit naar info@debadgast.nl
+  // en toont daarna de bevestiging. Eerste inzending vraagt eenmalig om
+  // activatie via een mail aan dat adres — zie README.md.
   var formwrap = document.querySelector('.offerte-formwrap');
   if (formwrap) {
     var form = formwrap.querySelector('form');
@@ -52,7 +53,30 @@
     if (form) {
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        formwrap.classList.add('is-sent');
+        var btn = form.querySelector('button[type=submit]');
+        var err = form.querySelector('.form-error');
+        if (err) err.style.display = 'none';
+        btn.disabled = true;
+        btn.textContent = 'Versturen…';
+        var data = new FormData(form);
+        data.append('_subject', 'Nieuwe offerteaanvraag via debadgast.nl');
+        data.append('_template', 'table');
+        fetch('https://formsubmit.co/ajax/info@debadgast.nl', {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: data
+        }).then(function (r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        }).then(function () {
+          formwrap.classList.add('is-sent');
+          form.reset();
+        }).catch(function () {
+          if (err) err.style.display = 'block';
+        }).finally(function () {
+          btn.disabled = false;
+          btn.textContent = 'Verstuur aanvraag';
+        });
       });
     }
     if (resetBtn) {

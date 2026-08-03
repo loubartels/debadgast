@@ -878,6 +878,15 @@ img { max-width: 100%; }
 }
 .offerte-form button:hover { background: var(--teal-dark); }
 .form-privacy { font: 500 12.5px/1.5 Manrope, sans-serif; color: rgba(10,10,10,.45); }
+.form-error {
+  display: none;
+  padding: 14px 16px;
+  background: #fbf0f0;
+  border-left: 2px solid #d64545;
+  font: 600 14.5px/1.55 Manrope, sans-serif;
+  color: rgba(10,10,10,.75);
+}
+.offerte-form button:disabled { opacity: .65; cursor: default; }
 .offerte-success {
   display: none;
   padding: 44px 36px;
