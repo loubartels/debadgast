@@ -13,6 +13,25 @@
     onScroll();
   }
 
+  // Hamburgermenu op smalle schermen
+  var navToggle = document.querySelector('.nav-toggle');
+  if (header && navToggle) {
+    var setMenu = function (open) {
+      header.classList.toggle('menu-open', open);
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navToggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+    };
+    navToggle.addEventListener('click', function () {
+      setMenu(!header.classList.contains('menu-open'));
+    });
+    document.querySelectorAll('.site-nav a').forEach(function (link) {
+      link.addEventListener('click', function () { setMenu(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setMenu(false);
+    });
+  }
+
   // Secties faden omhoog zodra ze in beeld komen
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reduce && 'IntersectionObserver' in window) {
