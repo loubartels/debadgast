@@ -25,10 +25,13 @@ Open daarna `http://localhost:8000`.
 
 ## Live zetten
 
-- **Vercel:** `vercel` in deze map
-- **GitHub Pages:** Settings → Pages → deploy vanaf deze branch
+De site wordt automatisch naar **GitHub Pages** gepubliceerd bij elke push naar de standaardbranch (workflow: `.github/workflows/pages.yml`). URL: `https://loubartels.github.io/debadgast/`. Een eigen domein koppel je via Settings → Pages → Custom domain.
+
+## Offerteformulier
+
+Het formulier verstuurt via [FormSubmit](https://formsubmit.co) naar `info@debadgast.nl` (geen account nodig). **Bij de allereerste inzending stuurt FormSubmit één activatiemail naar dat adres — klik daarin op de bevestigingsknop, daarna komen aanvragen gewoon per mail binnen.** Ander e-mailadres? Pas het adres aan in `assets/site.js` bij het blok "Offerteformulier".
 
 ## Nog regelen
 
-- [ ] **Offerteformulier koppelen.** Het formulier toont nu alleen een bevestiging in de browser; er wordt nog niets verstuurd. Koppel een backend of formulierdienst (bijv. Formspree, of een eigen endpoint) in `assets/site.js` bij het blok "Offerteformulier".
+- [ ] **FormSubmit activeren.** Doe één testinzending op de live site en klik op de link in de activatiemail aan info@debadgast.nl.
 - [ ] **Projectfoto's in hogere resolutie.** De drie carrouselfoto's (`assets/project-*.webp`) komen uit de design-tool en zijn gecomprimeerd; vervang ze eventueel door de originelen.
