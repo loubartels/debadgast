@@ -3,348 +3,363 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>De Badgast — Strandpaviljoen aan zee</title>
-  <meta name="description" content="De Badgast is een strandpaviljoen aan de Nederlandse kust. Koffie in de ochtend, lunch met je voeten in het zand, borrel tot de zon in zee zakt.">
+  <title>De Badgast — Badkamerrenovatie door Gerard Bartels in Roosendaal</title>
+  <meta name="description" content="Totaalrenovatie van badkamers en toiletten in Roosendaal en omstreken. Eén vakman, één aanspreekpunt: sloop, tegels, leidingen, elektra en afwerking door Gerard Bartels.">
+  <link rel="icon" href="assets/embleem.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,600..900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='14' r='9' fill='%23e8632c'/%3E%3Cpath d='M2 26q4-4 8 0t8 0t8 0t4 0' stroke='%23123c4f' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
-  <style>
-    :root {
-      --zand: #f4ecdd;
-      --wit: #fbf7ee;
-      --inkt: #123c4f;
-      --diepzee: #0c2b3a;
-      --zon: #e8632c;
-      --schuim: #c9dcd2;
-      --radius: 24px;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: "Instrument Sans", system-ui, sans-serif;
-      background: var(--zand);
-      color: var(--inkt);
-      font-size: 17px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-    ::selection { background: var(--zon); color: var(--wit); }
-
-    h1, h2, h3 {
-      font-family: "Fraunces", Georgia, serif;
-      font-weight: 800;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-    }
-    .accent {
-      font-style: italic;
-      font-weight: 700;
-      color: var(--zon);
-      text-transform: none;
-      letter-spacing: 0;
-    }
-    .label {
-      display: inline-block;
-      font-size: 13px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      margin-bottom: 20px;
-    }
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-    section { padding: 110px 0; }
-
-    /* ---------- Nav ---------- */
-    nav {
-      position: sticky; top: 0; z-index: 10;
-      background: color-mix(in srgb, var(--zand) 82%, transparent);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid color-mix(in srgb, var(--inkt) 12%, transparent);
-    }
-    .nav-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 24px; max-width: 1100px; margin: 0 auto;
-    }
-    .logo {
-      font-family: "Fraunces", serif; font-weight: 900; font-size: 20px;
-      text-transform: uppercase; letter-spacing: -0.01em;
-      color: var(--inkt); text-decoration: none;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .logo svg { display: block; }
-    .nav-links { display: flex; gap: 28px; align-items: center; }
-    .nav-links a {
-      color: var(--inkt); text-decoration: none; font-weight: 500; font-size: 15px;
-      transition: color 150ms ease;
-    }
-    .nav-links a:hover { color: var(--zon); }
-    .btn {
-      display: inline-block;
-      background: var(--zon); color: var(--wit);
-      font-weight: 600; font-size: 15px;
-      padding: 12px 26px; border-radius: 999px;
-      text-decoration: none;
-      transition: transform 150ms ease, background 150ms ease;
-    }
-    .btn:hover { background: var(--inkt); transform: translateY(-2px); }
-    .btn.licht { background: var(--wit); color: var(--inkt); }
-    .btn.licht:hover { background: var(--zon); color: var(--wit); }
-
-    /* ---------- Hero ---------- */
-    .hero { padding: 90px 0 0; overflow: hidden; }
-    .hero .wrap { text-align: center; }
-    .hero h1 {
-      font-size: clamp(64px, 12vw, 168px);
-      margin: 24px 0 28px;
-    }
-    .hero h1 .accent { display: block; font-size: 0.42em; margin-top: 18px; }
-    .hero p.intro {
-      max-width: 480px; margin: 0 auto 36px; font-size: 19px;
-    }
-    .hero .sun {
-      width: clamp(72px, 10vw, 120px); height: auto; margin: 0 auto;
-      animation: rijzen 1.2s ease-out both;
-    }
-    @keyframes rijzen {
-      from { transform: translateY(24px); opacity: 0; }
-      to   { transform: translateY(0);    opacity: 1; }
-    }
-    .golven { display: block; width: 100%; margin-top: 70px; }
-
-    /* ---------- Donkere secties ---------- */
-    .donker { background: var(--inkt); color: var(--wit); }
-    .donker .label { color: var(--schuim); }
-    .donker h2 .accent { color: var(--zon); }
-
-    h2 { font-size: clamp(38px, 6vw, 64px); margin-bottom: 28px; }
-
-    /* ---------- Over ---------- */
-    .over-grid {
-      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center;
-    }
-    .over-grid p + p { margin-top: 18px; }
-    .over-kader {
-      border: 1px solid color-mix(in srgb, var(--schuim) 40%, transparent);
-      border-radius: var(--radius);
-      padding: 40px;
-    }
-    .over-kader ul { list-style: none; }
-    .over-kader li {
-      display: flex; gap: 14px; align-items: baseline;
-      padding: 14px 0;
-    }
-    .over-kader li + li { border-top: 1px solid color-mix(in srgb, var(--schuim) 25%, transparent); }
-    .over-kader li::before { content: "—"; color: var(--zon); font-weight: 600; }
-
-    /* ---------- Menu ---------- */
-    .kaarten {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px;
-    }
-    .kaart {
-      background: var(--wit);
-      border-radius: var(--radius);
-      padding: 36px 32px;
-      display: flex; flex-direction: column; gap: 14px;
-      transition: transform 150ms ease, box-shadow 150ms ease;
-    }
-    .kaart:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px -20px color-mix(in srgb, var(--inkt) 45%, transparent);
-    }
-    .kaart .tijd {
-      font-size: 13px; font-weight: 600; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--zon);
-    }
-    .kaart h3 { font-size: 26px; }
-    .kaart p { font-size: 16px; }
-
-    /* ---------- Praktisch ---------- */
-    .praktisch-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px;
-    }
-    .blok {
-      border: 1px solid color-mix(in srgb, var(--schuim) 40%, transparent);
-      border-radius: var(--radius); padding: 32px;
-    }
-    .blok h3 { font-size: 20px; margin-bottom: 16px; color: var(--schuim); }
-    .blok p { font-size: 16px; }
-    .blok a { color: var(--wit); text-decoration-color: var(--zon); text-underline-offset: 3px; }
-    .blok a:hover { color: var(--zon); }
-    dl.tijden { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; font-size: 16px; }
-    dl.tijden dt { font-weight: 600; }
-    dl.tijden dd { text-align: right; }
-
-    /* ---------- CTA / footer ---------- */
-    .cta { text-align: center; background: var(--diepzee); color: var(--wit); }
-    .cta h2 { font-size: clamp(44px, 8vw, 96px); }
-    .cta p { max-width: 440px; margin: 0 auto 36px; }
-    footer {
-      background: var(--diepzee); color: var(--schuim);
-      font-size: 14px; text-align: center;
-      padding: 28px 24px 40px;
-      border-top: 1px solid color-mix(in srgb, var(--schuim) 20%, transparent);
-    }
-
-    /* ---------- Scroll-reveal ---------- */
-    .reveal { opacity: 0; transform: translateY(12px); transition: opacity 500ms ease-out, transform 500ms ease-out; }
-    .reveal.zichtbaar { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .reveal { opacity: 1; transform: none; transition: none; }
-      .hero .sun { animation: none; }
-    }
-
-    /* ---------- Responsive ---------- */
-    @media (max-width: 860px) {
-      section { padding: 80px 0; }
-      .nav-links a:not(.btn) { display: none; }
-      .over-grid, .kaarten, .praktisch-grid { grid-template-columns: 1fr; }
-      .over-grid { gap: 40px; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 
-  <nav>
-    <div class="nav-inner">
-      <a class="logo" href="#top">
-        <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
-          <circle cx="16" cy="14" r="9" fill="#e8632c"/>
-          <path d="M2 26q4-4 8 0t8 0t8 0t4 0" stroke="#123c4f" stroke-width="3" fill="none" stroke-linecap="round"/>
-        </svg>
-        De Badgast
-      </a>
-      <div class="nav-links">
-        <a href="#over">Over</a>
-        <a href="#menu">Menu</a>
-        <a href="#praktisch">Praktisch</a>
-        <a class="btn" href="#praktisch">Reserveer</a>
-      </div>
-    </div>
+<header class="site-header">
+  <img class="logo" src="assets/logo-badgast.png" alt="De Badgast, badkamerrenovaties">
+  <nav class="site-nav">
+    <a href="#formule">De formule</a>
+    <a href="#diensten">Diensten</a>
+    <a href="#werkwijze">Werkwijze</a>
+    <a href="#projecten">Projecten</a>
+    <a href="#recensies">Recensies</a>
+    <a class="tel-pill" href="tel:+31615956178">+31 6 15956178</a>
   </nav>
+</header>
 
-  <header class="hero" id="top">
-    <div class="wrap">
-      <svg class="sun" viewBox="0 0 120 120" aria-hidden="true">
-        <circle cx="60" cy="60" r="34" fill="#e8632c"/>
-        <g stroke="#e8632c" stroke-width="5" stroke-linecap="round">
-          <line x1="60" y1="6"  x2="60" y2="20"/>
-          <line x1="60" y1="100" x2="60" y2="114"/>
-          <line x1="6"  y1="60" x2="20" y2="60"/>
-          <line x1="100" y1="60" x2="114" y2="60"/>
-          <line x1="22" y1="22" x2="32" y2="32"/>
-          <line x1="88" y1="88" x2="98" y2="98"/>
-          <line x1="98" y1="22" x2="88" y2="32"/>
-          <line x1="32" y1="88" x2="22" y2="98"/>
-        </g>
-      </svg>
-      <h1>De Badgast <span class="accent">strandpaviljoen aan zee</span></h1>
-      <p class="intro">Koffie als de zon opkomt, lunch met je voeten in het zand, borrel tot ‘ie weer in zee zakt. Je bent er.</p>
-      <a class="btn" href="#menu">Bekijk het menu</a>
+<section class="hero">
+  <img class="hero-img" src="assets/hero-badkamer.jpg" alt="Door De Badgast gerenoveerde badkamer met vrijstaand bad" fetchpriority="high" decoding="async">
+  <div class="hero-shade-side"></div>
+  <div class="hero-shade-bottom"></div>
+
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="hero-eyebrow" data-fu>Roosendaal en omstreken</div>
+      <h1 data-fu>Jouw badkamer,<br><span class="accent">vakwerk van één vakman</span></h1>
+      <p class="hero-lead" data-fu>Ik ben Gerard Bartels uit Roosendaal. Sloop, tegels, leidingen, elektra en afwerking. Ik doe het zelf, van begin tot eind.</p>
+      <div class="hero-ctas" data-fu>
+        <a class="btn-primary" href="#offerte">Vraag offerte aan</a>
+        <a class="btn-ghost" href="tel:+31615956178">Bellen mag ook altijd</a>
+      </div>
+      <div class="hero-usps" data-fu>
+        <div class="hero-usp"><span class="drop"></span>Eén aanspreekpunt, van eerste schets tot oplevering</div>
+        <div class="hero-usp"><span class="drop"></span>Tegels, leidingen, elektra en afwerking in eigen hand</div>
+        <div class="hero-usp"><span class="drop"></span>Geen aanneemsom, maar een transparante urenfactuur: wekelijks alles gespecificeerd</div>
+      </div>
     </div>
-    <svg class="golven" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0 55 Q 60 25 120 55 T 240 55 T 360 55 T 480 55 T 600 55 T 720 55 T 840 55 T 960 55 T 1080 55 T 1200 55 T 1320 55 T 1440 55 V 90 H 0 Z" fill="#123c4f"/>
-      <path d="M0 55 Q 60 25 120 55 T 240 55 T 360 55 T 480 55 T 600 55 T 720 55 T 840 55 T 960 55 T 1080 55 T 1200 55 T 1320 55 T 1440 55" stroke="#c9dcd2" stroke-width="2" fill="none" opacity="0.5"/>
-    </svg>
-  </header>
 
-  <section class="donker" id="over">
-    <div class="wrap reveal">
-      <span class="label">Over De Badgast</span>
-      <div class="over-grid">
-        <div>
-          <h2>Iedereen is hier <span class="accent">te gast</span></h2>
-          <p>De Badgast is een strandpaviljoen zoals een strandpaviljoen hoort te zijn: het zand loopt gewoon door tot aan de bar, de stoelen staan richting zee en niemand kijkt raar op van een nat badpak.</p>
-          <p>We houden het simpel. Goede koffie, eerlijk eten, koud bier — en verder vooral rust, ruimte en uitzicht. De rest regelt de zee.</p>
+    <div class="hero-card" data-fu>
+      <div class="hero-card-head">
+        <span class="hero-card-stars">★★★★★</span>
+        <span class="hero-card-label">Wat klanten zeggen</span>
+      </div>
+      <blockquote>“Gerard werkt volgens afspraak, accuraat en netjes. Het resultaat is erg mooi.”</blockquote>
+      <div class="hero-card-name">Hanny, Roosendaal</div>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>±500</b><span>badkamers</span></div>
+        <div class="hero-stat"><b>45 jaar</b><span>vakmanschap</span></div>
+        <div class="hero-stat"><b>2007</b><span>eigen zaak</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="over">
+  <div class="over-inner">
+    <div class="over-photos" data-fu>
+      <div class="over-deco" aria-hidden="true"></div>
+      <div class="over-main">
+        <div class="over-badge">
+          <span class="drop"></span>
+          <b>Van sloop tot laatste kit</b>
         </div>
-        <div class="over-kader">
-          <ul>
-            <li>Het hele jaar open, weer of geen weer</li>
-            <li>Terras op het zand, kachel aan in de winter</li>
-            <li>Honden welkom, zeker de natte</li>
-            <li>Strandstoelen en parasols te huur</li>
-          </ul>
+        <img src="assets/gerard-badkamer.jpg" alt="Gerard Bartels aan het werk in een badkamer in aanbouw" loading="lazy" decoding="async">
+      </div>
+      <div class="over-small">
+        <img src="assets/gerard-tegelwerk.jpg" alt="Gerard zet tegels op de wand van een badkamer in aanbouw" loading="lazy" decoding="async">
+      </div>
+    </div>
+    <div class="over-text" data-fu>
+      <div class="kicker">Over Gerard</div>
+      <h2>45 jaar vakmanschap, één paar handen</h2>
+      <p>Ik ben Gerard Bartels, watertechnisch installateur van origine. Na 45 jaar in het vak en zo’n 500 badkamers weet ik: het verschil zit in de details. Daarom werk ik bewust alleen: je hebt van A tot Z met mij te maken, dus misverstanden zijn nagenoeg uitgesloten. Alles gaat in overleg. Ik lever pas op als jouw badkamer of toilet precies is zoals jij ’m voor ogen had.</p>
+    </div>
+  </div>
+</section>
+
+<section id="formule" class="formule">
+  <div class="formule-inner">
+    <div class="formule-col" data-fu>
+      <div class="kicker">De formule</div>
+      <h2>Vakwerk waar nodig,<br>zelf doen waar mogelijk</h2>
+      <p>Ik werk niet met een aanneemsom, maar met een wekelijkse factuur waarop alle uren en materialen staan gespecificeerd. Dat betekent dat jij zelf bepaalt hoeveel je uitbesteedt. Het vakwerk doe ik, het eenvoudige werk mag je gerust zelf oppakken. Scheelt uren op de factuur, en je weet precies waar je aan toe bent.</p>
+      <p class="formule-nb">Wil je liever nergens naar omkijken? Dan neem ik alles uit handen. Ook prima, we spreken het samen af.</p>
+    </div>
+    <div class="formule-col formule-col--lijst" data-fu>
+      <div class="kicker kicker--muted">Dit kun je zelf doen</div>
+      <div class="zelf-lijst">
+        <div class="zelf-item">
+          <span class="ic-wrap"><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/></svg></span>
+          <div><b>Sloopwerk</b><p>Oude tegels, meubel en sanitair eruit voordat ik begin.</p></div>
+        </div>
+        <div class="zelf-item">
+          <span class="ic-wrap"><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></span>
+          <div><b>Puin afvoeren</b><p>Container regelen en het afval naar de milieustraat brengen.</p></div>
+        </div>
+        <div class="zelf-item">
+          <span class="ic-wrap"><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7"/><path d="m7.5 4.27 9 5.15"/></svg></span>
+          <div><b>Materialen ophalen</b><p>Sanitair en tegels zelf laten bezorgen of ophalen bij de showroom.</p></div>
+        </div>
+        <div class="zelf-item">
+          <span class="ic-wrap"><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="6" x="2" y="2" rx="2"/><path d="M10 16v-2a2 2 0 0 1 2-2h8a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect width="4" height="6" x="8" y="16" rx="1"/></svg></span>
+          <div><b>Schilderwerk</b><p>Plafond en wanden afschilderen als het tegelwerk klaar is.</p></div>
+        </div>
+        <div class="zelf-item">
+          <span class="ic-wrap"><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg></span>
+          <div><b>Tussentijds opruimen</b><p>Even stofzuigen en aanvegen aan het eind van de dag.</p></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="menu">
-    <div class="wrap reveal">
-      <span class="label">Van vroeg tot laat</span>
-      <h2>Eten met <span class="accent">uitzicht</span></h2>
-      <div class="kaarten">
-        <article class="kaart">
-          <span class="tijd">Ochtend · vanaf 9:00</span>
-          <h3>Koffie &amp; zoet</h3>
-          <p>Verse koffie, appeltaart van eigen bodem en croissants voor wie de zonsopkomst heeft gehaald. Ochtendzwemmers krijgen de eerste koffie het warmst.</p>
-        </article>
-        <article class="kaart">
-          <span class="tijd">Middag · 12:00 – 17:00</span>
-          <h3>Lunch in het zand</h3>
-          <p>Broodje gerookte makreel, tosti's, soep van het seizoen en een eerlijke burger. Alles ook om mee te nemen naar je strandstoel.</p>
-        </article>
-        <article class="kaart">
-          <span class="tijd">Avond · tot zonsondergang</span>
-          <h3>Borrel &amp; zee</h3>
-          <p>Bitterballen, oesters als ze er zijn, koud bier van de tap en wijn per glas of fles. De beste plek is aan de reling, richting het westen.</p>
-        </article>
+<section id="diensten" class="diensten">
+  <div class="diensten-head" data-fu>
+    <div class="kicker">Diensten</div>
+    <h2>Wat ik voor je doe</h2>
+  </div>
+  <div class="dienst-grid">
+    <div class="dienst-card" data-fu>
+      <div class="ic-wrap"><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 4 8 6"/><path d="M17 19v2"/><path d="M2 12h20"/><path d="M7 19v2"/><path d="M9 5 7.621 3.621A2.121 2.121 0 0 0 4 5v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/></svg></div>
+      <h3>Totaalrenovatie badkamer</h3>
+      <p>Van slopen tot opleveren: leidingwerk, elektra, tegels, stucwerk, meubel en sanitair. Jij kiest de materialen, ik regel de uitvoering.</p>
+    </div>
+    <div class="dienst-card" data-fu>
+      <div class="ic-wrap"><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/><path d="M14 12v.01"/></svg></div>
+      <h3>Totaalrenovatie toilet</h3>
+      <p>Het hele toilet opnieuw: leidingen, tegelwerk tot in de hoeken, sanitair en een strakke afwerking.</p>
+    </div>
+    <div class="dienst-card" data-fu>
+      <div class="ic-wrap"><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 12h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 14"/><path d="m7 18 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 13 6 6"/></svg></div>
+      <h3>Alles in eigen hand</h3>
+      <p>Geen onderaannemers. Sloop, leidingwerk, elektra, tegels en de laatste kitrand: allemaal door mij, van eerste dag tot oplevering.</p>
+    </div>
+  </div>
+</section>
+
+<section id="werkwijze" class="werkwijze">
+  <div class="werkwijze-deco" aria-hidden="true"></div>
+  <div class="werkwijze-head">
+    <div class="werkwijze-head-copy" data-fu>
+      <div class="kicker kicker--light">Werkwijze</div>
+      <h2>Van de eerste bak koffie<br>tot de laatste kitrand</h2>
+      <p>Vier stappen, één aanspreekpunt. Je weet steeds wie er komt, wat er die week gebeurt en wat het tot dan toe heeft gekost.</p>
+    </div>
+    <a class="btn-white" href="#offerte" data-fu>Plan het eerste bezoek<svg class="ic" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  </div>
+
+  <div class="stappen">
+    <div class="stap" data-fu>
+      <div class="stap-top"><span class="stap-num">01</span><span class="drop"></span></div>
+      <h3>Vrijblijvend bezoek</h3>
+      <p>Ik kom langs, meet op, denk mee in de mogelijkheden en geef je een eerlijke totaalindicatie.</p>
+      <div class="stap-tag">Kost je een uurtje</div>
+    </div>
+    <div class="stap" data-fu>
+      <div class="stap-top"><span class="stap-num">02</span><span class="drop"></span></div>
+      <h3>Jij kiest je materialen</h3>
+      <p>Sanitair en tegels zoek je uit bij een kwaliteitsshowroom: Maxaro, Jan van Zundert of Brugman.</p>
+      <div class="stap-tag">Het leukste stuk</div>
+    </div>
+    <div class="stap" data-fu>
+      <div class="stap-top"><span class="stap-num">03</span><span class="drop"></span></div>
+      <h3>Uitvoering</h3>
+      <p>Ik werk je badkamer in één keer af. Looproute en trap dek ik netjes af, elke vrijdag ruim ik op.</p>
+      <div class="stap-tag">3 à 3,5 week</div>
+    </div>
+    <div class="stap" data-fu>
+      <div class="stap-top"><span class="stap-num">04</span><span class="drop"></span></div>
+      <h3>Oplevering</h3>
+      <p>We lopen samen alles na. Ik lever pas op als het precies is zoals jij het voor ogen had.</p>
+      <div class="stap-tag">2 jaar garantie</div>
+    </div>
+  </div>
+
+  <div class="werkwijze-meta" data-fu>
+    <span><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h5"/><path d="M17.5 17.5 16 16.3V14"/><circle cx="16" cy="16" r="6"/></svg>De planning loopt zo'n 6 maanden vooruit</span>
+    <span><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M13 16H8"/></svg>Wekelijkse factuur, alles gespecificeerd</span>
+  </div>
+</section>
+
+<section id="projecten" class="projecten">
+  <div class="projecten-head" data-fu>
+    <div class="kicker kicker--wide">Projecten</div>
+    <h2>Gerealiseerde projecten <span>van sloop tot laatste kit</span></h2>
+    <p>Elke badkamer hieronder begon als een ruimte waar de eigenaar op uitgekeken was. Alles heb ik zelf gemaakt, van sloop tot de laatste kitrand.</p>
+  </div>
+
+  <div class="rail-wrap">
+    <button type="button" class="rail-btn rail-btn--prev" data-rail-prev aria-label="Vorige project"><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+    <button type="button" class="rail-btn rail-btn--next" data-rail-next aria-label="Volgende project"><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+    <div class="rail-fade rail-fade--l"></div>
+    <div class="rail-fade rail-fade--r"></div>
+    <div id="projectRail" class="rail">
+      <div class="project" data-fu>
+        <img src="assets/project-inloopdouche.webp" alt="Gerenoveerde badkamer met zwarte inloopdouche en ligbad" loading="lazy" decoding="async">
+        <div class="project-shade"></div>
+        <div class="project-caption">
+          <div class="project-label">Ruim en licht</div>
+          <h3>Badkamer met inloopdouche</h3>
+          <div class="project-chips">
+            <span class="chip">Inloopdouche</span>
+            <span class="chip">Dubbele wastafel</span>
+            <span class="chip chip--accent">3 weken</span>
+            <span class="chip-meta">Roosendaal · 2026</span>
+          </div>
+        </div>
+      </div>
+      <div class="project" data-fu>
+        <img src="assets/project-toilet.webp" alt="Vernieuwde toiletruimte met zwevend toilet en fonteinmeubel" loading="lazy" decoding="async" style="object-position:50% 82.7%">
+        <div class="project-shade"></div>
+        <div class="project-caption">
+          <div class="project-label">Compact en strak</div>
+          <h3>Toiletruimte vernieuwd</h3>
+          <div class="project-chips">
+            <span class="chip">Nieuw leidingwerk</span>
+            <span class="chip">Tegels tot plafond</span>
+            <span class="chip chip--accent">1 week</span>
+            <span class="chip-meta">Oudenbosch · 2025</span>
+          </div>
+        </div>
+      </div>
+      <div class="project" data-fu>
+        <img src="assets/project-badkamer-toilet.webp" alt="Gerenoveerde badkamer met dubbele wastafel, douche en toilet" loading="lazy" decoding="async">
+        <div class="project-shade"></div>
+        <div class="project-caption">
+          <div class="project-label">Comfort en warmte</div>
+          <h3>Badkamer en toilet in één traject</h3>
+          <div class="project-chips">
+            <span class="chip">Bad en douche</span>
+            <span class="chip">Vloerverwarming</span>
+            <span class="chip chip--accent">3,5 week</span>
+            <span class="chip-meta">Wouw · 2025</span>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="donker" id="praktisch">
-    <div class="wrap reveal">
-      <span class="label">Praktisch</span>
-      <h2>Kom <span class="accent">langs</span></h2>
-      <div class="praktisch-grid">
-        <div class="blok">
-          <h3>Openingstijden</h3>
-          <dl class="tijden">
-            <dt>Ma – Vr</dt><dd>9:00 – 22:00</dd>
-            <dt>Za – Zo</dt><dd>9:00 – 23:00</dd>
-          </dl>
-          <p style="margin-top:16px">Bij storm bellen we het af — check even onze socials.</p>
-        </div>
-        <div class="blok">
-          <h3>Vind ons</h3>
-          <p>Aan het strand, onderaan de strandopgang. Volg het geluid van de zee — wij zitten waar het zand begint.</p>
-        </div>
-        <div class="blok">
-          <h3>Reserveren</h3>
-          <p>Mail naar <a href="mailto:hallo@debadgast.nl">hallo@debadgast.nl</a> of loop gewoon binnen. Voor groepen vanaf 8 horen we het graag even van tevoren.</p>
-        </div>
+  <div class="projecten-foot" data-fu>
+    <span><span class="drop"></span>Geen onderaannemers, alles door mij zelf gemaakt</span>
+  </div>
+</section>
+
+<section id="recensies" class="recensies">
+  <div class="recensies-deco" aria-hidden="true"></div>
+  <div class="recensies-head">
+    <div class="recensies-head-copy" data-fu>
+      <div class="kicker">Recensies</div>
+      <h2>Bijna al mijn klanten<br>komen via mond-tot-mondreclame</h2>
+      <p>Mensen voor wie ik eerder werkte, vertellen het door aan familie, buren en collega's. Dit schreven zij zelf over mijn werk.</p>
+    </div>
+    <a class="link-pill" href="recensies.html" data-fu>Alle recensies lezen<svg class="ic" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+  </div>
+  <div class="review-grid">
+    <figure class="review" data-fu>
+      <span class="review-quote-drop"><span><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg></span></span>
+      <div class="review-stars">★★★★★</div>
+      <blockquote>“Gerard werkt volgens afspraak, geeft praktische tips, werkt accuraat en netjes. Het resultaat is erg mooi!”</blockquote>
+      <figcaption>
+        <span class="review-avatar"><span>H</span></span>
+        <span class="review-who"><b>Hanny</b><span>Roosendaal · juli 2026</span></span>
+      </figcaption>
+    </figure>
+    <figure class="review" data-fu>
+      <span class="review-quote-drop"><span><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg></span></span>
+      <div class="review-stars">★★★★★</div>
+      <blockquote>“Gerard heeft onze toiletruimte onder handen genomen. Heel vakkundig gedaan en daarbij goede adviezen gegeven.”</blockquote>
+      <figcaption>
+        <span class="review-avatar"><span>PT</span></span>
+        <span class="review-who"><b>Peter en Tonny</b><span>Roosendaal · april 2026</span></span>
+      </figcaption>
+    </figure>
+    <figure class="review" data-fu>
+      <span class="review-quote-drop"><span><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg></span></span>
+      <div class="review-stars">★★★★★</div>
+      <blockquote>“Gerard is vriendelijk, professioneel en denkt mee. Komt met goede voorstellen en oplossingen. Het resultaat is prachtig!”</blockquote>
+      <figcaption>
+        <span class="review-avatar"><span>FH</span></span>
+        <span class="review-who"><b>Fam. Hartkoren</b><span>Roosendaal · januari 2026</span></span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="offerte" class="offerte">
+  <div class="offerte-inner">
+    <div class="offerte-copy" data-fu>
+      <h2>Vraag een offerte aan</h2>
+      <p>Laat je gegevens achter en vertel kort wat je van plan bent. Ik neem zelf contact op om langs te komen en op te meten.</p>
+      <div class="offerte-nb"><span>De planning loopt momenteel zo’n 6 maanden vooruit. Plan je renovatie dus op tijd in.</span></div>
+      <div class="offerte-bel">
+        <div class="offerte-bel-label">Liever direct bellen?</div>
+        <a class="offerte-tel" href="tel:+31615956178">+31 6 15956178</a>
+        <div class="offerte-mail">Of mail naar <a href="mailto:info@debadgast.nl">info@debadgast.nl</a></div>
       </div>
     </div>
-  </section>
-
-  <section class="cta">
-    <div class="wrap reveal">
-      <h2>Tot op het <span class="accent">strand</span></h2>
-      <p>De zee ligt er toch al. Nu jij nog.</p>
-      <a class="btn licht" href="mailto:hallo@debadgast.nl">Reserveer een tafel</a>
+    <div class="offerte-formwrap" data-fu>
+      <form class="offerte-form">
+        <label><span>Naam</span><input name="naam" required placeholder="Voor- en achternaam"></label>
+        <div class="form-row">
+          <label><span>Telefoon</span><input name="telefoon" type="tel" required placeholder="06 12 34 56 78"></label>
+          <label><span>E-mail</span><input name="email" type="email" required placeholder="naam@voorbeeld.nl"></label>
+        </div>
+        <label><span>Wat wil je laten doen?</span><textarea name="omschrijving" rows="4" placeholder="Bijvoorbeeld: badkamer van 6 m² volledig renoveren, inloopdouche en dubbele wastafel."></textarea></label>
+        <button type="submit">Verstuur aanvraag</button>
+        <div class="form-privacy">Je gegevens gebruik ik alleen om je aanvraag te beantwoorden.</div>
+      </form>
+      <div class="offerte-success">
+        <div class="ic-wrap"><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>Bedankt, je bericht staat bij mij</h3>
+        <p>Ik neem binnen twee werkdagen zelf contact met je op. Heb je haast? Bel dan gerust: +31 6 15956178.</p>
+        <button type="button">Nog een bericht sturen</button>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    De Badgast · strandpaviljoen aan zee · <a href="mailto:hallo@debadgast.nl" style="color:inherit">hallo@debadgast.nl</a>
-  </footer>
+<footer class="site-footer">
+  <div class="footer-notch" aria-hidden="true"></div>
+  <img class="footer-emblem" src="assets/embleem.png" alt="" aria-hidden="true">
+  <div class="footer-cols">
+    <div class="footer-col-merk">
+      <img src="assets/logo-badgast.png" alt="De Badgast">
+      <p>Totaalrenovatie van badkamers en toiletten door Gerard Bartels.</p>
+    </div>
+    <div class="footer-col-contact">
+      <div class="footer-title">Contactgegevens</div>
+      <div class="footer-contact">
+        <div><span class="ic-wrap"><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span><span>Roosendaal<br>en omgeving</span></div>
+        <div><span class="ic-wrap"><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><a href="tel:+31615956178">06 - 15 95 61 78</a></div>
+        <div><span class="ic-wrap"><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><a href="mailto:info@debadgast.nl">info@debadgast.nl</a></div>
+        <div><span class="ic-wrap"><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span><a href="https://debadgast.nl">www.debadgast.nl</a></div>
+      </div>
+    </div>
+    <div class="footer-col-gebied">
+      <div class="footer-kicker">Werkgebied</div>
+      <p>Roosendaal en omgeving, tot ongeveer 20 km.</p>
+    </div>
+    <div class="footer-col-gegevens">
+      <div class="footer-kicker">Gegevens</div>
+      <p>KvK 20133632<br>Algemene voorwaarden op aanvraag</p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2007–2026 De Badgast</div>
+</footer>
 
-  <script>
-    const reveals = document.querySelectorAll(".reveal");
-    if ("IntersectionObserver" in window) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) { e.target.classList.add("zichtbaar"); io.unobserve(e.target); }
-        });
-      }, { threshold: 0.15 });
-      reveals.forEach((el) => io.observe(el));
-    } else {
-      reveals.forEach((el) => el.classList.add("zichtbaar"));
-    }
-  </script>
+<div class="ctabar">
+  <a class="ctabar-primary" href="#offerte">Vraag offerte aan</a>
+  <a class="ctabar-bel" href="tel:+31615956178"><svg class="ic" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Bellen</a>
+</div>
+
+<script src="assets/site.js"></script>
 </body>
 </html>
