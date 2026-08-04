@@ -62,6 +62,55 @@
     if (next) next.addEventListener('click', function () { scrollRail(1); });
   }
 
+  // Fotogalerij op de projectpagina's: klik opent de foto groot
+  var galerij = document.getElementById('galerij');
+  var lightbox = document.getElementById('lightbox');
+  if (galerij && lightbox) {
+    var items = Array.prototype.slice.call(galerij.querySelectorAll('.galerij-item'));
+    var foto = lightbox.querySelector('.lightbox-foto');
+    var teller = lightbox.querySelector('.lightbox-teller');
+    var huidige = 0;
+    var laatstGeopend = null;
+
+    lightbox.classList.toggle('lightbox--enkel', items.length < 2);
+
+    var toon = function (i) {
+      huidige = (i + items.length) % items.length;
+      var bron = items[huidige].querySelector('img');
+      foto.src = bron.src;
+      foto.alt = bron.alt;
+      teller.textContent = (huidige + 1) + ' / ' + items.length;
+    };
+    var open = function (i) {
+      laatstGeopend = items[i];
+      toon(i);
+      lightbox.hidden = false;
+      document.body.classList.add('lightbox-open');
+      lightbox.querySelector('.lightbox-sluit').focus();
+    };
+    var sluit = function () {
+      lightbox.hidden = true;
+      document.body.classList.remove('lightbox-open');
+      if (laatstGeopend) laatstGeopend.focus();
+    };
+
+    items.forEach(function (item, i) {
+      item.addEventListener('click', function () { open(i); });
+    });
+    lightbox.querySelector('.lightbox-sluit').addEventListener('click', sluit);
+    lightbox.querySelector('.lightbox-vorige').addEventListener('click', function () { toon(huidige - 1); });
+    lightbox.querySelector('.lightbox-volgende').addEventListener('click', function () { toon(huidige + 1); });
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox || e.target === lightbox.querySelector('.lightbox-inhoud')) sluit();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (lightbox.hidden) return;
+      if (e.key === 'Escape') sluit();
+      else if (e.key === 'ArrowLeft') toon(huidige - 1);
+      else if (e.key === 'ArrowRight') toon(huidige + 1);
+    });
+  }
+
   // Offerteformulier: verstuurt via FormSubmit naar info@debadgast.nl
   // en toont daarna de bevestiging. Eerste inzending vraagt eenmalig om
   // activatie via een mail aan dat adres — zie README.md.
