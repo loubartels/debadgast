@@ -587,11 +587,11 @@ img { max-width: 100%; }
   overflow: hidden;
 }
 .projecten-head {
-  /* content-box: de 820px geldt voor de tekstkolom zelf, de padding komt erbovenop */
-  box-sizing: content-box;
+  /* margin:auto centreert al; alleen kleine randmarge nodig, geen brede pad-x */
   max-width: 820px;
   margin: 0 auto;
-  padding: 0 var(--pad-x);
+  padding: 0 clamp(20px, 4vw, 64px);
+  box-sizing: content-box;
   text-align: center;
 }
 .kicker--wide { letter-spacing: .16em; }
