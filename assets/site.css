@@ -587,6 +587,8 @@ img { max-width: 100%; }
   overflow: hidden;
 }
 .projecten-head {
+  /* content-box: de 820px geldt voor de tekstkolom zelf, de padding komt erbovenop */
+  box-sizing: content-box;
   max-width: 820px;
   margin: 0 auto;
   padding: 0 var(--pad-x);
