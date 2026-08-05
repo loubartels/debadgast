@@ -197,6 +197,19 @@ img { max-width: 100%; }
   flex: none;
 }
 .link-pill:hover { border-color: var(--teal); background: rgba(0,179,172,.07); color: var(--teal); }
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 26px;
+  border: 1.5px solid rgba(10,10,10,.2);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--ink);
+  font: 700 15.5px Manrope, sans-serif;
+  text-decoration: none;
+}
+.btn-outline:hover { border-color: var(--ink); color: var(--ink); }
 
 /* ---------- Hero ---------- */
 
@@ -1198,51 +1211,6 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
 }
 .rec-mail-link:hover { color: var(--teal-dark); }
 .rec-bron { margin: 8px 0 0; font: 600 14px Manrope, sans-serif; color: rgba(10,10,10,.45); }
-.rec-cta {
-  position: relative;
-  overflow: hidden;
-  background: var(--teal);
-  color: #fff;
-  padding: clamp(56px, 7vw, 100px) var(--pad-x);
-}
-.rec-cta-deco {
-  position: absolute;
-  bottom: -160px;
-  left: -90px;
-  width: 380px;
-  height: 380px;
-  background: rgba(255,255,255,.07);
-  border-radius: 50% 50% 50% 0;
-  transform: rotate(135deg);
-  pointer-events: none;
-}
-.rec-cta-inner {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-}
-.rec-cta h2 {
-  margin: 0;
-  font: 800 clamp(26px, 3vw, 38px)/1.12 Manrope, sans-serif;
-  letter-spacing: -.028em;
-  text-wrap: pretty;
-}
-.rec-cta-copy { max-width: 620px; }
-.rec-cta-copy p {
-  margin: 18px 0 0;
-  max-width: 480px;
-  font: 400 16.5px/1.68 Manrope, sans-serif;
-  color: rgba(255,255,255,.85);
-  text-wrap: pretty;
-}
-.rec-cta-knoppen { display: flex; flex-wrap: wrap; gap: 14px; }
-.rec-cta .btn-primary { background: #fff; color: var(--teal-dark); padding: 17px 30px; }
-.rec-cta .btn-primary:hover { background: rgba(255,255,255,.9); color: var(--teal-dark); }
-.rec-cta .btn-ghost { border-color: rgba(255,255,255,.6); background: none; gap: 10px; }
-.rec-cta .btn-ghost:hover { background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.6); }
 
 /* ---------- Projectpagina ---------- */
 
@@ -1415,6 +1383,52 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   color: rgba(10,10,10,.45);
 }
 .proj-nav-titel { display: block; margin-top: 5px; font: 800 16px Manrope, sans-serif; }
+
+/* ---------- CTA-blok op de subpagina's ---------- */
+
+.cta-blok { padding: 0 var(--pad-x) clamp(56px, 7vw, 96px); }
+.cta-blok-inner {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px 40px;
+  padding: clamp(32px, 4vw, 56px);
+  background: #F7F7F7;
+  border-radius: 6px;
+}
+.cta-blok-deco {
+  position: absolute;
+  top: -90px;
+  right: -70px;
+  width: 260px;
+  height: 260px;
+  background: rgba(0,179,172,.08);
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(135deg);
+  pointer-events: none;
+}
+.cta-blok-tekst { position: relative; flex: 1 1 380px; max-width: 560px; }
+.cta-blok h2 {
+  margin: 0;
+  font: 800 clamp(24px, 2.6vw, 34px)/1.12 Manrope, sans-serif;
+  letter-spacing: -.028em;
+  text-wrap: pretty;
+}
+.cta-blok-tekst p {
+  margin: 14px 0 0;
+  font: 400 16.5px/1.65 Manrope, sans-serif;
+  color: rgba(10,10,10,.64);
+  text-wrap: pretty;
+}
+.cta-blok-nb {
+  margin: 18px 0 0;
+  font: 600 14px/1.55 Manrope, sans-serif;
+  color: rgba(10,10,10,.5);
+}
+.cta-blok-knoppen { position: relative; display: flex; flex-wrap: wrap; gap: 12px; }
 
 /* ---------- Lightbox ---------- */
 
