@@ -34,6 +34,58 @@ Alles wees naar één server bij Antagonist: `141.138.169.212` (IPv4) en
 | `localhost` | A / AAAA | 127.0.0.1 / ::1 | Met rust laten |
 | `debadgast.nl.` | NS | ns1/ns2/ns3.webhostingserver.nl. | Met rust laten — naamservers |
 
+## Back-up van de oude site maken
+
+Doe dit vóórdat je de records aanpast. De oude site blijft weliswaar op de
+server staan, maar een eigen kopie is de zekerheid dat je nooit iets kwijtraakt.
+
+**De complete manier — via de back-upfunctie (aanbevolen).** Deze pakt ook de
+e-mail mee, en dat is precies wat een losse mappen-download níet doet.
+
+1. Log in op DirectAdmin via <https://onehome.antagonist.nl/websites/44537>
+2. Ga naar **Geavanceerde functies → Back-ups maken/terugzetten**
+   (soms *Create/Restore Backups*)
+3. Kies **Back-up maken**, en vink aan: *Website-bestanden*, *E-mail accounts*,
+   *E-mail berichten*, *Databases*, *DNS-instellingen*
+4. Bevestigen. De back-up wordt gemaakt en komt als één `.tar.gz` in de map
+   `backups/` te staan
+5. Ga naar **Mijn bestanden**, open `backups/`, en klik het bestand aan om het
+   te downloaden
+
+**Alleen de website-bestanden — via Mijn bestanden.**
+
+1. **Mijn bestanden** → open de map `domains`
+2. Vink `domains` aan (of ga een niveau dieper naar
+   `domains/debadgast.nl/public_html` en vink daar alles aan)
+3. Klik op **Meer** → **Comprimeren**, kies `.zip` en bevestig
+4. Het zipbestand verschijnt in dezelfde map; klik erop om het te downloaden
+
+**Via FTP.** Werkt ook, en is handiger bij veel bestanden: gebruik
+[FileZilla](https://filezilla-project.org) met de FTP-gegevens uit DirectAdmin
+(**FTP-beheer**), en sleep de map `domains` naar je eigen computer.
+
+### Gedaan op 5 augustus 2026
+
+De back-up is gemaakt en gedownload (2,43 GB: bestanden, e-mail en database) en
+staat buiten deze repository. Uit de databasedump `deb41509_debadgast.sql` bleek
+de oude site 92 recensies, 6 paginateksten, 62 fotogroepen en 342 foto's te
+bevatten.
+
+Die dump is gebruikt om de nieuwe site tegen de bron te controleren:
+
+- **92 van de 92 recensies** komen exact overeen met `content/recensies.json` —
+  naam, plaats, datum en volledige tekst, nul afwijkingen.
+- **De algemene voorwaarden** komen woord voor woord overeen met
+  `content/voorwaarden.json`, 24 artikelen.
+
+> **De databasedump hoort niet in deze repository.** Er staan 87
+> e-mailadressen van klanten in, gekoppeld aan naam en woonplaats. Bewaar hem
+> privé. Op de website staan daarom alleen naam, plaats en tekst.
+
+Bewaar de back-up op je eigen computer én ergens anders (externe schijf of
+clouddrive). Zolang het hostingpakket bij Antagonist blijft draaien, is dit
+strikt genomen niet nodig — maar het kost tien minuten en dekt de rest af.
+
 ## Waarschuwing: vergeet de AAAA-records niet
 
 Dit is de valkuil waar mensen het vaakst in trappen. Als je alleen de
@@ -45,6 +97,29 @@ misschien de nieuwe site en denkt dat alles goed is.
 Verwijder daarom de AAAA-records van `debadgast.nl` en `www`, tenzij Vercel je
 een eigen IPv6-adres geeft. Alle andere AAAA-records (mail, smtp, pop, ftp)
 blijven staan.
+
+## E-mail: er hoeft niets te gebeuren
+
+De e-mail verhuist niet mee. Alleen de website gaat naar Vercel; het domein, de
+mailboxen en de mailserver blijven bij Antagonist staan waar ze staan.
+
+| Wat | Waar het blijft |
+|---|---|
+| Domeinnaam `debadgast.nl` | Antagonist |
+| DNS-beheer | Antagonist |
+| E-mail (`info@debadgast.nl` en de rest) | Antagonist |
+| Webmail, IMAP/POP/SMTP-instellingen | Antagonist, ongewijzigd |
+| De website zelf | Vercel |
+
+Dat betekent concreet: **niets aanpassen in Outlook, op de telefoon, of in de
+webmail.** Alle serveradressen (`mail.debadgast.nl`, `smtp.debadgast.nl`,
+`pop.debadgast.nl`) blijven precies hetzelfde, want die records blijven naar
+Antagonist wijzen. De enige records die veranderen zijn de A- en AAAA-records
+van `debadgast.nl` en `www` — en daar loopt geen mail overheen.
+
+> **Zeg het hostingpakket bij Antagonist niet op.** De mailboxen zitten in dat
+> pakket. Vervalt het pakket, dan vervalt de e-mail, ook al staat de website
+> ergens anders.
 
 ## Opmerking bij het SPF-record
 
