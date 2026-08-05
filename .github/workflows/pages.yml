@@ -22,6 +22,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      # Zo hoeft wie foto's toevoegt geen script te draaien: het uploaden van
+      # een foto naar assets/projecten/<project>/ is genoeg, de projectpagina's
+      # worden hier automatisch opnieuw opgebouwd.
+      - name: Projectpagina's bijwerken
+        run: python3 tools/genereer-projecten.py
       - uses: actions/configure-pages@v5
         with:
           enablement: true

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pagina niet gevonden — De Badgast</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Bewust losse stijlen: deze pagina wordt ook getoond op diepe adressen,
+       waar een relatief pad naar de stylesheet niet zou kloppen. -->
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      background: #F7F7F7;
+      color: #0a0a0a;
+      font-family: Manrope, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-align: center;
+    }
+    .vak { max-width: 520px; }
+    .druppel {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 28px;
+      background: #00b3ac;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(135deg);
+    }
+    h1 {
+      margin: 0;
+      font: 800 clamp(28px, 5vw, 40px)/1.12 Manrope, sans-serif;
+      letter-spacing: -.03em;
+    }
+    p {
+      margin: 18px 0 0;
+      font: 400 17px/1.65 Manrope, sans-serif;
+      color: rgba(10,10,10,.64);
+    }
+    .knoppen { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 32px; }
+    a {
+      display: inline-flex;
+      align-items: center;
+      padding: 16px 28px;
+      border-radius: 4px;
+      font: 800 15.5px Manrope, sans-serif;
+      text-decoration: none;
+    }
+    .primair { background: #00b3ac; color: #fff; }
+    .primair:hover { background: #00918b; }
+    .secundair { border: 1.5px solid rgba(10,10,10,.2); background: #fff; color: #0a0a0a; font-weight: 700; }
+    .secundair:hover { border-color: #0a0a0a; }
+  </style>
+</head>
+<body>
+  <div class="vak">
+    <div class="druppel" aria-hidden="true"></div>
+    <h1>Deze pagina bestaat niet meer</h1>
+    <p>Waarschijnlijk is de website vernieuwd en heeft deze pagina een nieuw adres gekregen. Ga naar de homepage, dan vind je alles terug.</p>
+    <div class="knoppen">
+      <a class="primair" href="/">Naar de homepage</a>
+      <a class="secundair" href="tel:+31615956178">Bel 06 - 15 95 61 78</a>
+    </div>
+  </div>
+</body>
+</html>

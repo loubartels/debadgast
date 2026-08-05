@@ -1,0 +1,44 @@
+# De Badgast — instellingen voor Apache-hosting (o.a. Antagonist).
+# Dit bestand doet niets op GitHub Pages; daar is het onschadelijk.
+
+# ---------------------------------------------------------------
+# Oude adressen doorsturen naar de nieuwe pagina's
+# De vorige site had losse pagina's; die zijn nu secties op de
+# homepage. Zonder deze regels lopen links uit Google en oude
+# verwijzingen dood op een 404.
+# ---------------------------------------------------------------
+Redirect 301 /startpagina        /
+Redirect 301 /wiebenik           /#over
+Redirect 301 /werkwijze          /#werkwijze
+Redirect 301 /praktijk           /#diensten
+Redirect 301 /contact            /#offerte
+Redirect 301 /recensies          /recensies.html
+Redirect 301 /algemenevoorwaarden /
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Alle oude fotopagina's (/fotos, /fotos/78, …) naar de projecten
+  RewriteRule ^fotos(/.*)?$ /#projecten [R=301,L]
+</IfModule>
+
+# ---------------------------------------------------------------
+# Nette foutpagina
+# ---------------------------------------------------------------
+ErrorDocument 404 /404.html
+
+# ---------------------------------------------------------------
+# Sneller laden: comprimeren en caching
+# ---------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+</IfModule>
