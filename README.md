@@ -27,7 +27,29 @@ Open daarna `http://localhost:8000`.
 
 ## Live zetten
 
-De site wordt automatisch naar **GitHub Pages** gepubliceerd bij elke push naar de standaardbranch (workflow: `.github/workflows/pages.yml`). URL: `https://loubartels.github.io/debadgast/`. Een eigen domein koppel je via Settings → Pages → Custom domain.
+De site staat nu op **GitHub Pages**: elke push naar de standaardbranch publiceert automatisch (workflow: `.github/workflows/pages.yml`). Testadres: `https://loubartels.github.io/debadgast/`.
+
+Voor `debadgast.nl` zijn er twee routes. Het domein staat bij Antagonist; de e-mail blijft daar in beide gevallen ongemoeid, zolang de MX-records niet worden aangeraakt.
+
+### Route A — domein naar GitHub Pages (aanbevolen)
+
+Publiceren blijft automatisch: wijziging op GitHub → binnen een minuut live. Geen FTP, geen handmatige uploads.
+
+1. GitHub → Settings → Pages → **Custom domain**: `debadgast.nl` → Save. Er wordt dan een bestand `CNAME` aangemaakt in de repository.
+2. In het Antagonist DNS-beheer: de A-records van `debadgast.nl` vervangen door de vier adressen van GitHub Pages (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`), en `www` als CNAME naar `loubartels.github.io`.
+3. Wacht tot GitHub bij Pages "DNS check successful" meldt en vink **Enforce HTTPS** aan.
+
+Nadeel: de `.htaccess` met de doorstuurregels werkt hier niet — GitHub Pages leest die niet. Oude adressen komen dan op de 404-pagina uit in plaats van op de juiste sectie.
+
+### Route B — uploaden naar Antagonist
+
+Alles blijft bij Antagonist, inclusief de doorstuurregels in `.htaccess`. Nadeel: elke wijziging moet handmatig geüpload worden.
+
+1. Bouw het uploadpakket: `python3 tools/maak-uploadpakket.py`
+2. Pak `debadgast-site.zip` uit en zet de inhoud via FTP of de bestandsbeheerder van Antagonist in de webmap (meestal `httpdocs` of `public_html`).
+3. Zet de oude bestanden eerst apart, zodat je terug kunt.
+
+**Let op bij beide routes:** de oude site heeft losse pagina's (`/wiebenik`, `/werkwijze`, `/fotos`, `/contact`, `/recensies`). Die zijn nu secties op de homepage. `.htaccess` stuurt ze door naar de juiste plek; bij route A vervalt dat.
 
 ## Offerteformulier
 
