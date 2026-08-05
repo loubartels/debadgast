@@ -318,9 +318,10 @@ img { max-width: 100%; }
 }
 .hero-card-name { margin-top: 10px; font: 600 13px Manrope, sans-serif; color: rgba(255,255,255,.7); }
 .hero-stats {
+  /* De drie cijfers horen op één regel te blijven staan, ook in de smalste kaart */
   display: flex;
-  flex-wrap: wrap;
-  margin: 22px -12px 0;
+  flex-wrap: nowrap;
+  margin: 22px -10px 0;
   padding-top: 20px;
   border-top: 1px solid rgba(255,255,255,.28);
 }
@@ -328,18 +329,19 @@ img { max-width: 100%; }
   display: flex;
   flex-direction: column;
   gap: 5px;
-  padding: 0 clamp(14px, 1.6vw, 22px);
+  min-width: 0;
+  padding: 0 clamp(9px, 1.2vw, 16px);
   border-right: 1px solid rgba(255,255,255,.24);
 }
 .hero-stat:last-child { border-right: 0; }
 .hero-stat b {
-  font: 800 clamp(24px, 2.4vw, 30px) Manrope, sans-serif;
+  font: 800 clamp(21px, 1.9vw, 26px) Manrope, sans-serif;
   letter-spacing: -.02em;
   color: #fff;
 }
 .hero-stat span {
-  font: 600 12.5px Manrope, sans-serif;
-  letter-spacing: .06em;
+  font: 600 clamp(11px, 0.85vw, 12px) Manrope, sans-serif;
+  letter-spacing: .04em;
   text-transform: uppercase;
   color: rgba(255,255,255,.72);
   white-space: nowrap;
