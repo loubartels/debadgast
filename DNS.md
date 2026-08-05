@@ -64,6 +64,24 @@ e-mail mee, en dat is precies wat een losse mappen-download níet doet.
 [FileZilla](https://filezilla-project.org) met de FTP-gegevens uit DirectAdmin
 (**FTP-beheer**), en sleep de map `domains` naar je eigen computer.
 
+### Gedaan op 5 augustus 2026
+
+De back-up is gemaakt en gedownload (2,43 GB: bestanden, e-mail en database) en
+staat buiten deze repository. Uit de databasedump `deb41509_debadgast.sql` bleek
+de oude site 92 recensies, 6 paginateksten, 62 fotogroepen en 342 foto's te
+bevatten.
+
+Die dump is gebruikt om de nieuwe site tegen de bron te controleren:
+
+- **92 van de 92 recensies** komen exact overeen met `content/recensies.json` —
+  naam, plaats, datum en volledige tekst, nul afwijkingen.
+- **De algemene voorwaarden** komen woord voor woord overeen met
+  `content/voorwaarden.json`, 24 artikelen.
+
+> **De databasedump hoort niet in deze repository.** Er staan 87
+> e-mailadressen van klanten in, gekoppeld aan naam en woonplaats. Bewaar hem
+> privé. Op de website staan daarom alleen naam, plaats en tekst.
+
 Bewaar de back-up op je eigen computer én ergens anders (externe schijf of
 clouddrive). Zolang het hostingpakket bij Antagonist blijft draaien, is dit
 strikt genomen niet nodig — maar het kost tien minuten en dekt de rest af.
