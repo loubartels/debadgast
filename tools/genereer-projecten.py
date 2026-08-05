@@ -18,66 +18,218 @@ from pathlib import Path
 WORTEL = Path(__file__).resolve().parent.parent
 FOTO_TYPES = {".jpg", ".jpeg", ".png", ".webp", ".avif"}
 
-# LET OP: plaats, jaartal, duur en omschrijvingen komen uit het oorspronkelijke
-# ontwerp en zijn nog niet door Gerard bevestigd. Controleer ze per project.
+# De foto's komen uit Gerards Drive-map "Lou fotomateriaal website"; per project
+# is dat zijn eigen "web"-selectie. Het jaartal komt uit de opnamedatum van de
+# foto's. "plaats" en "duur" zijn bewust leeg: die staan nergens vast. Vul ze
+# hier in zodra Gerard ze doorgeeft, dan verschijnen ze vanzelf op de site.
 PROJECTEN = [
     {
-        "slug": "badkamer-inloopdouche",
-        "titel": "Badkamer met inloopdouche",
-        "label": "Ruim en licht",
+        "slug": "musters",
+        "titel": "Badkamer met vrijstaand bad en natuurstenen waskommen",
+        "label": "Warm en natuurlijk",
         "soort": "Badkamer",
-        "plaats": "Roosendaal",
-        "jaar": "2026",
-        "duur": "3 weken",
-        "kenmerken": ["Inloopdouche", "Dubbele wastafel"],
+        "plaats": "",
+        "jaar": "2014",
+        "duur": "",
+        "kenmerken": ["Vrijstaand bad", "Natuurstenen waskommen", "Inloopdouche"],
         "omslag_positie": None,
-        "lead": "Een volledige badkamerrenovatie: alles eruit, opnieuw opgebouwd "
-                "rond een ruime inloopdouche met dubbele wastafel.",
+        "lead": "Een badkamer in warme tinten: betonlook tegels, een houten "
+                "wastafelblad met twee natuurstenen waskommen en een vrijstaand "
+                "bad tegen een accentwand.",
         "werk": [
             "Oude badkamer gesloopt en afgevoerd",
             "Leidingwerk en elektra vernieuwd",
             "Wanden en vloer betegeld",
-            "Inloopdouche, dubbele wastafel en meubel geplaatst",
+            "Inloopdouche met douchegoot aangelegd",
+            "Wastafelblad met waskommen en vrijstaand bad geplaatst",
             "Afgewerkt tot en met de laatste kitrand",
         ],
     },
     {
-        "slug": "toiletruimte-vernieuwd",
-        "titel": "Toiletruimte vernieuwd",
-        "label": "Compact en strak",
+        "slug": "delleman",
+        "titel": "Toiletruimte met mozaïekaccent",
+        "label": "Klein en verfijnd",
         "soort": "Toilet",
-        "plaats": "Oudenbosch",
-        "jaar": "2025",
-        "duur": "1 week",
-        "kenmerken": ["Nieuw leidingwerk", "Tegels tot plafond"],
-        "omslag_positie": "50% 82.7%",
-        "lead": "Het hele toilet opnieuw: nieuw leidingwerk, tegels tot in de "
-                "hoeken en een strakke afwerking.",
+        "plaats": "",
+        "jaar": "2014",
+        "duur": "",
+        "kenmerken": ["Zwevend toilet", "Mozaïekaccent", "Tegels tot plafond"],
+        "omslag_positie": None,
+        "lead": "Een compacte toiletruimte, van vloer tot plafond betegeld, met "
+                "een mozaïekstrook op de leidingkoker als accent.",
         "werk": [
             "Oude toiletruimte gestript",
-            "Nieuw leidingwerk aangelegd",
-            "Tegelwerk tot het plafond",
-            "Zwevend toilet en fonteinmeubel gemonteerd",
+            "Leidingwerk vernieuwd",
+            "Tegelwerk tot het plafond, met mozaïekstrook",
+            "Zwevend toilet en fonteintje gemonteerd",
             "Afgewerkt tot en met de laatste kitrand",
         ],
     },
     {
-        "slug": "badkamer-en-toilet",
-        "titel": "Badkamer en toilet in één traject",
-        "label": "Comfort en warmte",
+        "slug": "valkenburg",
+        "titel": "Badkamer en toilet met inloopdouche",
+        "label": "Licht en praktisch",
         "soort": "Badkamer en toilet",
-        "plaats": "Wouw",
-        "jaar": "2025",
-        "duur": "3,5 week",
-        "kenmerken": ["Bad en douche", "Vloerverwarming"],
+        "plaats": "",
+        "jaar": "2013",
+        "duur": "",
+        "kenmerken": ["Inloopdouche", "Douchegoot", "Nis in de wand"],
         "omslag_positie": None,
-        "lead": "Badkamer en toilet in één keer aangepakt, met bad, douche en "
-                "vloerverwarming.",
+        "lead": "Badkamer en toilet in één traject: een inloopdouche met "
+                "douchegoot, een nis in de wand en een wastafelmeubel met veel "
+                "bergruimte.",
         "werk": [
             "Badkamer en toilet gesloopt en afgevoerd",
-            "Leidingwerk, elektra en vloerverwarming aangelegd",
+            "Leidingwerk en elektra vernieuwd",
+            "Wanden en vloer betegeld, met nis in de wand",
+            "Inloopdouche met douchegoot aangelegd",
+            "Wastafelmeubel en zwevend toilet geplaatst",
+            "Afgewerkt tot en met de laatste kitrand",
+        ],
+    },
+    {
+        "slug": "badk1",
+        "titel": "Badkamer met inloopdouche, toilet en bidet",
+        "label": "Ruim en strak",
+        "soort": "Badkamer",
+        "plaats": "",
+        "jaar": "2013",
+        "duur": "",
+        "kenmerken": ["Inloopdouche", "Dubbele wastafel", "Toilet en bidet"],
+        "omslag_positie": None,
+        "lead": "Een ruime badkamer met een inloopdouche onder het schuine dak, "
+                "een lange dubbele wastafel en een eigen wand voor toilet en "
+                "bidet.",
+        "werk": [
+            "Oude badkamer gesloopt en afgevoerd",
+            "Leidingwerk en elektra vernieuwd",
             "Wanden en vloer betegeld",
-            "Bad, douche, wastafel en toilet geplaatst",
+            "Inloopdouche met douchegoot aangelegd",
+            "Dubbele wastafel, toilet en bidet geplaatst",
+            "Afgewerkt tot en met de laatste kitrand",
+        ],
+    },
+    {
+        "slug": "kessels",
+        "titel": "Badkamer met hoekbad en inloopdouche",
+        "label": "Donker en warm",
+        "soort": "Badkamer",
+        "plaats": "",
+        "jaar": "2012",
+        "duur": "",
+        "kenmerken": ["Hoekbad", "Inloopdouche", "Verlichte nissen"],
+        "omslag_positie": None,
+        "lead": "Antracietkleurige stroken tegels tegen wit, met een hoekbad, een "
+                "inloopdouche achter glas en verlichte nissen in de wand.",
+        "werk": [
+            "Oude badkamer gesloopt en afgevoerd",
+            "Leidingwerk en elektra vernieuwd",
+            "Wanden en vloer betegeld, met nissen in de wand",
+            "Inloopdouche en hoekbad geplaatst",
+            "Wastafelmeubel met dubbele wastafel gemonteerd",
+            "Afgewerkt tot en met de laatste kitrand",
+        ],
+    },
+    {
+        "slug": "quik",
+        "titel": "Toiletruimte met zwevend toilet",
+        "label": "Compact en strak",
+        "soort": "Toilet",
+        "plaats": "",
+        "jaar": "2012",
+        "duur": "",
+        "kenmerken": ["Zwevend toilet", "Fonteintje", "Accentwand"],
+        "omslag_positie": None,
+        "lead": "Een kleine toiletruimte, helemaal opnieuw opgebouwd: een donkere "
+                "accentwand achter het zwevende toilet en een strak fonteintje.",
+        "werk": [
+            "Oude toiletruimte gestript",
+            "Leidingwerk vernieuwd",
+            "Tegelwerk met donkere accentwand",
+            "Zwevend toilet en fonteintje gemonteerd",
+            "Afgewerkt tot en met de laatste kitrand",
+        ],
+    },
+    {
+        "slug": "agtmaal",
+        "titel": "Zolderbadkamer met hoekbad",
+        "label": "Onder het schuine dak",
+        "soort": "Badkamer",
+        "plaats": "",
+        "jaar": "2011",
+        "duur": "",
+        "kenmerken": ["Hoekbad", "Inloopdouche", "Verlichte spiegel"],
+        "omslag_positie": None,
+        "lead": "Een badkamer onder het schuine dak, met een hoekbad op een "
+                "verhoging, een houtlook vloer en een verlichte spiegel boven het "
+                "wastafelblad.",
+        "werk": [
+            "Oude zolderbadkamer gesloopt en afgevoerd",
+            "Leidingwerk en elektra vernieuwd",
+            "Wanden en vloer betegeld",
+            "Hoekbad op verhoging en inloopdouche geplaatst",
+            "Wastafelblad met verlichte spiegel gemonteerd",
+            "Afgewerkt tot en met de laatste kitrand",
+        ],
+    },
+    {
+        "slug": "babos",
+        "titel": "Badkamer met ligbad en twee zuilwastafels",
+        "label": "Wit en antraciet",
+        "soort": "Badkamer",
+        "plaats": "",
+        "jaar": "2011",
+        "duur": "",
+        "kenmerken": ["Ligbad", "Twee zuilwastafels", "Accentwand"],
+        "omslag_positie": None,
+        "lead": "Wit tegelwerk met een antracieten accentwand, een ligbad onder "
+                "het raam en twee vrijstaande zuilwastafels.",
+        "werk": [
+            "Oude badkamer gesloopt en afgevoerd",
+            "Leidingwerk en elektra vernieuwd",
+            "Wanden en vloer betegeld",
+            "Ligbad en twee zuilwastafels geplaatst",
+            "Afgewerkt tot en met de laatste kitrand",
+        ],
+    },
+    {
+        "slug": "rombouts",
+        "titel": "Badkamer met dubbele wastafel en mozaïekbanen",
+        "label": "Warm en klassiek",
+        "soort": "Badkamer en toilet",
+        "plaats": "",
+        "jaar": "2011",
+        "duur": "",
+        "kenmerken": ["Dubbele wastafel", "Mozaïekbanen", "Inloopdouche"],
+        "omslag_positie": None,
+        "lead": "Bruine tegels met mozaïekbanen als accent, een inloopdouche "
+                "achter glas en twee wastafels naast elkaar.",
+        "werk": [
+            "Badkamer en toilet gesloopt en afgevoerd",
+            "Leidingwerk en elektra vernieuwd",
+            "Wanden en vloer betegeld, met mozaïekbanen als accent",
+            "Inloopdouche, dubbele wastafel en zwevend toilet geplaatst",
+            "Afgewerkt tot en met de laatste kitrand",
+        ],
+    },
+    {
+        "slug": "laan",
+        "titel": "Badkamer met natuurstenen wastafelblad",
+        "label": "Strak en tijdloos",
+        "soort": "Badkamer en toilet",
+        "plaats": "",
+        "jaar": "2008",
+        "duur": "",
+        "kenmerken": ["Natuurstenen wastafelblad", "Inloopdouche", "Zwevend toilet"],
+        "omslag_positie": None,
+        "lead": "Strak wit tegelwerk met een donkere natuurstenen vloer en een op "
+                "maat gemaakt wastafelblad van natuursteen.",
+        "werk": [
+            "Badkamer en toilet gesloopt en afgevoerd",
+            "Leidingwerk en elektra vernieuwd",
+            "Wanden en vloer betegeld",
+            "Inloopdouche en zwevend toilet geplaatst",
+            "Natuurstenen wastafelblad op maat gemonteerd",
             "Afgewerkt tot en met de laatste kitrand",
         ],
     },
@@ -103,6 +255,22 @@ def e(tekst):
     return html.escape(str(tekst), quote=True)
 
 
+def waar(project):
+    """'Plaats · jaar', of alleen het jaar zolang de plaats nog niet bekend is."""
+    delen = [d for d in (project.get("plaats"), project.get("jaar")) if d]
+    return " · ".join(str(d) for d in delen)
+
+
+def in_plaats(project):
+    """' in Roosendaal' voor titels, of niets als de plaats onbekend is."""
+    return f' in {project["plaats"]}' if project.get("plaats") else ""
+
+
+def duurchip(project, inspring):
+    d = project.get("duur")
+    return f'\n{inspring}<span class="chip chip--accent">{e(d)}</span>' if d else ""
+
+
 def kaart(project, fotos):
     """De klikbare kaart in de carrousel op de homepage."""
     omslag = pad(fotos[0]) if fotos else ""
@@ -114,14 +282,13 @@ def kaart(project, fotos):
         f'\n            <span class="chip">{e(k)}</span>' for k in project["kenmerken"]
     )
     return f'''      <a class="project" href="projecten/{project["slug"]}.html" data-fu>
-        <img src="{omslag}" alt="{e(project["titel"])} in {e(project["plaats"])}, gerenoveerd door De Badgast" loading="lazy" decoding="async"{stijl}>
+        <img src="{omslag}" alt="{e(project["titel"])}{e(in_plaats(project))}, gerenoveerd door De Badgast" loading="lazy" decoding="async"{stijl}>
         <div class="project-shade"></div>
         <div class="project-caption">
           <div class="project-label">{e(project["label"])}</div>
           <h3>{e(project["titel"])}</h3>
-          <div class="project-chips">{kenmerken}
-            <span class="chip chip--accent">{e(project["duur"])}</span>
-            <span class="chip-meta">{e(project["plaats"])} · {e(project["jaar"])}</span>
+          <div class="project-chips">{kenmerken}{duurchip(project, " " * 12)}
+            <span class="chip-meta">{e(waar(project))}</span>
           </div>
           <div class="project-open">Bekijk dit project<svg class="ic" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg><span class="project-teller">{teller}</span></div>
         </div>
@@ -134,7 +301,7 @@ KOP = '''<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{titel} in {plaats} — De Badgast</title>
+  <title>{titel}{plaats} — De Badgast</title>
   <meta name="description" content="{lead}">
   <link rel="icon" href="../assets/embleem.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -218,7 +385,7 @@ def projectpagina(project, fotos, vorige, volgende):
     if fotos:
         items = "".join(
             f'''      <button type="button" class="galerij-item" data-foto="{i}" aria-label="Foto {i + 1} van {len(fotos)} vergroten">
-        <img src="../{pad(f)}" alt="{e(project["titel"])} in {e(project["plaats"])} — foto {i + 1}" loading="lazy" decoding="async">
+        <img src="../{pad(f)}" alt="{e(project["titel"])}{e(in_plaats(project))} — foto {i + 1}" loading="lazy" decoding="async">
       </button>
 '''
             for i, f in enumerate(fotos)
@@ -254,7 +421,7 @@ def projectpagina(project, fotos, vorige, volgende):
 '''
 
     return KOP.format(
-        titel=e(project["titel"]), plaats=e(project["plaats"]), lead=e(project["lead"])
+        titel=e(project["titel"]), plaats=e(in_plaats(project)), lead=e(project["lead"])
     ) + f'''
 <section class="proj-intro">
   <div class="proj-intro-deco" aria-hidden="true"></div>
@@ -262,9 +429,8 @@ def projectpagina(project, fotos, vorige, volgende):
   <div class="proj-soort" data-fu>{e(project["soort"])}</div>
   <h1 data-fu>{e(project["titel"])}</h1>
   <p class="proj-lead" data-fu>{e(project["lead"])}</p>
-  <div class="proj-chips" data-fu>{kenmerken}
-      <span class="chip chip--accent">{e(project["duur"])}</span>
-      <span class="chip-meta">{e(project["plaats"])} · {e(project["jaar"])}</span>
+  <div class="proj-chips" data-fu>{kenmerken}{duurchip(project, " " * 6)}
+      <span class="chip-meta">{e(waar(project))}</span>
   </div>
 </section>
 

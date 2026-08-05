@@ -37,6 +37,10 @@ Het formulier verstuurt via [FormSubmit](https://formsubmit.co) naar `info@debad
 
 Elk project heeft een eigen pagina met een fotogalerij; vanaf de homepage klik je erop door.
 
+De tien projecten komen uit Gerards Drive-map *Lou fotomateriaal website*, en wel uit zijn eigen "web"-selectie per klantmap. De mappen heten op de site bewust niet naar de klant; projecten hebben een beschrijvende titel. Het jaartal komt uit de opnamedatum van de foto's. **Plaats en doorlooptijd staan nog leeg** — die zijn nergens vastgelegd; vul ze in `tools/genereer-projecten.py` in zodra Gerard ze doorgeeft, dan verschijnen ze vanzelf.
+
+Nog niet verwerkt zijn de vier grote fotodumps in de Drive-map (*Becker*, *JPEG*, *de kreij badk jpg*, *de kreij toilet1 jpg*, samen ~185 foto's) en de RAW-bestanden (`.ARW`), waar een browser niets mee kan.
+
 Foto's toevoegen aan een bestaand project:
 
 1. Zet de foto's in `assets/projecten/<slug>/`. Ze verschijnen op alfabetische volgorde, dus nummer ze (`01-…`, `02-…`); de eerste foto wordt de omslagfoto op de homepage.
@@ -47,5 +51,6 @@ Een nieuw project toevoegen: maak de map `assets/projecten/<nieuwe-slug>/` met d
 ## Nog regelen
 
 - [ ] **FormSubmit activeren.** Doe één testinzending op de live site en klik op de link in de activatiemail aan info@debadgast.nl.
-- [ ] **Echte projectfoto's toevoegen.** Elk project heeft nu één gecomprimeerde foto uit de design-tool. Zie *Projecten en foto's* hierboven.
-- [ ] **Projectgegevens controleren.** Plaats, jaartal, duur en omschrijvingen in `tools/genereer-projecten.py` komen uit het oorspronkelijke ontwerp en zijn nog niet door Gerard bevestigd.
+- [ ] **Plaats en doorlooptijd per project invullen** in `tools/genereer-projecten.py`.
+- [ ] **Projecttitels en -omschrijvingen laten nakijken door Gerard.** Ze zijn geschreven op wat op de foto's te zien is, niet op zijn eigen aantekeningen.
+- [ ] **De vier grote fotodumps verwerken** (Becker, JPEG, de Kreij ×2) — daaruit moet nog een selectie gemaakt worden.
