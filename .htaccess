@@ -13,7 +13,7 @@ Redirect 301 /werkwijze          /#werkwijze
 Redirect 301 /praktijk           /#diensten
 Redirect 301 /contact            /#offerte
 Redirect 301 /recensies          /recensies.html
-Redirect 301 /algemenevoorwaarden /
+Redirect 301 /algemenevoorwaarden /voorwaarden.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On

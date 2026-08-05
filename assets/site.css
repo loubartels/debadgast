@@ -1386,6 +1386,60 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
 }
 .proj-nav-titel { display: block; margin-top: 5px; font: 800 16px Manrope, sans-serif; }
 
+/* ---------- Algemene voorwaarden ---------- */
+
+.vw-lijst {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: clamp(32px, 5vw, 72px);
+  padding: clamp(44px, 6vw, 80px) var(--pad-x) clamp(48px, 6vw, 88px);
+}
+.vw-inhoud {
+  flex: 0 1 280px;
+  position: sticky;
+  top: 100px;
+  padding: 26px 24px;
+  background: #F7F7F7;
+  border-radius: 6px;
+}
+.vw-inhoud ol {
+  /* De nummers staan al in de tekst en volgen de artikelnummers, dus geen
+     automatische nummering erbij. */
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.vw-inhoud li { font: 500 14px/1.4 Manrope, sans-serif; color: rgba(10,10,10,.6); }
+.vw-inhoud a { color: rgba(10,10,10,.72); text-decoration: none; }
+.vw-inhoud a:hover { color: var(--teal); }
+.vw-tekst { flex: 1 1 460px; min-width: 0; max-width: 780px; }
+.vw-artikel { scroll-margin-top: 100px; }
+.vw-artikel + .vw-artikel {
+  margin-top: 40px;
+  padding-top: 36px;
+  border-top: 1px solid rgba(10,10,10,.09);
+}
+.vw-artikel h2 {
+  margin: 0 0 16px;
+  font: 800 clamp(19px, 1.9vw, 23px)/1.25 Manrope, sans-serif;
+  letter-spacing: -.02em;
+  text-wrap: pretty;
+}
+.vw-artikel p {
+  margin: 0 0 12px;
+  font: 400 15.5px/1.7 Manrope, sans-serif;
+  color: rgba(10,10,10,.7);
+  text-wrap: pretty;
+}
+.vw-artikel p:last-child { margin-bottom: 0; }
+@media (max-width: 859px) {
+  .vw-inhoud { position: static; flex-basis: 100%; }
+}
+
 /* ---------- CTA-blok op de subpagina's ---------- */
 
 .cta-blok { padding: 0 var(--pad-x) clamp(56px, 7vw, 96px); }

@@ -6,13 +6,14 @@ One-pager voor **De Badgast**, het badkamerrenovatiebedrijf van Gerard Bartels i
 
 | Bestand | Wat |
 |---------|-----|
-| `index.html`, `recensies.html`, `projecten/*.html` | **Gegenereerd** — niet met de hand aanpassen, wijzigingen worden overschreven. |
+| `index.html`, `recensies.html`, `voorwaarden.html`, `projecten/*.html` | **Gegenereerd** — niet met de hand aanpassen, wijzigingen worden overschreven. |
 | `assets/site.css` | Gedeelde stylesheet voor beide pagina's. |
 | `assets/site.js` | Gedeeld gedrag: sticky header met glas-effect, fade-in bij scrollen, projectencarrousel, offerteformulier. |
-| `content/*.json` | **De inhoud**: teksten, projecten, recensies en contactgegevens. Dit is wat de bewerkomgeving aanpast. |
+| `content/*.json` | **De inhoud**: teksten, projecten, recensies, algemene voorwaarden en contactgegevens. Dit is wat de bewerkomgeving aanpast. |
 | `tools/bouw.py` | Bouwt uit `content/` de complete site. |
 | `.pages.yml` | Instellingen van de bewerkomgeving (Pages CMS). |
 | `vercel.json` | Doorverwijzingen van oude adressen en de bouwopdracht voor Vercel. |
+| `DNS.md` | De DNS-records zoals ze vóór de verhuizing stonden, met per record wat ermee moet. |
 | `assets/` | Logo, embleem en foto's. Projectfoto's staan per project in `assets/projecten/<slug>/`. |
 | `design.md` | Ouder merk-fundament uit de eerste (strandpaviljoen-)versie van dit project; niet meer leidend voor het huidige ontwerp. |
 

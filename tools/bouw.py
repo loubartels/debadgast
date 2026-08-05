@@ -178,7 +178,7 @@ def voet(s, p="", lightbox=False, strak=True):
     </div>
     <div class="footer-col-gegevens">
       <div class="footer-kicker">Gegevens</div>
-      <p>{s["kvk"]}</p>
+      <p>{s["kvk"]}<br><a href="{p}voorwaarden.html">Algemene voorwaarden</a></p>
     </div>
   </div>
   <div class="footer-bottom">{e(s["copyright"])}</div>
@@ -585,6 +585,42 @@ def bouw_recensies(s, recensies):
     )
 
 
+def bouw_voorwaarden(s, v):
+    inhoud = "".join(
+        f'      <li><a href="#artikel-{a["nummer"]}">{a["nummer"]}. {e(a["titel"])}</a></li>\n'
+        for a in v["artikelen"])
+    artikelen = "".join(
+        f'''    <article class="vw-artikel" id="artikel-{a["nummer"]}" data-fu>
+      <h2>Artikel {a["nummer"]} — {e(a["titel"])}</h2>
+{"".join(f'      <p>{e(t)}</p>{chr(10)}' for t in a["alineas"])}    </article>
+''' for a in v["artikelen"])
+
+    return (
+        kop(f'{v["titel"]} — De Badgast', v["omschrijving"])
+        + header(s)
+        + f'''
+<section class="rec-intro">
+  <div class="rec-intro-deco" aria-hidden="true"></div>
+  <a class="rec-terug" href="index.html" data-fu>{svg("pijl-links", 16)}Terug naar de homepage</a>
+  <h1 data-fu>{e(v["titel"])}</h1>
+  <p data-fu>{e(v["intro"])}</p>
+</section>
+
+<section class="vw-lijst">
+  <nav class="vw-inhoud" data-fu aria-label="Inhoudsopgave">
+    <div class="kicker kicker--muted">Inhoud</div>
+    <ol>
+{inhoud}    </ol>
+  </nav>
+  <div class="vw-tekst">
+{artikelen}  </div>
+</section>
+'''
+        + cta_blok(s, "Geïnteresseerd geraakt?")
+        + voet(s)
+    )
+
+
 def main():
     s = laad("site.json")
     h = laad("home.json")
@@ -597,6 +633,10 @@ def main():
 
     (WORTEL / "recensies.html").write_text(bouw_recensies(s, recensies), encoding="utf-8")
     print(f"  recensies.html — {len(recensies)} recensies")
+
+    v = laad("voorwaarden.json")
+    (WORTEL / "voorwaarden.html").write_text(bouw_voorwaarden(s, v), encoding="utf-8")
+    print(f"  voorwaarden.html — {len(v['artikelen'])} artikelen")
 
     uit = WORTEL / "projecten"
     if uit.exists():
