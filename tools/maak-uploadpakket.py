@@ -24,7 +24,7 @@ MEE_MAPPEN = ["assets", "projecten"]
 def main():
     # Eerst de projectpagina's bijwerken, zodat de zip nooit achterloopt.
     subprocess.run(
-        [sys.executable, str(WORTEL / "tools" / "genereer-projecten.py")],
+        [sys.executable, str(WORTEL / "tools" / "bouw.py")],
         check=True,
         stdout=subprocess.DEVNULL,
     )

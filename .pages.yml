@@ -1,0 +1,221 @@
+# Instellingen voor de bewerkomgeving (Pages CMS — pagescms.org).
+# Bepaalt welke velden Gerard te zien krijgt en waar ze worden opgeslagen.
+# Na elke wijziging bouwt Vercel de site opnieuw op.
+
+media:
+  - name: projectfotos
+    label: Projectfoto's
+    input: assets/projecten
+    output: assets/projecten
+    extensions: [jpg, jpeg, png, webp]
+  - name: algemeen
+    label: Overige afbeeldingen
+    input: assets
+    output: assets
+    extensions: [jpg, jpeg, png, webp, svg]
+
+content:
+  - name: projecten
+    label: Projecten
+    path: content/projecten.json
+    type: file
+    list: true
+    icon: image
+    fields:
+      - { name: titel, label: Titel, type: string, required: true }
+      - { name: slug, label: Mapnaam van de foto's, type: string, required: true,
+          description: "Moet exact gelijk zijn aan de map onder assets/projecten/ — bijvoorbeeld musters" }
+      - { name: soort, label: Soort, type: select, options: { values: [Badkamer, Toilet, "Badkamer en toilet"] } }
+      - { name: label, label: Korte typering, type: string,
+          description: "Klein regeltje boven de titel, bijvoorbeeld 'Warm en natuurlijk'" }
+      - { name: lead, label: Omschrijving, type: text, required: true }
+      - { name: kenmerken, label: Kenmerken, type: string, list: true,
+          description: "Losse woorden die als labeltjes verschijnen" }
+      - { name: werk, label: Wat ik heb gedaan, type: string, list: true }
+      - { name: plaats, label: Plaats, type: string, description: "Mag leeg blijven" }
+      - { name: jaar, label: Jaar, type: string }
+      - { name: duur, label: Doorlooptijd, type: string,
+          description: "Bijvoorbeeld '3 weken'. Mag leeg blijven." }
+      - { name: omslag_positie, label: Uitsnede omslagfoto, type: string,
+          description: "Alleen invullen als de omslagfoto verkeerd is uitgesneden, bijvoorbeeld '50% 80%'" }
+
+  - name: recensies
+    label: Recensies
+    path: content/recensies.json
+    type: file
+    list: true
+    icon: star
+    fields:
+      - { name: naam, label: Naam, type: string, required: true }
+      - { name: plaats, label: Plaats, type: string, required: true }
+      - { name: datum, label: Datum, type: string, required: true,
+          description: "Zoals '18 juli 2026'" }
+      - { name: tekst, label: Recensie, type: text, required: true }
+      - { name: uitgelicht, label: Op de homepage tonen, type: boolean, default: false }
+      - { name: kort, label: Ingekorte versie voor de homepage, type: text,
+          description: "Alleen nodig als de recensie hierboven is aangevinkt en te lang is" }
+
+  - name: home
+    label: Homepage
+    path: content/home.json
+    type: file
+    icon: home
+    fields:
+      - { name: titel, label: Paginatitel (browsertab en Google), type: string }
+      - { name: omschrijving, label: Omschrijving voor Google, type: text }
+      - name: hero
+        label: Bovenaan de pagina
+        type: object
+        fields:
+          - { name: bovenkop, label: Regeltje bovenaan, type: string }
+          - { name: titel, label: Titel, type: string }
+          - { name: titel_accent, label: Titel, tweede regel (gekleurd), type: string }
+          - { name: tekst, label: Introtekst, type: text }
+          - { name: knop_offerte, label: Tekst offerteknop, type: string }
+          - { name: knop_bellen, label: Tekst belknop, type: string }
+          - { name: punten, label: Opsomming, type: string, list: true }
+          - { name: kaart_label, label: Kopje boven het citaat, type: string }
+          - { name: kaart_citaat, label: Citaat, type: text }
+          - { name: kaart_naam, label: Naam bij het citaat, type: string }
+          - name: cijfers
+            label: De drie cijfers
+            type: object
+            list: true
+            fields:
+              - { name: getal, label: Getal, type: string }
+              - { name: label, label: Bijschrift, type: string }
+      - name: over
+        label: Over Gerard
+        type: object
+        fields:
+          - { name: kicker, label: Kopje, type: string }
+          - { name: titel, label: Titel, type: string }
+          - { name: tekst, label: Tekst, type: text }
+          - { name: badge, label: Tekst op het label bij de foto, type: string }
+          - { name: foto_groot, label: Grote foto, type: image }
+          - { name: foto_groot_alt, label: Omschrijving grote foto, type: string }
+          - { name: foto_klein, label: Kleine foto, type: image }
+          - { name: foto_klein_alt, label: Omschrijving kleine foto, type: string }
+      - name: formule
+        label: De formule
+        type: object
+        fields:
+          - { name: kicker, label: Kopje, type: string }
+          - { name: titel, label: Titel, type: string }
+          - { name: tekst, label: Tekst, type: text }
+          - { name: naschrift, label: Naschrift, type: text }
+          - { name: lijst_kicker, label: Kopje boven de lijst, type: string }
+          - name: lijst
+            label: Dit kun je zelf doen
+            type: object
+            list: true
+            fields:
+              - { name: icoon, label: Icoon, type: select,
+                  options: { values: [hamer, vrachtwagen, doos, verfroller, glans] } }
+              - { name: titel, label: Titel, type: string }
+              - { name: tekst, label: Tekst, type: text }
+      - name: diensten
+        label: Diensten
+        type: object
+        fields:
+          - { name: kicker, label: Kopje, type: string }
+          - { name: titel, label: Titel, type: string }
+          - name: items
+            label: Diensten
+            type: object
+            list: true
+            fields:
+              - { name: icoon, label: Icoon, type: select, options: { values: [bad, deur, handen] } }
+              - { name: titel, label: Titel, type: string }
+              - { name: tekst, label: Tekst, type: text }
+      - name: werkwijze
+        label: Werkwijze
+        type: object
+        fields:
+          - { name: kicker, label: Kopje, type: string }
+          - { name: titel, label: Titel, type: string }
+          - { name: tekst, label: Tekst, type: text }
+          - { name: knop, label: Tekst op de knop, type: string }
+          - name: stappen
+            label: De stappen
+            type: object
+            list: true
+            fields:
+              - { name: titel, label: Titel, type: string }
+              - { name: tekst, label: Tekst, type: text }
+              - { name: tag, label: Bijschrift, type: string }
+          - name: meta
+            label: Regels onder de stappen
+            type: object
+            list: true
+            fields:
+              - { name: icoon, label: Icoon, type: select, options: { values: [agenda, bon] } }
+              - { name: tekst, label: Tekst, type: string }
+      - name: projecten
+        label: Kop boven de projecten
+        type: object
+        fields:
+          - { name: kicker, label: Kopje, type: string }
+          - { name: titel, label: Titel, type: string }
+          - { name: titel_grijs, label: Titel, grijze deel, type: string }
+          - { name: tekst, label: Tekst, type: text }
+          - { name: voetregel, label: Regel onder de projecten, type: string }
+      - name: recensies
+        label: Kop boven de recensies
+        type: object
+        fields:
+          - { name: kicker, label: Kopje, type: string }
+          - { name: titel, label: Titel, type: string }
+          - { name: tekst, label: Tekst, type: text }
+          - { name: knop, label: Tekst op de knop, type: string }
+      - name: offerte
+        label: Offerteformulier
+        type: object
+        fields:
+          - { name: titel, label: Titel, type: string }
+          - { name: tekst, label: Tekst, type: text }
+          - { name: notitie, label: Notitie over de planning, type: text }
+          - { name: bel_label, label: Kopje boven het telefoonnummer, type: string }
+          - { name: mail_label, label: Tekst voor het e-mailadres, type: string }
+          - { name: veld_naam, label: "Veld: naam", type: string }
+          - { name: veld_naam_hint, label: "Veld: naam, voorbeeldtekst", type: string }
+          - { name: veld_telefoon, label: "Veld: telefoon", type: string }
+          - { name: veld_telefoon_hint, label: "Veld: telefoon, voorbeeldtekst", type: string }
+          - { name: veld_email, label: "Veld: e-mail", type: string }
+          - { name: veld_email_hint, label: "Veld: e-mail, voorbeeldtekst", type: string }
+          - { name: veld_omschrijving, label: "Veld: omschrijving", type: string }
+          - { name: veld_omschrijving_hint, label: "Veld: omschrijving, voorbeeldtekst", type: text }
+          - { name: knop, label: Tekst op de verstuurknop, type: string }
+          - { name: privacy, label: Regeltje over privacy, type: string }
+          - { name: fout, label: Foutmelding, type: string }
+          - { name: succes_titel, label: "Na versturen: titel", type: string }
+          - { name: succes_tekst, label: "Na versturen: tekst", type: text }
+          - { name: succes_knop, label: "Na versturen: knop", type: string }
+      - name: mobiele_balk
+        label: Balk onderaan op mobiel
+        type: object
+        fields:
+          - { name: offerte, label: Tekst offerteknop, type: string }
+          - { name: bellen, label: Tekst belknop, type: string }
+
+  - name: site
+    label: Contactgegevens
+    path: content/site.json
+    type: file
+    icon: settings
+    fields:
+      - { name: bedrijfsnaam, label: Bedrijfsnaam, type: string }
+      - { name: eigenaar, label: Naam eigenaar, type: string }
+      - { name: telefoon_weergave, label: Telefoonnummer zoals het getoond wordt, type: string }
+      - { name: telefoon_kort, label: Telefoonnummer kort, type: string }
+      - { name: telefoon_link, label: Telefoonnummer om te bellen, type: string,
+          description: "Zonder spaties, met landcode: +31615956178" }
+      - { name: email, label: E-mailadres, type: string }
+      - { name: website, label: Webadres, type: string }
+      - { name: plaats, label: Plaats, type: string }
+      - { name: werkgebied_kort, label: Werkgebied kort (footer), type: string }
+      - { name: werkgebied, label: Werkgebied, type: string }
+      - { name: kvk, label: KvK en voorwaarden, type: string }
+      - { name: footer_omschrijving, label: Zin onder het logo in de footer, type: string }
+      - { name: copyright, label: Copyrightregel, type: string }
+      - { name: planning_notitie, label: Notitie over de planning, type: string }

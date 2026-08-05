@@ -25,8 +25,8 @@ jobs:
       # Zo hoeft wie foto's toevoegt geen script te draaien: het uploaden van
       # een foto naar assets/projecten/<project>/ is genoeg, de projectpagina's
       # worden hier automatisch opnieuw opgebouwd.
-      - name: Projectpagina's bijwerken
-        run: python3 tools/genereer-projecten.py
+      - name: Site opbouwen uit content/
+        run: python3 tools/bouw.py
       - uses: actions/configure-pages@v5
         with:
           enablement: true
