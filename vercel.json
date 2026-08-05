@@ -1,0 +1,25 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "python3 tools/bouw.py",
+  "outputDirectory": ".",
+  "framework": null,
+  "redirects": [
+    { "source": "/startpagina", "destination": "/", "permanent": true },
+    { "source": "/wiebenik", "destination": "/#over", "permanent": true },
+    { "source": "/werkwijze", "destination": "/#werkwijze", "permanent": true },
+    { "source": "/praktijk", "destination": "/#diensten", "permanent": true },
+    { "source": "/contact", "destination": "/#offerte", "permanent": true },
+    { "source": "/algemenevoorwaarden", "destination": "/", "permanent": true },
+    { "source": "/recensies", "destination": "/recensies.html", "permanent": true },
+    { "source": "/fotos", "destination": "/#projecten", "permanent": true },
+    { "source": "/fotos/:pad*", "destination": "/#projecten", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ]
+}

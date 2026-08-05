@@ -6,16 +6,23 @@ One-pager voor **De Badgast**, het badkamerrenovatiebedrijf van Gerard Bartels i
 
 | Bestand | Wat |
 |---------|-----|
-| `index.html` | De one-pager: hero, over Gerard, de formule, diensten, werkwijze, projecten, recensies, offerteformulier. |
-| `recensies.html` | Losse pagina met alle recensies (gelinkt vanaf de one-pager). |
+| `index.html`, `recensies.html`, `projecten/*.html` | **Gegenereerd** — niet met de hand aanpassen, wijzigingen worden overschreven. |
 | `assets/site.css` | Gedeelde stylesheet voor beide pagina's. |
 | `assets/site.js` | Gedeeld gedrag: sticky header met glas-effect, fade-in bij scrollen, projectencarrousel, offerteformulier. |
-| `projecten/*.html` | Eén pagina per project, met alle foto's van dat project. Gegenereerd — niet met de hand aanpassen. |
-| `tools/genereer-projecten.py` | Genereert de projectkaarten op de homepage en de projectpagina's. |
+| `content/*.json` | **De inhoud**: teksten, projecten, recensies en contactgegevens. Dit is wat de bewerkomgeving aanpast. |
+| `tools/bouw.py` | Bouwt uit `content/` de complete site. |
+| `.pages.yml` | Instellingen van de bewerkomgeving (Pages CMS). |
+| `vercel.json` | Doorverwijzingen van oude adressen en de bouwopdracht voor Vercel. |
 | `assets/` | Logo, embleem en foto's. Projectfoto's staan per project in `assets/projecten/<slug>/`. |
 | `design.md` | Ouder merk-fundament uit de eerste (strandpaviljoen-)versie van dit project; niet meer leidend voor het huidige ontwerp. |
 
-Geen build-stap nodig: het is een statische site (HTML + CSS + JS), met alleen Google Fonts (Manrope) als externe afhankelijkheid. Iconen (Lucide) zijn als SVG in de pagina's opgenomen.
+De inhoud staat in `content/` en wordt door `tools/bouw.py` omgezet naar HTML. Het resultaat is een statische site zonder afhankelijkheden, op Google Fonts (Manrope) na; iconen zitten als SVG in de pagina's.
+
+```bash
+python3 tools/bouw.py    # bouwt index.html, recensies.html en projecten/*.html
+```
+
+**Pas de HTML-bestanden niet met de hand aan** — wijzig `content/` en bouw opnieuw.
 
 ## Lokaal bekijken
 
@@ -27,29 +34,30 @@ Open daarna `http://localhost:8000`.
 
 ## Live zetten
 
-De site staat nu op **GitHub Pages**: elke push naar de standaardbranch publiceert automatisch (workflow: `.github/workflows/pages.yml`). Testadres: `https://loubartels.github.io/debadgast/`.
+De site draait op **Vercel**. Elke wijziging in de repository start automatisch een nieuwe publicatie: Vercel draait `python3 tools/bouw.py` en zet het resultaat online. De doorverwijzingen van de oude adressen staan in `vercel.json`.
 
-Voor `debadgast.nl` zijn er twee routes. Het domein staat bij Antagonist; de e-mail blijft daar in beide gevallen ongemoeid, zolang de MX-records niet worden aangeraakt.
+### Eenmalig instellen
 
-### Route A — domein naar GitHub Pages (aanbevolen)
+1. Maak een account op vercel.com en koppel de GitHub-repository (**Add New… → Project**).
+2. Vercel leest `vercel.json`; de bouwinstellingen hoeven niet handmatig ingevuld te worden.
+3. **Settings → Domains** → `debadgast.nl` toevoegen. Vercel toont welke DNS-records nodig zijn.
+4. Die records zetten in het DNS-beheer van Antagonist: een A-record voor `debadgast.nl` en een CNAME voor `www`. **De MX-records ongemoeid laten** — daar loopt de e-mail over.
+5. Wachten tot Vercel het domein als geldig markeert; het certificaat wordt automatisch aangevraagd.
 
-Publiceren blijft automatisch: wijziging op GitHub → binnen een minuut live. Geen FTP, geen handmatige uploads.
+### Bewerkomgeving
 
-1. GitHub → Settings → Pages → **Custom domain**: `debadgast.nl` → Save. Er wordt dan een bestand `CNAME` aangemaakt in de repository.
-2. In het Antagonist DNS-beheer: de A-records van `debadgast.nl` vervangen door de vier adressen van GitHub Pages (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`), en `www` als CNAME naar `loubartels.github.io`.
-3. Wacht tot GitHub bij Pages "DNS check successful" meldt en vink **Enforce HTTPS** aan.
+De inhoud wordt beheerd via [Pages CMS](https://pagescms.org): inloggen met GitHub op app.pagescms.org, en de velden komen uit `.pages.yml`. Een wijziging daar is een commit in de repository, wat weer een publicatie op Vercel start. Zie `OVERDRACHT.md`.
 
-Nadeel: de `.htaccess` met de doorstuurregels werkt hier niet — GitHub Pages leest die niet. Oude adressen komen dan op de 404-pagina uit in plaats van op de juiste sectie.
+### Alternatief: uploaden naar een gewone webserver
 
-### Route B — uploaden naar Antagonist
+Blijft de site bij Antagonist of een andere Apache-host, dan werkt dat ook — inclusief de doorverwijzingen, want die staan óók in `.htaccess`:
 
-Alles blijft bij Antagonist, inclusief de doorstuurregels in `.htaccess`. Nadeel: elke wijziging moet handmatig geüpload worden.
+1. `python3 tools/maak-uploadpakket.py`
+2. `debadgast-site.zip` uitpakken en de inhoud in de webmap zetten (meestal `httpdocs` of `public_html`).
 
-1. Bouw het uploadpakket: `python3 tools/maak-uploadpakket.py`
-2. Pak `debadgast-site.zip` uit en zet de inhoud via FTP of de bestandsbeheerder van Antagonist in de webmap (meestal `httpdocs` of `public_html`).
-3. Zet de oude bestanden eerst apart, zodat je terug kunt.
+Nadeel: elke wijziging moet dan handmatig geüpload worden, en de bewerkomgeving heeft daar geen zin meer.
 
-**Let op bij beide routes:** de oude site heeft losse pagina's (`/wiebenik`, `/werkwijze`, `/fotos`, `/contact`, `/recensies`). Die zijn nu secties op de homepage. `.htaccess` stuurt ze door naar de juiste plek; bij route A vervalt dat.
+**Let op bij verhuizen:** de oude site heeft losse pagina's (`/wiebenik`, `/werkwijze`, `/fotos`, `/contact`, `/recensies`) die nu secties op de homepage zijn. Zowel `vercel.json` als `.htaccess` stuurt die door, zodat bestaande links uit Google blijven werken.
 
 ## Offerteformulier
 
@@ -59,20 +67,17 @@ Het formulier verstuurt via [FormSubmit](https://formsubmit.co) naar `info@debad
 
 Elk project heeft een eigen pagina met een fotogalerij; vanaf de homepage klik je erop door.
 
-De tien projecten komen uit Gerards Drive-map *Lou fotomateriaal website*, en wel uit zijn eigen "web"-selectie per klantmap. De mappen heten op de site bewust niet naar de klant; projecten hebben een beschrijvende titel. Het jaartal komt uit de opnamedatum van de foto's. **Plaats en doorlooptijd staan nog leeg** — die zijn nergens vastgelegd; vul ze in `tools/genereer-projecten.py` in zodra Gerard ze doorgeeft, dan verschijnen ze vanzelf.
+De tien projecten komen uit Gerards Drive-map *Lou fotomateriaal website*, en wel uit zijn eigen "web"-selectie per klantmap. De mappen heten op de site bewust niet naar de klant; projecten hebben een beschrijvende titel. Het jaartal komt uit de opnamedatum van de foto's. **Plaats en doorlooptijd staan nog leeg** — die zijn nergens vastgelegd; vul ze in de bewerkomgeving in zodra Gerard ze doorgeeft, dan verschijnen ze vanzelf.
 
 Nog niet verwerkt zijn de vier grote fotodumps in de Drive-map (*Becker*, *JPEG*, *de kreij badk jpg*, *de kreij toilet1 jpg*, samen ~185 foto's) en de RAW-bestanden (`.ARW`), waar een browser niets mee kan.
 
-Foto's toevoegen aan een bestaand project:
+Foto's toevoegen: zet ze in `assets/projecten/<slug>/`, genummerd (`01.jpg`, `02.jpg`) — de eerste is de omslagfoto. Een nieuw project voeg je toe aan `content/projecten.json`, waarbij `slug` gelijk moet zijn aan de mapnaam.
 
-1. Zet de foto's in `assets/projecten/<slug>/`. Ze verschijnen op alfabetische volgorde, dus nummer ze (`01-…`, `02-…`); de eerste foto wordt de omslagfoto op de homepage.
-2. Draai `python3 tools/genereer-projecten.py`.
-
-Een nieuw project toevoegen: maak de map `assets/projecten/<nieuwe-slug>/` met de foto's, voeg het project toe aan de lijst `PROJECTEN` bovenin `tools/genereer-projecten.py` en draai het script. De gegenereerde HTML wordt gecommit, dus de site zelf blijft zonder build-stap werken.
+Voor het dagelijks beheer is dat allemaal niet nodig: zie `OVERDRACHT.md` voor de bewerkomgeving.
 
 ## Nog regelen
 
 - [ ] **FormSubmit activeren.** Doe één testinzending op de live site en klik op de link in de activatiemail aan info@debadgast.nl.
-- [ ] **Plaats en doorlooptijd per project invullen** in `tools/genereer-projecten.py`.
+- [ ] **Plaats en doorlooptijd per project invullen** via de bewerkomgeving.
 - [ ] **Projecttitels en -omschrijvingen laten nakijken door Gerard.** Ze zijn geschreven op wat op de foto's te zien is, niet op zijn eigen aantekeningen.
 - [ ] **De vier grote fotodumps verwerken** (Becker, JPEG, de Kreij ×2) — daaruit moet nog een selectie gemaakt worden.
