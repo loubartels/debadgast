@@ -19,6 +19,7 @@ Je ziet dan vier onderdelen in het menu:
 | **Recensies** | Alle recensies van klanten |
 | **Homepage** | Alle teksten op de voorpagina |
 | **Contactgegevens** | Telefoonnummer, e-mail, werkgebied, KvK |
+| **Algemene voorwaarden** | De voorwaarden, per artikel |
 
 Na elke wijziging klik je op **Save**. Een paar minuten later staat het live. Verversen van de site kan nodig zijn (Ctrl+F5 of Cmd+Shift+R).
 
