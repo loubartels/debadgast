@@ -25,7 +25,7 @@ from pathlib import Path
 WORTEL = Path(__file__).resolve().parent.parent
 CONTENT = WORTEL / "content"
 FOTO_TYPES = {".jpg", ".jpeg", ".png", ".webp", ".avif"}
-ASSETVERSIE = "6"
+ASSETVERSIE = "7"
 
 # ---------------------------------------------------------------- iconen ----
 # Lijntekeningen uit de Lucide-set, als SVG in de pagina opgenomen zodat er
@@ -205,8 +205,10 @@ def fotopad(bestand):
     return f"assets/projecten/{bestand.parent.name}/{bestand.name}"
 
 
-def waar(pr):
-    return " · ".join(str(d) for d in (pr.get("plaats"), pr.get("jaar")) if d)
+def waar(pr, inspring):
+    """De plaats, als losse regel tussen de kenmerken. Leeg als hij niet bekend is."""
+    p = pr.get("plaats")
+    return f'\n{inspring}<span class="chip-meta">{e(p)}</span>' if p else ""
 
 
 def in_plaats(pr):
@@ -231,8 +233,7 @@ def projectkaart(pr, fs):
         <div class="project-caption">
           <div class="project-label">{e(pr["label"])}</div>
           <h3>{e(pr["titel"])}</h3>
-          <div class="project-chips">{kenmerken}{duurchip(pr, " " * 12)}
-            <span class="chip-meta">{e(waar(pr))}</span>
+          <div class="project-chips">{kenmerken}{duurchip(pr, " " * 12)}{waar(pr, " " * 12)}
           </div>
           <div class="project-open">Bekijk dit project{svg("pijl-rechts", 16)}<span class="project-teller">{teller}</span></div>
         </div>
@@ -283,8 +284,7 @@ def projectpagina(s, pr, fs, vorige, volgende):
   <div class="proj-soort" data-fu>{e(pr["soort"])}</div>
   <h1 data-fu>{e(pr["titel"])}</h1>
   <p class="proj-lead" data-fu>{e(pr["lead"])}</p>
-  <div class="proj-chips" data-fu>{kenmerken}{duurchip(pr, " " * 6)}
-      <span class="chip-meta">{e(waar(pr))}</span>
+  <div class="proj-chips" data-fu>{kenmerken}{duurchip(pr, " " * 6)}{waar(pr, " " * 6)}
   </div>
 </section>
 
