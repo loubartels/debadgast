@@ -36,6 +36,7 @@ ICONEN = {
     "doos": '<path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7"/><path d="m7.5 4.27 9 5.15"/>',
     "verfroller": '<rect width="16" height="6" x="2" y="2" rx="2"/><path d="M10 16v-2a2 2 0 0 1 2-2h8a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect width="4" height="6" x="8" y="16" rx="1"/>',
     "glans": '<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/>',
+    "stapel": '<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
     "bad": '<path d="M10 4 8 6"/><path d="M17 19v2"/><path d="M2 12h20"/><path d="M7 19v2"/><path d="M9 5 7.621 3.621A2.121 2.121 0 0 0 4 5v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/>',
     "deur": '<path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/><path d="M14 12v.01"/>',
     "handen": '<path d="M11 12h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 14"/><path d="m7 18 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 13 6 6"/>',
@@ -129,11 +130,11 @@ def cta_blok(s, titel, p=""):
     <div class="cta-blok-deco" aria-hidden="true"></div>
     <div class="cta-blok-tekst">
       <h2>{e(titel)}</h2>
-      <p>Ik kom vrijblijvend langs, meet op en denk met je mee. Geen verkooppraatje, wel een eerlijk verhaal over wat er kan.</p>
+      <p>Ik kom vrijblijvend langs, meet op en denk met u mee. Geen verkooppraatje, wel een eerlijk verhaal over wat er kan.</p>
       <p class="cta-blok-nb">{e(s["planning_notitie"])}</p>
     </div>
     <div class="cta-blok-knoppen">
-      <a class="btn-primary" href="{p}index.html#offerte">Vraag offerte aan</a>
+      <a class="btn-primary" href="{p}index.html#offerte">Vraag adviesgesprek aan</a>
       <a class="btn-outline" href="tel:{s["telefoon_link"]}">{svg("telefoon")}{e(s["telefoon_weergave"])}</a>
     </div>
   </div>
@@ -562,7 +563,7 @@ def bouw_recensies(s, recensies):
   <div class="rec-intro-deco" aria-hidden="true"></div>
   <a class="rec-terug" href="index.html" data-fu>{svg("pijl-links", 16)}Terug naar de homepage</a>
   <h1 data-fu>Wat klanten over<br>mijn werk schrijven</h1>
-  <p data-fu>Bijna al mijn klanten komen via mond-tot-mondreclame. Hieronder lees je wat mensen zelf over de renovatie van hun badkamer of toilet schreven.</p>
+  <p data-fu>Bijna al mijn klanten komen via mond-tot-mondreclame. Hieronder leest u wat mensen zelf over de renovatie van hun badkamer of toilet schreven.</p>
   <div class="rec-intro-feiten" data-fu>
     <div><span class="sterren">★★★★★</span>Alleen vijf sterren tot nu toe</div>
     <div><span class="drop"></span>{len(recensies)} recensies · ±500 badkamers sinds 2007</div>
@@ -572,8 +573,8 @@ def bouw_recensies(s, recensies):
 <section class="rec-lijst">
   <div class="rec-kolommen">
 {kaarten}    <figure class="rec-kaart rec-kaart--uitnodiging">
-      <div class="rec-uitnodiging-kop">{svg("bericht")}Ruimte voor jouw recensie</div>
-      <p>Heb ik bij jou gewerkt en wil je iets achterlaten? Mail me gerust, dan zet ik het erbij.</p>
+      <div class="rec-uitnodiging-kop">{svg("bericht")}Ruimte voor uw recensie</div>
+      <p>Heb ik bij u gewerkt en wilt u iets achterlaten? Mail me gerust, dan zet ik het erbij.</p>
       <a class="rec-mail-link" href="mailto:{e(s["email"])}">{e(s["email"])}{svg("pijl-rechtsboven", 16)}</a>
     </figure>
   </div>

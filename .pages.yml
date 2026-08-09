@@ -111,7 +111,7 @@ content:
             list: true
             fields:
               - { name: icoon, label: Icoon, type: select,
-                  options: { values: [hamer, vrachtwagen, doos, verfroller, glans] } }
+                  options: { values: [hamer, vrachtwagen, doos, stapel, verfroller, glans] } }
               - { name: titel, label: Titel, type: string }
               - { name: tekst, label: Tekst, type: text }
       - name: diensten
