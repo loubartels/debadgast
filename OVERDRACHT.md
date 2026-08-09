@@ -57,7 +57,7 @@ De foto met de laagste naam (meestal `01.jpg`) is de omslagfoto op de homepage. 
    - **Omschrijving** — twee zinnen over wat het geworden is
    - **Kenmerken** — losse woorden die als labeltjes verschijnen
    - **Wat ik heb gedaan** — de stappen, elk op een eigen regel
-   - **Plaats**, **Jaar** en **Doorlooptijd** — mogen leeg blijven als je ze niet weet
+   - **Plaats** en **Doorlooptijd** — mogen leeg blijven als je ze niet weet
 3. Sleep het project naar de plek in de lijst waar je het wilt hebben. Bovenaan staat vooraan op de website.
 
 > **Let op:** de mapnaam bij *Mapnaam van de foto's* moet exact kloppen. Staat er een typefout in, dan blijft het project leeg.

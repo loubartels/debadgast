@@ -46,6 +46,9 @@ img { max-width: 100%; }
   color: var(--teal);
 }
 
+/* Bij het springen naar een sectie zou de vastgezette header de kop afdekken. */
+section[id] { scroll-margin-top: 88px; }
+
 /* ---------- Header ---------- */
 
 .site-header {
@@ -771,6 +774,26 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
 }
 .projecten-foot span { display: flex; align-items: center; gap: 10px; }
 .projecten-foot .drop { background: var(--teal); }
+
+@media (max-width: 719px) {
+  /* De kaart wordt bijna schermbreed; de volgende piept ernaast als wegwijzer. */
+  .rail { gap: 14px; padding: 0 20px; }
+  .project { flex-basis: min(80vw, 400px); }
+
+  /* Onderschrift onder de foto in plaats van eroverheen. Op deze breedte is de
+     kaart te laag voor een overlay: de tekst liep buiten de kaart en lag over
+     de badkamer heen, precies wat er te zien moet zijn. */
+  .project-shade { display: none; }
+  .project-caption { position: static; padding: 16px 18px 20px; }
+  .project-label { font-size: 12.5px; }
+  .project h3 { margin-top: 5px; font-size: 17.5px; letter-spacing: 0; }
+  .project-chips { margin-top: 11px; gap: 7px 8px; }
+  .project-chips .chip { padding: 6px 11px; font-size: 11.5px; }
+  .project-open { margin-top: 14px; font-size: 13px; }
+
+  /* Pijlknoppen en randvervaging dekken op deze breedte de kaart af. */
+  .rail-btn, .rail-fade { display: none; }
+}
 
 /* ---------- Recensies ---------- */
 

@@ -33,7 +33,6 @@ content:
           description: "Losse woorden die als labeltjes verschijnen" }
       - { name: werk, label: Wat ik heb gedaan, type: string, list: true }
       - { name: plaats, label: Plaats, type: string, description: "Mag leeg blijven" }
-      - { name: jaar, label: Jaar, type: string }
       - { name: duur, label: Doorlooptijd, type: string,
           description: "Bijvoorbeeld '3 weken'. Mag leeg blijven." }
       - { name: omslag_positie, label: Uitsnede omslagfoto, type: string,

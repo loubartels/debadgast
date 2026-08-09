@@ -68,7 +68,9 @@ Het formulier verstuurt via [FormSubmit](https://formsubmit.co) naar `info@debad
 
 Elk project heeft een eigen pagina met een fotogalerij; vanaf de homepage klik je erop door.
 
-De tien projecten komen uit Gerards Drive-map *Lou fotomateriaal website*, en wel uit zijn eigen "web"-selectie per klantmap. De mappen heten op de site bewust niet naar de klant; projecten hebben een beschrijvende titel. Het jaartal komt uit de opnamedatum van de foto's. **Plaats en doorlooptijd staan nog leeg** — die zijn nergens vastgelegd; vul ze in de bewerkomgeving in zodra Gerard ze doorgeeft, dan verschijnen ze vanzelf.
+De tien projecten komen uit Gerards Drive-map *Lou fotomateriaal website*, en wel uit zijn eigen "web"-selectie per klantmap. De mappen heten op de site bewust niet naar de klant; projecten hebben een beschrijvende titel. **Plaats en doorlooptijd staan nog leeg** — die zijn nergens vastgelegd; vul ze in de bewerkomgeving in zodra Gerard ze doorgeeft, dan verschijnen ze vanzelf. Het jaartal is er op verzoek uit: het oudste project is van 2008 en dat leest als "hier gebeurt al jaren niets".
+
+Op schermen smaller dan 720px staat het bijschrift van een projectkaart **onder** de foto in plaats van eroverheen. Een overlay past daar niet: de kaart is dan zo laag dat de tekst over de badkamer heen valt, precies wat er te zien moet zijn.
 
 Nog niet verwerkt zijn de vier grote fotodumps in de Drive-map (*Becker*, *JPEG*, *de kreij badk jpg*, *de kreij toilet1 jpg*, samen ~185 foto's) en de RAW-bestanden (`.ARW`), waar een browser niets mee kan.
 
