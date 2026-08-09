@@ -1,13 +1,12 @@
 {
   "titel": "De Badgast — Badkamerrenovatie door Gerard Bartels in Roosendaal",
   "omschrijving": "Totaalrenovatie van badkamers en toiletten in Roosendaal en omstreken. Eén vakman, één aanspreekpunt: sloop, tegels, leidingen, elektra en afwerking door Gerard Bartels.",
-
   "hero": {
     "bovenkop": "Roosendaal en omstreken",
-    "titel": "Jouw badkamer,",
+    "titel": "Uw badkamer,",
     "titel_accent": "vakwerk van één vakman",
-    "tekst": "Ik ben Gerard Bartels uit Roosendaal. Sloop, tegels, leidingen, elektra en afwerking. Ik doe het zelf, van begin tot eind.",
-    "knop_offerte": "Vraag offerte aan",
+    "tekst": "Ik ben Gerard Bartels uit Roosendaal. Sloop, installatiewerk — cv, water, elektra — plafond, stucwerk en tegelwerk: ik doe het zelf, van begin tot eind.",
+    "knop_offerte": "Vraag adviesgesprek aan",
     "knop_bellen": "Bellen mag ook altijd",
     "punten": [
       "Eén aanspreekpunt, van eerste schets tot oplevering",
@@ -18,65 +17,123 @@
     "kaart_citaat": "Gerard werkt volgens afspraak, accuraat en netjes. Het resultaat is erg mooi.",
     "kaart_naam": "Hanny, Roosendaal",
     "cijfers": [
-      { "getal": "±500", "label": "badkamers" },
-      { "getal": "45 jaar", "label": "vakmanschap" },
-      { "getal": "2007", "label": "eigen zaak" }
+      {
+        "getal": "±500",
+        "label": "badkamers"
+      },
+      {
+        "getal": "45 jaar",
+        "label": "vakmanschap"
+      },
+      {
+        "getal": "2007",
+        "label": "eigen zaak"
+      }
     ]
   },
-
   "over": {
     "kicker": "Over Gerard",
     "titel": "45 jaar vakmanschap, één paar handen",
-    "tekst": "Ik ben Gerard Bartels, watertechnisch installateur van origine. Na 45 jaar in het vak en zo’n 500 badkamers weet ik: het verschil zit in de details. Daarom werk ik bewust alleen: je hebt van A tot Z met mij te maken, dus misverstanden zijn nagenoeg uitgesloten. Alles gaat in overleg. Ik lever pas op als jouw badkamer of toilet precies is zoals jij ’m voor ogen had.",
+    "tekst": "Ik ben Gerard Bartels, watertechnisch installateur van origine. Na 45 jaar in het vak en zo’n 500 badkamers weet ik: het verschil zit in de details. Daarom werk ik bewust alleen: u hebt van A tot Z met mij te maken, dus misverstanden zijn nagenoeg uitgesloten. Alles gaat in overleg. Ik lever pas op als uw badkamer of toilet precies is zoals u het voor ogen had.",
     "badge": "Van sloop tot laatste kit",
     "foto_groot": "assets/gerard-badkamer.jpg",
     "foto_groot_alt": "Gerard Bartels aan het werk in een badkamer in aanbouw",
     "foto_klein": "assets/gerard-tegelwerk.jpg",
     "foto_klein_alt": "Gerard zet tegels op de wand van een badkamer in aanbouw"
   },
-
   "formule": {
     "kicker": "De formule",
     "titel": "Vakwerk waar nodig,<br>zelf doen waar mogelijk",
-    "tekst": "Ik werk niet met een aanneemsom, maar met een wekelijkse factuur waarop alle uren en materialen staan gespecificeerd. Dat betekent dat jij zelf bepaalt hoeveel je uitbesteedt. Het vakwerk doe ik, het eenvoudige werk mag je gerust zelf oppakken. Scheelt uren op de factuur, en je weet precies waar je aan toe bent.",
-    "naschrift": "Wil je liever nergens naar omkijken? Dan neem ik alles uit handen. Ook prima, we spreken het samen af.",
-    "lijst_kicker": "Dit kun je zelf doen",
+    "tekst": "Ik werk niet met een aanneemsom, maar met een wekelijkse factuur waarop alle uren en materialen staan gespecificeerd. Dat betekent dat u zelf bepaalt hoeveel u uitbesteedt. Het vakwerk doe ik, het eenvoudige werk mag u gerust zelf oppakken. Scheelt uren op de factuur, en u weet precies waar u aan toe bent.",
+    "naschrift": "Wilt u liever nergens naar omkijken? Dan neem ik alles uit handen. Ook prima, we spreken het samen af.",
+    "lijst_kicker": "Dit kunt u zelf doen",
     "lijst": [
-      { "icoon": "hamer", "titel": "Sloopwerk", "tekst": "Oude tegels, meubel en sanitair eruit voordat ik begin." },
-      { "icoon": "vrachtwagen", "titel": "Puin afvoeren", "tekst": "Container regelen en het afval naar de milieustraat brengen." },
-      { "icoon": "doos", "titel": "Materialen ophalen", "tekst": "Sanitair en tegels zelf laten bezorgen of ophalen bij de showroom." },
-      { "icoon": "verfroller", "titel": "Schilderwerk", "tekst": "Plafond en wanden afschilderen als het tegelwerk klaar is." },
-      { "icoon": "glans", "titel": "Tussentijds opruimen", "tekst": "Even stofzuigen en aanvegen aan het eind van de dag." }
+      {
+        "icoon": "hamer",
+        "titel": "Sloopwerk",
+        "tekst": "Oude tegels, meubel en sanitair eruit voordat ik begin."
+      },
+      {
+        "icoon": "vrachtwagen",
+        "titel": "Puin afvoeren",
+        "tekst": "Eventueel een container regelen, of het afval naar de milieustraat brengen."
+      },
+      {
+        "icoon": "doos",
+        "titel": "Ruimte voor opslag",
+        "tekst": "Een plek vlak bij de badkamer voor gereedschap en materialen. Dek daar alles af behalve de vloer — die doe ik."
+      },
+      {
+        "icoon": "stapel",
+        "titel": "Tegels klaarzetten",
+        "tekst": "De tegels zo dicht mogelijk bij de te renoveren ruimte neerzetten."
+      },
+      {
+        "icoon": "glans",
+        "titel": "Aan het eind van de dag",
+        "tekst": "Even grofweg schoonmaken als ik weg ben."
+      }
     ]
   },
-
   "diensten": {
     "kicker": "Diensten",
-    "titel": "Wat ik voor je doe",
+    "titel": "Wat ik voor u doe",
     "items": [
-      { "icoon": "bad", "titel": "Totaalrenovatie badkamer", "tekst": "Van slopen tot opleveren: leidingwerk, elektra, tegels, stucwerk, meubel en sanitair. Jij kiest de materialen, ik regel de uitvoering." },
-      { "icoon": "deur", "titel": "Totaalrenovatie toilet", "tekst": "Het hele toilet opnieuw: leidingen, tegelwerk tot in de hoeken, sanitair en een strakke afwerking." },
-      { "icoon": "handen", "titel": "Alles in eigen hand", "tekst": "Geen onderaannemers. Sloop, leidingwerk, elektra, tegels en de laatste kitrand: allemaal door mij, van eerste dag tot oplevering." }
+      {
+        "icoon": "bad",
+        "titel": "Totaalrenovatie badkamer",
+        "tekst": "Van slopen tot opleveren: sleuven frezen, hak- en breekwerk waar nodig, installatiewerk voor elektra, cv, water en riolering, stucwerk, tegelwerk, montage van sanitair en kitwerk. U kiest de materialen, ik regel de uitvoering."
+      },
+      {
+        "icoon": "deur",
+        "titel": "Totaalrenovatie toilet",
+        "tekst": "Alle werkzaamheden die denkbaar zijn om u het toilet van uw dromen te bezorgen: leidingen, tegelwerk tot in de hoeken, sanitair en een strakke afwerking."
+      },
+      {
+        "icoon": "handen",
+        "titel": "Alles in eigen hand",
+        "tekst": "Geen onderaannemers. Sloop, leidingwerk, elektra, tegels en de laatste kitrand: allemaal door mij, van eerste dag tot oplevering."
+      }
     ]
   },
-
   "werkwijze": {
     "kicker": "Werkwijze",
     "titel": "Van de eerste bak koffie<br>tot de laatste kitrand",
-    "tekst": "Vier stappen, één aanspreekpunt. Je weet steeds wie er komt, wat er die week gebeurt en wat het tot dan toe heeft gekost.",
-    "knop": "Plan het eerste bezoek",
+    "tekst": "Vier stappen, één aanspreekpunt. U weet steeds wie er komt, wat er die week gebeurt en wat het tot dan toe heeft gekost.",
+    "knop": "Plan uw adviesgesprek",
     "stappen": [
-      { "titel": "Vrijblijvend bezoek", "tekst": "Ik kom langs, meet op, denk mee in de mogelijkheden en geef je een eerlijke totaalindicatie.", "tag": "Kost je een uurtje" },
-      { "titel": "Jij kiest je materialen", "tekst": "Sanitair en tegels zoek je uit bij een kwaliteitsshowroom: Maxaro, Jan van Zundert of Brugman.", "tag": "Het leukste stuk" },
-      { "titel": "Uitvoering", "tekst": "Ik werk je badkamer in één keer af. Looproute en trap dek ik netjes af, elke vrijdag ruim ik op.", "tag": "3 à 3,5 week" },
-      { "titel": "Oplevering", "tekst": "We lopen samen alles na. Ik lever pas op als het precies is zoals jij het voor ogen had.", "tag": "2 jaar garantie" }
+      {
+        "titel": "Vrijblijvend bezoek",
+        "tekst": "Ik kom langs, meet op, denk mee in de mogelijkheden en geef u een eerlijke totaalindicatie.",
+        "tag": "Kost u een uurtje"
+      },
+      {
+        "titel": "U kiest uw materialen",
+        "tekst": "Sanitair en tegels zoekt u uit bij een kwaliteitsshowroom: Maxaro, Jan van Zundert of Brugman.",
+        "tag": "Het leukste stuk"
+      },
+      {
+        "titel": "Uitvoering",
+        "tekst": "Ik werk uw badkamer in één keer af. Looproute en trap dek ik netjes af, elke vrijdag ruim ik op.",
+        "tag": "3 à 3,5 week"
+      },
+      {
+        "titel": "Oplevering",
+        "tekst": "We lopen samen alles na. Ik lever pas op als het precies is zoals u het voor ogen had.",
+        "tag": "2 jaar garantie"
+      }
     ],
     "meta": [
-      { "icoon": "agenda", "tekst": "De planning loopt zo'n 6 maanden vooruit" },
-      { "icoon": "bon", "tekst": "Wekelijkse factuur, alles gespecificeerd" }
+      {
+        "icoon": "agenda",
+        "tekst": "De planning loopt gemiddeld 6 tot 12 maanden vooruit"
+      },
+      {
+        "icoon": "bon",
+        "tekst": "Wekelijkse factuur, alles gespecificeerd"
+      }
     ]
   },
-
   "projecten": {
     "kicker": "Projecten",
     "titel": "Gerealiseerde projecten",
@@ -84,18 +141,16 @@
     "tekst": "Elke badkamer hieronder begon als een ruimte waar de eigenaar op uitgekeken was. Alles heb ik zelf gemaakt, van sloop tot de laatste kitrand.",
     "voetregel": "Geen onderaannemers, alles door mij zelf gemaakt"
   },
-
   "recensies": {
     "kicker": "Recensies",
     "titel": "Bijna al mijn klanten<br>komen via mond-tot-mondreclame",
     "tekst": "Mensen voor wie ik eerder werkte, vertellen het door aan familie, buren en collega's. Dit schreven zij zelf over mijn werk.",
     "knop": "Alle recensies lezen"
   },
-
   "offerte": {
-    "titel": "Vraag een offerte aan",
-    "tekst": "Laat je gegevens achter en vertel kort wat je van plan bent. Ik neem zelf contact op om langs te komen en op te meten.",
-    "notitie": "De planning loopt momenteel zo’n 6 maanden vooruit. Plan je renovatie dus op tijd in.",
+    "titel": "Vraag een adviesgesprek aan",
+    "tekst": "Laat uw gegevens achter en vertel kort wat uw plannen zijn. Ik neem zelf contact op om langs te komen, bekijk samen met u de mogelijkheden en geef een reële indicatie van het geheel.",
+    "notitie": "De planning loopt gemiddeld 6 tot 12 maanden vooruit. Plan uw adviesgesprek dus op tijd in.",
     "bel_label": "Liever direct bellen?",
     "mail_label": "Of mail naar",
     "veld_naam": "Naam",
@@ -104,18 +159,17 @@
     "veld_telefoon_hint": "06 12 34 56 78",
     "veld_email": "E-mail",
     "veld_email_hint": "naam@voorbeeld.nl",
-    "veld_omschrijving": "Wat wil je laten doen?",
+    "veld_omschrijving": "Wat wilt u laten doen?",
     "veld_omschrijving_hint": "Bijvoorbeeld: badkamer van 6 m² volledig renoveren, inloopdouche en dubbele wastafel.",
     "knop": "Verstuur aanvraag",
-    "privacy": "Je gegevens gebruik ik alleen om je aanvraag te beantwoorden.",
+    "privacy": "Uw gegevens gebruik ik alleen om uw aanvraag te beantwoorden.",
     "fout": "Versturen is niet gelukt. Probeer het nog eens, of bel",
-    "succes_titel": "Bedankt, je bericht staat bij mij",
-    "succes_tekst": "Ik neem binnen twee werkdagen zelf contact met je op. Heb je haast? Bel dan gerust: +31 6 15956178.",
+    "succes_titel": "Bedankt, uw bericht staat bij mij",
+    "succes_tekst": "Ik neem binnen twee werkdagen zelf contact met u op. Hebt u haast? Bel dan gerust: +31 6 15956178.",
     "succes_knop": "Nog een bericht sturen"
   },
-
   "mobiele_balk": {
-    "offerte": "Vraag offerte aan",
+    "offerte": "Adviesgesprek",
     "bellen": "Bellen"
   }
 }
