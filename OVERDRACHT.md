@@ -11,15 +11,16 @@ De teksten en foto's van de website staan los van de opmaak. Jij bewerkt de **in
 1. Ga naar **https://app.pagescms.org** en log in met het GitHub-account dat bij de overdracht is aangemaakt.
 2. Kies de website `debadgast`.
 
-Je ziet dan vier onderdelen in het menu:
+Je ziet dan zes onderdelen in het menu:
 
 | Onderdeel | Waarvoor |
 |---|---|
 | **Projecten** | De uitgevoerde badkamers en toiletten |
 | **Recensies** | Alle recensies van klanten |
 | **Homepage** | Alle teksten op de voorpagina |
-| **Contactgegevens** | Telefoonnummer, e-mail, werkgebied, KvK |
+| **Contactgegevens** | Telefoonnummer, e-mail, werkgebied, KvK en BTW |
 | **Algemene voorwaarden** | De voorwaarden, per artikel |
+| **Privacyverklaring** | Hoe De Badgast met klantgegevens omgaat |
 
 Na elke wijziging klik je op **Save**. Een paar minuten later staat het live. Verversen van de site kan nodig zijn (Ctrl+F5 of Cmd+Shift+R).
 
@@ -80,7 +81,7 @@ Alles is terug te draaien. Elke wijziging wordt bewaard met datum en tijd. Op **
 
 ## Voor de technisch beheerder
 
-- **Bron:** GitHub, `content/*.json` bevat de inhoud, `tools/bouw.py` bouwt daaruit `index.html`, `recensies.html` en `projecten/*.html`.
+- **Bron:** GitHub, `content/*.json` bevat de inhoud, `tools/bouw.py` bouwt daaruit alle HTML-pagina's plus `sitemap.xml` en `robots.txt`.
 - **De HTML-bestanden nooit met de hand aanpassen** — ze worden bij elke bouw overschreven.
 - **Publiceren:** Vercel bouwt bij elke wijziging opnieuw (`vercel.json`). Doorverwijzingen van de oude adressen staan daar ook in.
 - **Lokaal draaien:** `python3 tools/bouw.py && python3 -m http.server 8000`

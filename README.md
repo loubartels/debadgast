@@ -6,10 +6,10 @@ One-pager voor **De Badgast**, het badkamerrenovatiebedrijf van Gerard Bartels i
 
 | Bestand | Wat |
 |---------|-----|
-| `index.html`, `recensies.html`, `voorwaarden.html`, `projecten/*.html` | **Gegenereerd** — niet met de hand aanpassen, wijzigingen worden overschreven. |
+| `index.html`, `recensies.html`, `voorwaarden.html`, `privacy.html`, `projecten/*.html`, `sitemap.xml`, `robots.txt` | **Gegenereerd** — niet met de hand aanpassen, wijzigingen worden overschreven. |
 | `assets/site.css` | Gedeelde stylesheet voor beide pagina's. |
 | `assets/site.js` | Gedeeld gedrag: sticky header met glas-effect, fade-in bij scrollen, projectencarrousel, offerteformulier. |
-| `content/*.json` | **De inhoud**: teksten, projecten, recensies, algemene voorwaarden en contactgegevens. Dit is wat de bewerkomgeving aanpast. |
+| `content/*.json` | **De inhoud**: teksten, projecten, recensies, voorwaarden, privacyverklaring en contactgegevens. Dit is wat de bewerkomgeving aanpast. |
 | `tools/bouw.py` | Bouwt uit `content/` de complete site. |
 | `.pages.yml` | Instellingen van de bewerkomgeving (Pages CMS). |
 | `vercel.json` | Doorverwijzingen van oude adressen en de bouwopdracht voor Vercel. |
@@ -20,7 +20,7 @@ One-pager voor **De Badgast**, het badkamerrenovatiebedrijf van Gerard Bartels i
 De inhoud staat in `content/` en wordt door `tools/bouw.py` omgezet naar HTML. Het resultaat is een statische site zonder afhankelijkheden, op Google Fonts (Manrope) na; iconen zitten als SVG in de pagina's.
 
 ```bash
-python3 tools/bouw.py    # bouwt index.html, recensies.html en projecten/*.html
+python3 tools/bouw.py    # bouwt alle pagina's, de sitemap en robots.txt
 ```
 
 **Pas de HTML-bestanden niet met de hand aan** — wijzig `content/` en bouw opnieuw.
