@@ -18,12 +18,12 @@
     "kaart_naam": "Hanny, Roosendaal",
     "cijfers": [
       {
-        "getal": "±500",
-        "label": "badkamers"
-      },
-      {
         "getal": "45 jaar",
         "label": "vakmanschap"
+      },
+      {
+        "getal": "±500",
+        "label": "badkamers"
       },
       {
         "getal": "2007",

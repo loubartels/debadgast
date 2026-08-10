@@ -134,13 +134,30 @@ verwijderen, zodat het record wordt:
 Alleen doen als je zeker weet dat er geen mail vanaf de webserver wordt
 verstuurd. Bij twijfel: laten staan, het is geen probleem.
 
-## Wat je bij Vercel invult
+## De nieuwe situatie
 
-Vercel geeft bij **Settings → Domains** zelf de exacte waarden. Gebruik altijd
-wat Vercel toont, niet wat hier staat — die adressen kunnen wijzigen.
+In Vercel staat `debadgast.nl` op Production en stuurt `www.debadgast.nl` er met
+een 308 naartoe. Het adres `debadgast.vercel.app` blijft daarnaast werken en is
+handig als reserve: daarmee kun je de site bekijken los van het domein.
 
-- `debadgast.nl` → een **A**-record naar het IP-adres dat Vercel geeft
-- `www` → een **CNAME** naar het adres dat Vercel geeft
+Vercel gaf op 5 augustus 2026 deze waarden:
+
+| Naam | Type | Waarde |
+|---|---|---|
+| `debadgast.nl.` (`@`) | A | `216.198.79.1` |
+| `www` | CNAME | `947203984157755f.vercel-dns-017.com.` |
+
+Vercels oudere adressen (`76.76.21.21` en `cname.vercel-dns.com`) blijven werken,
+maar zijn niet meer wat hij aanraadt. **Kijk altijd eerst wat Vercel zelf toont
+bij Settings → Domains** — deze waarden kunnen veranderen, en de CNAME is
+projectspecifiek.
+
+Volgorde in DirectAdmin: eerst het oude `www` A-record en de twee AAAA-records
+weg, dan pas de CNAME toevoegen. Een naam kan niet tegelijk een A-record en een
+CNAME hebben.
+
+Let op de punt aan het eind van de CNAME-waarde. Ontbreekt hij, dan plakt
+DirectAdmin het domein eraan vast en wordt het `…vercel-dns-017.com.debadgast.nl`.
 
 Een CNAME kan niet op het hoofddomein (`debadgast.nl`) zelf; daarvoor is altijd
 een A-record nodig. Dat is normaal en verwacht.
