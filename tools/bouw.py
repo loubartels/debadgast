@@ -25,7 +25,8 @@ from pathlib import Path
 WORTEL = Path(__file__).resolve().parent.parent
 CONTENT = WORTEL / "content"
 FOTO_TYPES = {".jpg", ".jpeg", ".png", ".webp", ".avif"}
-ASSETVERSIE = "7"
+ASSETVERSIE = "8"
+SITE_URL = "https://debadgast.nl"
 
 # ---------------------------------------------------------------- iconen ----
 # Lijntekeningen uit de Lucide-set, als SVG in de pagina opgenomen zodat er
@@ -39,6 +40,7 @@ ICONEN = {
     "stapel": '<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
     "bad": '<path d="M10 4 8 6"/><path d="M17 19v2"/><path d="M2 12h20"/><path d="M7 19v2"/><path d="M9 5 7.621 3.621A2.121 2.121 0 0 0 4 5v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/>',
     "deur": '<path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/><path d="M14 12v.01"/>',
+    "toilet": '<path d="M7 12h13a1 1 0 0 1 1 1 5 5 0 0 1-5 5h-.598a.5.5 0 0 0-.424.765l1.544 2.47a.5.5 0 0 1-.424.765H5.402a.5.5 0 0 1-.424-.765L7 18"/><path d="M8 18a5 5 0 0 1-5-5V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8"/>',
     "handen": '<path d="M11 12h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 14"/><path d="m7 18 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 13 6 6"/>',
     "pijl-rechts": '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
     "pijl-links": '<path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>',
@@ -79,8 +81,15 @@ def laad(naam):
 
 # ------------------------------------------------------- gedeelde stukken ----
 
-def kop(titel, omschrijving, p=""):
-    """<head> plus de header met menu. p is het pad terug naar de wortel."""
+def kop(titel, omschrijving, p="", pad="", deelfoto="assets/hero-badkamer.jpg", extra=""):
+    """<head> plus de header met menu.
+
+    p        pad terug naar de wortel ("" of "../")
+    pad      adres van deze pagina onder het domein, voor canonical en og:url
+    deelfoto foto die verschijnt als iemand de link deelt in WhatsApp of Facebook
+    extra    losse regels in de <head>, bijvoorbeeld structured data
+    """
+    url = SITE_URL + "/" + pad
     return f'''<!doctype html>
 <html lang="nl">
 <head>
@@ -88,14 +97,58 @@ def kop(titel, omschrijving, p=""):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{e(titel)}</title>
   <meta name="description" content="{e(omschrijving)}">
+  <link rel="canonical" href="{e(url)}">
   <link rel="icon" href="{p}assets/embleem.png" type="image/png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="De Badgast">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:title" content="{e(titel)}">
+  <meta property="og:description" content="{e(omschrijving)}">
+  <meta property="og:url" content="{e(url)}">
+  <meta property="og:image" content="{SITE_URL}/{deelfoto}">
+  <meta property="og:image:alt" content="Badkamer gerenoveerd door De Badgast">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{p}assets/site.css?v={ASSETVERSIE}">
-</head>
+{extra}</head>
 <body>
 '''
+
+
+def bedrijfsgegevens(s, recensies):
+    """Structured data: vertelt Google wie De Badgast is en hoe klanten oordelen.
+
+    Alle recensies op de site zijn vijf sterren, dus het gemiddelde is 5,0. Ze
+    komen uit het formulier op de oude site en zijn dus echt; markeren mag.
+    Google beslist zelf of hij er sterretjes bij zet.
+    """
+    gegevens = {
+        "@context": "https://schema.org",
+        "@type": "HomeAndConstructionBusiness",
+        "name": s["bedrijfsnaam"],
+        "description": s["footer_omschrijving"],
+        "url": SITE_URL,
+        "telephone": s["telefoon_link"],
+        "email": s["email"],
+        "image": f"{SITE_URL}/assets/hero-badkamer.jpg",
+        "logo": f"{SITE_URL}/assets/logo-badgast.png",
+        "vatID": s["btw"],
+        "founder": {"@type": "Person", "name": s["eigenaar"]},
+        "address": {"@type": "PostalAddress", "addressLocality": s["plaats"],
+                    "addressCountry": "NL"},
+        "areaServed": s["werkgebied"],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "bestRating": "5",
+            "reviewCount": str(len(recensies)),
+        },
+    }
+    return ('  <script type="application/ld+json">\n'
+            + json.dumps(gegevens, ensure_ascii=False, indent=2)
+            + "\n  </script>\n")
 
 
 def header(s, p="", home=False):
@@ -165,9 +218,8 @@ def voet(s, p="", lightbox=False, strak=True):
       <p>{e(s["footer_omschrijving"])}</p>
     </div>
     <div class="footer-col-contact">
-      <div class="footer-title">Contactgegevens</div>
+      <div class="footer-kicker">Contactgegevens</div>
       <div class="footer-contact">
-        <div><span class="ic-wrap">{svg("locatie", 17)}</span><span>{s["werkgebied_kort"]}</span></div>
         <div><span class="ic-wrap">{svg("telefoon", 17)}</span><a href="tel:{s["telefoon_link"]}">{e(s["telefoon_weergave"])}</a></div>
         <div><span class="ic-wrap">{svg("mail", 17)}</span><a href="mailto:{e(s["email"])}">{e(s["email"])}</a></div>
         <div><span class="ic-wrap">{svg("globe", 17)}</span><a href="https://debadgast.nl">{e(s["website"])}</a></div>
@@ -179,7 +231,8 @@ def voet(s, p="", lightbox=False, strak=True):
     </div>
     <div class="footer-col-gegevens">
       <div class="footer-kicker">Gegevens</div>
-      <p>{s["kvk"]}<br><a href="{p}voorwaarden.html">Algemene voorwaarden</a></p>
+      <p>{e(s["kvk"])}<br>BTW {e(s["btw"])}</p>
+      <p class="footer-links"><a href="{p}voorwaarden.html">Algemene voorwaarden</a><br><a href="{p}privacy.html">Privacyverklaring</a></p>
     </div>
   </div>
   <div class="footer-bottom">{e(s["copyright"])}</div>
@@ -275,7 +328,9 @@ def projectpagina(s, pr, fs, vorige, volgende):
         nav = f'\n<nav class="proj-nav" aria-label="Andere projecten">\n{links}</nav>\n'
 
     return (
-        kop(f'{pr["titel"]}{in_plaats(pr)} — De Badgast', pr["lead"], "../")
+        kop(f'{pr["titel"]}{in_plaats(pr)} — De Badgast', pr["lead"], "../",
+            f'projecten/{pr["slug"]}.html',
+            fotopad(fs[0]) if fs else "assets/hero-badkamer.jpg")
         + header(s, "../")
         + f'''
 <section class="proj-intro">
@@ -351,7 +406,7 @@ def bouw_index(s, h, projecten):
 
     o = h["offerte"]
     return (
-        kop(h["titel"], h["omschrijving"])
+        kop(h["titel"], h["omschrijving"], extra=bedrijfsgegevens(s, recensies))
         + header(s, home=True)
         + f'''
 <section class="hero">
@@ -556,7 +611,8 @@ def bouw_recensies(s, recensies):
 
     return (
         kop("Recensies — De Badgast, badkamerrenovaties Roosendaal",
-            "Wat klanten schrijven over de badkamer- en toiletrenovaties van Gerard Bartels (De Badgast) in Roosendaal en omgeving. Alleen vijf sterren tot nu toe.")
+            "Wat klanten schrijven over de badkamer- en toiletrenovaties van Gerard Bartels (De Badgast) in Roosendaal en omgeving. Alleen vijf sterren tot nu toe.",
+            pad="recensies.html")
         + header(s)
         + f'''
 <section class="rec-intro">
@@ -597,7 +653,7 @@ def bouw_voorwaarden(s, v):
 ''' for a in v["artikelen"])
 
     return (
-        kop(f'{v["titel"]} — De Badgast', v["omschrijving"])
+        kop(f'{v["titel"]} — De Badgast', v["omschrijving"], pad="voorwaarden.html")
         + header(s)
         + f'''
 <section class="rec-intro">
@@ -622,6 +678,43 @@ def bouw_voorwaarden(s, v):
     )
 
 
+def bouw_privacy(s, pv):
+    inhoud = "".join(
+        f'      <li><a href="#deel-{o["nummer"]}">{o["nummer"]}. {e(o["titel"])}</a></li>\n'
+        for o in pv["onderdelen"])
+    onderdelen = "".join(
+        f'''    <article class="vw-artikel" id="deel-{o["nummer"]}" data-fu>
+      <h2>{o["nummer"]}. {e(o["titel"])}</h2>
+{"".join(f'      <p>{e(t)}</p>{chr(10)}' for t in o["alineas"])}    </article>
+''' for o in pv["onderdelen"])
+
+    return (
+        kop(f'{pv["titel"]} — De Badgast', pv["omschrijving"], pad="privacy.html")
+        + header(s)
+        + f'''
+<section class="rec-intro">
+  <div class="rec-intro-deco" aria-hidden="true"></div>
+  <a class="rec-terug" href="index.html" data-fu>{svg("pijl-links", 16)}Terug naar de homepage</a>
+  <h1 data-fu>{e(pv["titel"])}</h1>
+  <p data-fu>{e(pv["intro"])}</p>
+  <p class="vw-datum" data-fu>Laatst bijgewerkt op {e(pv["bijgewerkt"])}</p>
+</section>
+
+<section class="vw-lijst">
+  <nav class="vw-inhoud" data-fu aria-label="Inhoudsopgave">
+    <div class="kicker kicker--muted">Inhoud</div>
+    <ol>
+{inhoud}    </ol>
+  </nav>
+  <div class="vw-tekst">
+{onderdelen}  </div>
+</section>
+'''
+        + cta_blok(s, "Nog vragen?")
+        + voet(s)
+    )
+
+
 def main():
     s = laad("site.json")
     h = laad("home.json")
@@ -638,6 +731,21 @@ def main():
     v = laad("voorwaarden.json")
     (WORTEL / "voorwaarden.html").write_text(bouw_voorwaarden(s, v), encoding="utf-8")
     print(f"  voorwaarden.html — {len(v['artikelen'])} artikelen")
+
+    pv = laad("privacy.json")
+    (WORTEL / "privacy.html").write_text(bouw_privacy(s, pv), encoding="utf-8")
+    print(f"  privacy.html — {len(pv['onderdelen'])} onderdelen")
+
+    paden = ["", "recensies.html", "voorwaarden.html", "privacy.html"]
+    paden += [f"projecten/{pr['slug']}.html" for pr in projecten]
+    regels = "".join(f"  <url><loc>{SITE_URL}/{q}</loc></url>\n" for q in paden)
+    (WORTEL / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{regels}</urlset>\n", encoding="utf-8")
+    (WORTEL / "robots.txt").write_text(
+        f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
+    print(f"  sitemap.xml — {len(paden)} pagina's")
 
     uit = WORTEL / "projecten"
     if uit.exists():

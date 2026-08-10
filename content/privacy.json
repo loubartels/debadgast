@@ -1,0 +1,88 @@
+{
+  "titel": "Privacyverklaring",
+  "omschrijving": "Hoe De Badgast omgaat met uw gegevens: wat er wordt gevraagd, waarvoor het wordt gebruikt, hoe lang het wordt bewaard en welke rechten u heeft.",
+  "intro": "De Badgast is een eenmanszaak van Gerard Bartels. Ik verwerk niet meer gegevens dan nodig is om uw aanvraag te beantwoorden en het werk uit te voeren. Hieronder staat precies wat dat inhoudt.",
+  "bijgewerkt": "10 augustus 2026",
+  "onderdelen": [
+    {
+      "nummer": "1",
+      "titel": "Wie verwerkt uw gegevens",
+      "alineas": [
+        "De Badgast, eenmanszaak van Gerard Bartels, gevestigd in Roosendaal. KvK 20133632, BTW NL001807581B05.",
+        "Vragen over uw gegevens kunt u stellen via info@debadgast.nl of 06 - 15 95 61 78. Ik behandel ze zelf; er is geen functionaris voor gegevensbescherming, want daar is dit bedrijf te klein voor."
+      ]
+    },
+    {
+      "nummer": "2",
+      "titel": "Welke gegevens ik verzamel",
+      "alineas": [
+        "Via het formulier op deze website: uw naam, telefoonnummer, e-mailadres en de omschrijving van uw plannen. Alleen wat u zelf invult.",
+        "Zodra u opdracht geeft: uw adres, en de gegevens die nodig zijn om te factureren.",
+        "Als u een recensie achterlaat: uw naam, woonplaats en de tekst. Uw e-mailadres wordt daarbij niet op de website getoond."
+      ]
+    },
+    {
+      "nummer": "3",
+      "titel": "Waarvoor ik ze gebruik",
+      "alineas": [
+        "Om contact met u op te nemen naar aanleiding van uw aanvraag, om langs te komen en een indicatie te geven.",
+        "Om het werk uit te voeren, af te stemmen en te factureren.",
+        "Om te voldoen aan de wettelijke bewaarplicht voor de administratie.",
+        "Ik gebruik uw gegevens niet voor reclame, en ik verkoop of verhuur ze niet aan anderen."
+      ]
+    },
+    {
+      "nummer": "4",
+      "titel": "Op welke grond",
+      "alineas": [
+        "Voor het beantwoorden van uw aanvraag en het uitvoeren van het werk: de overeenkomst met u, of de stappen die daaraan voorafgaan.",
+        "Voor de administratie: de wettelijke plicht die op mij rust.",
+        "Voor het tonen van uw recensie op de website: uw toestemming. Die kunt u altijd intrekken; laat het weten en de recensie gaat eraf."
+      ]
+    },
+    {
+      "nummer": "5",
+      "titel": "Wie uw gegevens nog meer ziet",
+      "alineas": [
+        "Het formulier op deze website wordt verstuurd via FormSubmit, een dienst die het bericht omzet in een e-mail aan info@debadgast.nl. Uw gegevens passeren daarbij de servers van die dienst.",
+        "De website draait bij Vercel; de e-mail loopt via Antagonist. Beide zien technische gegevens die bij het bezoeken en versturen horen.",
+        "Mijn boekhouder krijgt de gegevens die op de factuur staan.",
+        "Verder deel ik niets met anderen, tenzij de wet mij daartoe verplicht."
+      ]
+    },
+    {
+      "nummer": "6",
+      "titel": "Hoe lang ik ze bewaar",
+      "alineas": [
+        "Aanvragen waaruit geen opdracht volgt: maximaal een jaar, zodat ik u nog kan terugbellen als er ruimte in de planning komt.",
+        "Gegevens die bij een uitgevoerde opdracht horen: zeven jaar, want zo lang moet de administratie bewaard blijven volgens de belastingwetgeving.",
+        "Recensies: zolang ze op de website staan, of tot u vraagt ze te verwijderen."
+      ]
+    },
+    {
+      "nummer": "7",
+      "titel": "Cookies en meten",
+      "alineas": [
+        "Deze website plaatst geen cookies en gebruikt geen bezoekersstatistieken. Er wordt niet bijgehouden wie u bent of waar u vandaan komt.",
+        "Het lettertype van de website wordt geladen bij Google Fonts. Daarbij ziet Google uw IP-adres. Dat is de enige verbinding naar buiten die deze website maakt."
+      ]
+    },
+    {
+      "nummer": "8",
+      "titel": "Uw rechten",
+      "alineas": [
+        "U mag opvragen welke gegevens ik van u heb, ze laten corrigeren, laten verwijderen of het gebruik ervan laten beperken. U mag ook bezwaar maken tegen het gebruik, en vragen om uw gegevens in een leesbaar bestand te ontvangen.",
+        "Een verzoek stuurt u naar info@debadgast.nl. Ik reageer binnen vier weken.",
+        "Bent u het niet eens met hoe ik ermee omga, dan kunt u een klacht indienen bij de Autoriteit Persoonsgegevens via autoriteitpersoonsgegevens.nl."
+      ]
+    },
+    {
+      "nummer": "9",
+      "titel": "Beveiliging en wijzigingen",
+      "alineas": [
+        "De website is beveiligd met een certificaat, zodat wat u invult versleuteld wordt verstuurd. De e-mail staat achter een wachtwoord en de administratie ligt niet open en bloot.",
+        "Deze verklaring kan veranderen als de manier van werken verandert. Bovenaan staat wanneer hij voor het laatst is bijgewerkt."
+      ]
+    }
+  ]
+}

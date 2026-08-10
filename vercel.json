@@ -53,6 +53,16 @@
       "source": "/algemenevoorwaarden/",
       "destination": "/voorwaarden.html",
       "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html",
+      "permanent": true
+    },
+    {
+      "source": "/privacyverklaring",
+      "destination": "/privacy.html",
+      "permanent": true
     }
   ],
   "headers": [

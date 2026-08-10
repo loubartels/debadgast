@@ -124,7 +124,7 @@ content:
             type: object
             list: true
             fields:
-              - { name: icoon, label: Icoon, type: select, options: { values: [bad, deur, handen] } }
+              - { name: icoon, label: Icoon, type: select, options: { values: [bad, toilet, handen] } }
               - { name: titel, label: Titel, type: string }
               - { name: tekst, label: Tekst, type: text }
       - name: werkwijze
@@ -215,6 +215,26 @@ content:
           - { name: titel, label: Titel, type: string }
           - { name: alineas, label: Alinea's, type: text, list: true }
 
+  - name: privacy
+    label: Privacyverklaring
+    path: content/privacy.json
+    type: file
+    icon: shield
+    fields:
+      - { name: titel, label: Titel van de pagina, type: string }
+      - { name: omschrijving, label: Omschrijving voor Google, type: text }
+      - { name: intro, label: Introtekst, type: text }
+      - { name: bijgewerkt, label: Laatst bijgewerkt op, type: string,
+          description: "Pas dit aan zodra je iets aan de tekst verandert, bijvoorbeeld '3 maart 2027'" }
+      - name: onderdelen
+        label: Onderdelen
+        type: object
+        list: true
+        fields:
+          - { name: nummer, label: Nummer, type: string }
+          - { name: titel, label: Titel, type: string }
+          - { name: alineas, label: Alinea's, type: text, list: true }
+
   - name: site
     label: Contactgegevens
     path: content/site.json
@@ -232,7 +252,8 @@ content:
       - { name: plaats, label: Plaats, type: string }
       - { name: werkgebied_kort, label: Werkgebied kort (footer), type: string }
       - { name: werkgebied, label: Werkgebied, type: string }
-      - { name: kvk, label: KvK en voorwaarden, type: string }
+      - { name: kvk, label: KvK-nummer, type: string }
+      - { name: btw, label: BTW-nummer, type: string }
       - { name: footer_omschrijving, label: Zin onder het logo in de footer, type: string }
       - { name: copyright, label: Copyrightregel, type: string }
       - { name: planning_notitie, label: Notitie over de planning, type: string }

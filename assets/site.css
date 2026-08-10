@@ -2,7 +2,10 @@
 
 :root {
   --teal: #00b3ac;
-  --teal-dark: #00918b;
+  /* Donkere variant: alle tekst en elk vlak met witte tekst erop. Het lichte
+     turkoois haalt op wit maar 2,6:1 en is voor kleine tekst onleesbaar. */
+  --teal-dark: #00726d;
+  --teal-donkerder: #00524e;
   --teal-light: #5fded8;
   --ink: #0a0a0a;
   /* Contentkolom: max 1312px gecentreerd, daarbuiten vloeiende marge */
@@ -19,8 +22,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-a { color: var(--teal); }
-a:hover { color: var(--teal-dark); }
+a { color: var(--teal-dark); }
+a:hover { color: var(--teal-donkerder); }
 input, textarea { font-family: Manrope, system-ui, sans-serif; }
 img { max-width: 100%; }
 
@@ -43,7 +46,7 @@ img { max-width: 100%; }
   font: 700 12px Manrope, sans-serif;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--teal-dark);
 }
 
 /* Bij het springen naar een sectie zou de vastgezette header de kop afdekken. */
@@ -85,7 +88,7 @@ section[id] { scroll-margin-top: 88px; }
   color: rgba(10,10,10,.78);
   text-decoration: none;
 }
-.site-nav a:hover { color: var(--teal); }
+.site-nav a:hover { color: var(--teal-dark); }
 .tel-pill {
   display: flex;
   align-items: center;
@@ -95,8 +98,8 @@ section[id] { scroll-margin-top: 88px; }
   text-decoration: none;
   border-radius: 999px;
 }
-.site-nav a.tel-pill { color: var(--teal); }
-.site-nav a.tel-pill:hover { border-color: var(--teal); background: rgba(0,179,172,.07); color: var(--teal); }
+.site-nav a.tel-pill { color: var(--teal-dark); }
+.site-nav a.tel-pill:hover { border-color: var(--teal-dark); background: rgba(0,114,109,.07); color: var(--teal-donkerder); }
 
 /* Hamburgermenu op smalle schermen */
 .nav-toggle {
@@ -155,13 +158,13 @@ section[id] { scroll-margin-top: 88px; }
   display: inline-flex;
   align-items: center;
   padding: 17px 30px;
-  background: var(--teal);
+  background: var(--teal-dark);
   color: #fff;
   font: 800 15.5px Manrope, sans-serif;
   text-decoration: none;
   border-radius: 4px;
 }
-.btn-primary:hover { background: var(--teal-dark); color: #fff; }
+.btn-primary:hover { background: var(--teal-donkerder); color: #fff; }
 .btn-ghost {
   display: inline-flex;
   align-items: center;
@@ -180,13 +183,13 @@ section[id] { scroll-margin-top: 88px; }
   gap: 10px;
   padding: 16px 26px;
   background: #fff;
-  color: var(--teal);
+  color: var(--teal-dark);
   font: 800 15.5px Manrope, sans-serif;
   text-decoration: none;
   border-radius: 4px;
   flex: none;
 }
-.btn-white:hover { background: rgba(255,255,255,.9); color: var(--teal); }
+.btn-white:hover { background: rgba(255,255,255,.9); color: var(--teal-donkerder); }
 .link-pill {
   display: inline-flex;
   align-items: center;
@@ -195,11 +198,11 @@ section[id] { scroll-margin-top: 88px; }
   border: 1.5px solid rgba(0,179,172,.4);
   border-radius: 999px;
   font: 700 14.5px Manrope, sans-serif;
-  color: var(--teal);
+  color: var(--teal-dark);
   text-decoration: none;
   flex: none;
 }
-.link-pill:hover { border-color: var(--teal); background: rgba(0,179,172,.07); color: var(--teal); }
+.link-pill:hover { border-color: var(--teal-dark); background: rgba(0,114,109,.07); color: var(--teal-donkerder); }
 .btn-outline {
   display: inline-flex;
   align-items: center;
@@ -391,10 +394,10 @@ section[id] { scroll-margin-top: 88px; }
   align-items: center;
   gap: 10px;
   padding: 12px 16px;
-  background: var(--teal);
+  background: var(--teal-dark);
   color: #fff;
   border-radius: 4px;
-  box-shadow: 0 14px 34px rgba(0,179,172,.34);
+  box-shadow: 0 14px 34px rgba(0,114,109,.34);
 }
 .over-badge .drop { width: 10px; height: 10px; background: #fff; }
 .over-badge b { font: 800 13px Manrope, sans-serif; letter-spacing: -.01em; white-space: nowrap; }
@@ -451,9 +454,9 @@ section[id] { scroll-margin-top: 88px; }
 .formule-col > p.formule-nb {
   margin: 20px 0 0;
   font: 600 15.5px/1.7 Manrope, sans-serif;
-  color: rgba(10,10,10,.55);
+  color: rgba(10,10,10,.62);
 }
-.kicker--muted { color: rgba(10,10,10,.42); }
+.kicker--muted { color: rgba(10,10,10,.6); }
 .zelf-lijst { display: flex; flex-direction: column; gap: 2px; margin-top: 22px; }
 .zelf-item {
   display: flex;
@@ -508,7 +511,7 @@ section[id] { scroll-margin-top: 88px; }
 .werkwijze {
   position: relative;
   overflow: hidden;
-  background: var(--teal);
+  background: var(--teal-dark);
   color: #fff;
   padding: clamp(64px, 9vw, 132px) var(--pad-x);
 }
@@ -532,7 +535,7 @@ section[id] { scroll-margin-top: 88px; }
   gap: 28px;
 }
 .werkwijze-head-copy { max-width: 660px; }
-.kicker--light { color: rgba(255,255,255,.7); }
+.kicker--light { color: rgba(255,255,255,.92); }
 .werkwijze h2 {
   margin: 18px 0 0;
   font: 800 clamp(30px, 3.4vw, 46px)/1.08 Manrope, sans-serif;
@@ -543,7 +546,7 @@ section[id] { scroll-margin-top: 88px; }
   margin: 20px 0 0;
   max-width: 520px;
   font: 400 17px/1.68 Manrope, sans-serif;
-  color: rgba(255,255,255,.82);
+  color: rgba(255,255,255,.94);
   text-wrap: pretty;
 }
 .stappen {
@@ -557,11 +560,11 @@ section[id] { scroll-margin-top: 88px; }
   border-bottom: 1px solid rgba(255,255,255,.22);
 }
 .stap {
-  background: var(--teal);
+  background: var(--teal-dark);
   padding: 34px clamp(20px, 2.2vw, 32px) 38px;
   transition: background .3s ease;
 }
-.stap:hover { background: #009c96; }
+.stap:hover { background: #00615c; }
 .stap-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .stap-num {
   font: 800 44px Manrope, sans-serif;
@@ -574,7 +577,7 @@ section[id] { scroll-margin-top: 88px; }
 .stap p {
   margin: 12px 0 0;
   font: 400 15px/1.66 Manrope, sans-serif;
-  color: rgba(255,255,255,.8);
+  color: rgba(255,255,255,.94);
   text-wrap: pretty;
 }
 .stap-tag {
@@ -582,7 +585,7 @@ section[id] { scroll-margin-top: 88px; }
   font: 700 12px Manrope, sans-serif;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.6);
+  color: rgba(255,255,255,.88);
 }
 .werkwijze-meta {
   position: relative;
@@ -613,6 +616,8 @@ section[id] { scroll-margin-top: 88px; }
   text-align: center;
 }
 .kicker--wide { letter-spacing: .16em; }
+/* Op de donkere projectensectie is het lichte turkoois juist het leesbaarst. */
+.projecten .kicker { color: var(--teal-light); }
 .projecten h2 {
   margin: 18px 0 0;
   font: 700 clamp(26px, 3.2vw, 40px)/1.16 Manrope, sans-serif;
@@ -740,7 +745,7 @@ section[id] { scroll-margin-top: 88px; }
   font: 700 12.5px Manrope, sans-serif;
 }
 .chip--accent { border-color: rgba(0,179,172,.55); background: rgba(0,179,172,.24); }
-.chip-meta { font: 600 13px Manrope, sans-serif; color: rgba(255,255,255,.6); }
+.chip-meta { font: 600 13px Manrope, sans-serif; color: rgba(255,255,255,.85); }
 a.project { text-decoration: none; color: inherit; display: block; transition: transform .3s ease, box-shadow .3s ease; }
 a.project:hover { transform: translateY(-4px); box-shadow: 0 36px 80px rgba(0,0,0,.5); }
 a.project:hover .project-open { color: #fff; }
@@ -869,7 +874,7 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   left: 28px;
   width: 38px;
   height: 38px;
-  background: var(--teal);
+  background: var(--teal-dark);
   border-radius: 50% 50% 50% 0;
   transform: rotate(135deg);
   display: flex;
@@ -878,7 +883,7 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   box-shadow: 0 8px 20px rgba(0,179,172,.32);
 }
 .review-quote-drop span { transform: rotate(-135deg); color: #fff; line-height: 0; }
-.review-stars { font: 600 15px Manrope, sans-serif; color: var(--teal); letter-spacing: .14em; }
+.review-stars { font: 600 15px Manrope, sans-serif; color: var(--teal-dark); letter-spacing: .14em; }
 .review blockquote {
   margin: 16px 0 0;
   font: 500 17px/1.66 Manrope, sans-serif;
@@ -910,7 +915,7 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
 }
 .review-who { display: flex; flex-direction: column; gap: 3px; }
 .review-who b { font: 800 14.5px Manrope, sans-serif; }
-.review-who span { font: 600 13.5px Manrope, sans-serif; color: rgba(10,10,10,.5); }
+.review-who span { font: 600 13.5px Manrope, sans-serif; color: rgba(10,10,10,.62); }
 
 /* ---------- Offerte ---------- */
 
@@ -940,18 +945,18 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   color: rgba(10,10,10,.7);
 }
 .offerte-bel { margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(10,10,10,.12); }
-.offerte-bel-label { font: 600 13.5px Manrope, sans-serif; color: rgba(10,10,10,.5); }
+.offerte-bel-label { font: 600 13.5px Manrope, sans-serif; color: rgba(10,10,10,.62); }
 .offerte-tel {
   display: inline-block;
   margin-top: 10px;
   font: 800 clamp(28px, 3.2vw, 40px)/1.1 Manrope, sans-serif;
   letter-spacing: -.028em;
-  color: var(--teal);
+  color: var(--teal-dark);
   text-decoration: none;
 }
 .offerte-tel:hover { color: var(--teal-dark); }
 .offerte-mail { margin-top: 14px; font: 600 14.5px Manrope, sans-serif; color: rgba(10,10,10,.6); }
-.offerte-mail a { color: var(--teal); text-decoration: none; }
+.offerte-mail a { color: var(--teal-dark); text-decoration: none; }
 .offerte-formwrap { flex: 1 1 420px; max-width: 560px; }
 .offerte-form {
   display: grid;
@@ -980,7 +985,7 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
 .offerte-form button {
   margin-top: 6px;
   padding: 18px 28px;
-  background: var(--teal);
+  background: var(--teal-dark);
   border: none;
   border-radius: 4px;
   font: 800 16px Manrope, sans-serif;
@@ -988,7 +993,7 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   cursor: pointer;
 }
 .offerte-form button:hover { background: var(--teal-dark); }
-.form-privacy { font: 500 12.5px/1.5 Manrope, sans-serif; color: rgba(10,10,10,.45); }
+.form-privacy { font: 500 12.5px/1.5 Manrope, sans-serif; color: rgba(10,10,10,.62); }
 .form-error {
   display: none;
   padding: 14px 16px;
@@ -1057,31 +1062,37 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
 .footer-col-merk img { height: 52px; width: auto; display: block; }
 .footer-col-merk p { margin: 20px 0 0; font: 400 14.5px/1.65 Manrope, sans-serif; color: rgba(10,10,10,.6); }
 .footer-col-contact { flex: 0 1 220px; }
-.footer-title { font: 800 17px Manrope, sans-serif; color: var(--ink); }
-.footer-contact { display: flex; flex-direction: column; gap: 14px; margin-top: 20px; }
+.footer-contact { display: flex; flex-direction: column; gap: 4px; margin-top: 12px; }
 .footer-contact > div { display: flex; align-items: center; gap: 12px; }
 .footer-contact > div:first-child { align-items: flex-start; }
 .footer-contact .ic-wrap { flex: none; line-height: 0; color: var(--teal); }
 .footer-contact > div:first-child .ic-wrap { margin-top: 2px; }
 .footer-contact span:not(.ic-wrap),
-.footer-contact a { font: 500 14.5px/1.55 Manrope, sans-serif; color: rgba(10,10,10,.72); text-decoration: none; }
-.footer-contact a:hover { color: var(--teal); }
+.footer-contact a {
+  font: 500 14.5px/1.55 Manrope, sans-serif;
+  color: rgba(10,10,10,.72);
+  text-decoration: none;
+  padding: 4px 0;
+}
+.footer-contact a:hover { color: var(--teal-dark); }
 .footer-col-gebied { flex: 0 1 240px; }
 .footer-col-gegevens { flex: 0 1 200px; }
 .footer-kicker {
   font: 700 12px Manrope, sans-serif;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: rgba(10,10,10,.5);
+  color: rgba(10,10,10,.62);
 }
 .footer-col-gebied p,
 .footer-col-gegevens p { margin: 18px 0 0; font: 400 14.5px/1.65 Manrope, sans-serif; color: rgba(10,10,10,.68); }
+.footer-links { display: flex; flex-direction: column; }
+.footer-links a { display: inline-block; padding: 3px 0; }
 .footer-bottom {
   margin-top: 48px;
   padding-top: 24px;
   border-top: 1px solid rgba(10,10,10,.12);
   font: 500 13px Manrope, sans-serif;
-  color: rgba(10,10,10,.5);
+  color: rgba(10,10,10,.62);
 }
 
 /* ---------- Mobiele CTA-balk ---------- */
@@ -1107,7 +1118,7 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   text-decoration: none;
   border-radius: 4px;
 }
-.ctabar-primary { background: var(--teal); color: #fff; font: 800 16px Manrope, sans-serif; }
+.ctabar-primary { background: var(--teal-dark); color: #fff; font: 800 16px Manrope, sans-serif; }
 .ctabar-primary:hover { color: #fff; }
 .ctabar-bel {
   gap: 9px;
@@ -1118,6 +1129,15 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
 .ctabar-bel:hover { color: var(--ink); }
 @media (max-width: 759px) {
   .ctabar { display: flex; }
+  /* De balk staat vast onderaan en legde zich over het einde van de footer.
+     Deze ruimte houdt de laatste regels vrij, ook op een korter scherm. */
+  body { padding-bottom: 88px; }
+  /* Onderaan de pagina stond het logo tweemaal vlak boven elkaar: dat van de
+     vastgezette header en dat van de footer. */
+  .footer-col-merk img { display: none; }
+  /* Tikdoelen: op een telefoon moeten deze links met een duim te raken zijn. */
+  .footer-contact a,
+  .footer-links a { padding: 11px 0; }
 }
 
 /* ---------- Recensies-pagina ---------- */
@@ -1145,7 +1165,7 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   align-items: center;
   gap: 9px;
   font: 700 14px Manrope, sans-serif;
-  color: var(--teal);
+  color: var(--teal-dark);
   text-decoration: none;
 }
 .rec-terug:hover { color: var(--teal-dark); }
@@ -1181,7 +1201,7 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   font: 700 15px Manrope, sans-serif;
   color: rgba(10,10,10,.7);
 }
-.rec-intro-feiten .sterren { letter-spacing: .16em; color: var(--teal); }
+.rec-intro-feiten .sterren { letter-spacing: .16em; color: var(--teal-dark); }
 .rec-intro-feiten .drop { background: var(--teal); }
 .rec-lijst { padding: clamp(48px, 7vw, 100px) var(--pad-x); }
 .rec-kolommen { columns: 3 320px; column-gap: 26px; }
@@ -1231,11 +1251,11 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   gap: 9px;
   margin-top: 18px;
   font: 700 14.5px Manrope, sans-serif;
-  color: var(--teal);
+  color: var(--teal-dark);
   text-decoration: none;
 }
 .rec-mail-link:hover { color: var(--teal-dark); }
-.rec-bron { margin: 8px 0 0; font: 600 14px Manrope, sans-serif; color: rgba(10,10,10,.45); }
+.rec-bron { margin: 8px 0 0; font: 600 14px Manrope, sans-serif; color: rgba(10,10,10,.62); }
 
 /* ---------- Projectpagina ---------- */
 
@@ -1262,7 +1282,7 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   font: 700 12px Manrope, sans-serif;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--teal-dark);
 }
 .proj-intro h1 {
   position: relative;
@@ -1300,7 +1320,7 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   background: rgba(0,179,172,.1);
   color: var(--teal-dark);
 }
-.proj-chips .chip-meta { color: rgba(10,10,10,.55); }
+.proj-chips .chip-meta { color: rgba(10,10,10,.62); }
 
 .proj-body { padding: clamp(44px, 6vw, 80px) 0 clamp(48px, 6vw, 90px); }
 .proj-body-inner {
@@ -1370,7 +1390,7 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   margin: clamp(32px, 4vw, 52px) 0 0;
   padding: 0 var(--pad-x);
   font: 500 15.5px Manrope, sans-serif;
-  color: rgba(10,10,10,.55);
+  color: rgba(10,10,10,.62);
 }
 
 .proj-nav {
@@ -1405,7 +1425,7 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   font: 700 11.5px Manrope, sans-serif;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: rgba(10,10,10,.45);
+  color: rgba(10,10,10,.62);
 }
 .proj-nav-titel { display: block; margin-top: 5px; font: 800 16px Manrope, sans-serif; }
 
@@ -1438,7 +1458,7 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
 }
 .vw-inhoud li { font: 500 14px/1.4 Manrope, sans-serif; color: rgba(10,10,10,.6); }
 .vw-inhoud a { color: rgba(10,10,10,.72); text-decoration: none; }
-.vw-inhoud a:hover { color: var(--teal); }
+.vw-inhoud a:hover { color: var(--teal-dark); }
 .vw-tekst { flex: 1 1 460px; min-width: 0; max-width: 780px; }
 .vw-artikel { scroll-margin-top: 100px; }
 .vw-artikel + .vw-artikel {
@@ -1459,6 +1479,7 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   text-wrap: pretty;
 }
 .vw-artikel p:last-child { margin-bottom: 0; }
+.vw-datum { margin: 14px 0 0; font: 600 13.5px Manrope, sans-serif; color: rgba(10,10,10,.62); }
 @media (max-width: 859px) {
   .vw-inhoud { position: static; flex-basis: 100%; }
 }
@@ -1505,7 +1526,7 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
 .cta-blok-nb {
   margin: 18px 0 0;
   font: 600 14px/1.55 Manrope, sans-serif;
-  color: rgba(10,10,10,.5);
+  color: rgba(10,10,10,.62);
 }
 .cta-blok-knoppen { position: relative; display: flex; flex-wrap: wrap; gap: 12px; }
 
