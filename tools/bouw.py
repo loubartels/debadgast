@@ -566,7 +566,7 @@ def bouw_recensies(s, recensies):
   <p data-fu>Bijna al mijn klanten komen via mond-tot-mondreclame. Hieronder leest u wat mensen zelf over de renovatie van hun badkamer of toilet schreven.</p>
   <div class="rec-intro-feiten" data-fu>
     <div><span class="sterren">★★★★★</span>Alleen vijf sterren tot nu toe</div>
-    <div><span class="drop"></span>{len(recensies)} recensies · ±500 badkamers sinds 2007</div>
+    <div><span class="drop"></span>{len(recensies)} recensies · ±500 badkamers in 45 jaar</div>
   </div>
 </section>
 
