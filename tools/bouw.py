@@ -302,7 +302,7 @@ def projectpagina(s, pr, fs, vorige, volgende):
     if fs:
         items = "".join(
             f'''      <button type="button" class="galerij-item" data-foto="{i}" aria-label="Foto {i + 1} van {len(fs)} vergroten">
-        <img src="../{fotopad(f)}" alt="{e(pr["titel"])}{e(in_plaats(pr))} — foto {i + 1}" loading="lazy" decoding="async">
+        <img src="../{fotopad(f)}" alt="{e(pr["titel"])}{e(in_plaats(pr))}, foto {i + 1}" loading="lazy" decoding="async">
       </button>
 ''' for i, f in enumerate(fs))
         galerij = f'    <div class="galerij" id="galerij">\n{items}    </div>\n'
@@ -329,7 +329,7 @@ def projectpagina(s, pr, fs, vorige, volgende):
         nav = f'\n<nav class="proj-nav" aria-label="Andere projecten">\n{links}</nav>\n'
 
     return (
-        kop(f'{pr["titel"]}{in_plaats(pr)} — De Badgast', pr["lead"], "../",
+        kop(f'{pr["titel"]}{in_plaats(pr)} | De Badgast', pr["lead"], "../",
             f'projecten/{pr["slug"]}.html',
             fotopad(fs[0]) if fs else "assets/hero-badkamer.jpg")
         + header(s, "../")
@@ -611,7 +611,7 @@ def bouw_recensies(s, recensies):
 ''' for r in recensies)
 
     return (
-        kop("Recensies — De Badgast, badkamerrenovaties Roosendaal",
+        kop("Recensies | De Badgast, badkamerrenovaties Roosendaal",
             "Wat klanten schrijven over de badkamer- en toiletrenovaties van Gerard Bartels (De Badgast) in Roosendaal en omgeving. Alleen vijf sterren tot nu toe.",
             pad="recensies.html")
         + header(s)
@@ -649,12 +649,12 @@ def bouw_voorwaarden(s, v):
         for a in v["artikelen"])
     artikelen = "".join(
         f'''    <article class="vw-artikel" id="artikel-{a["nummer"]}" data-fu>
-      <h2>Artikel {a["nummer"]} — {e(a["titel"])}</h2>
+      <h2>Artikel {a["nummer"]}. {e(a["titel"])}</h2>
 {"".join(f'      <p>{e(t)}</p>{chr(10)}' for t in a["alineas"])}    </article>
 ''' for a in v["artikelen"])
 
     return (
-        kop(f'{v["titel"]} — De Badgast', v["omschrijving"], pad="voorwaarden.html")
+        kop(f'{v["titel"]} | De Badgast', v["omschrijving"], pad="voorwaarden.html")
         + header(s)
         + f'''
 <section class="rec-intro">
@@ -690,7 +690,7 @@ def bouw_privacy(s, pv):
 ''' for o in pv["onderdelen"])
 
     return (
-        kop(f'{pv["titel"]} — De Badgast', pv["omschrijving"], pad="privacy.html")
+        kop(f'{pv["titel"]} | De Badgast', pv["omschrijving"], pad="privacy.html")
         + header(s)
         + f'''
 <section class="rec-intro">
