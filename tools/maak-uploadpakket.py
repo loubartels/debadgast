@@ -17,7 +17,7 @@ ZIP = WORTEL / "debadgast-site.zip"
 
 # Wat mee moet naar de webserver. De rest (README, tools, .github, .git) is
 # alleen voor het beheer en heeft op de site niets te zoeken.
-MEE = ["index.html", "recensies.html", "voorwaarden.html", "privacy.html", "404.html", "sitemap.xml", "robots.txt", ".htaccess"]
+MEE = ["index.html", "recensies.html", "voorwaarden.html", "privacy.html", "404.html", "sitemap.xml", "robots.txt", "favicon.ico", ".htaccess"]
 MEE_MAPPEN = ["assets", "projecten"]
 
 
