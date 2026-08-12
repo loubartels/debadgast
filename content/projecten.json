@@ -1,5 +1,31 @@
 [
   {
+    "titel": "Badkamer met boognissen en vrijstaand bad",
+    "slug": "boognissen",
+    "soort": "Badkamer",
+    "label": "Donker en sfeervol",
+    "lead": "Een badkamer met twee gemetselde boognissen: één voor de inloopdouche, één voor de wastafel. Zwart marmerlook met goudader tegen verticale houten lamellen, en een vrijstaand bad onder een verlaagd plafond met verlichting.",
+    "kenmerken": [
+      "Boognissen",
+      "Vrijstaand bad",
+      "Inloopdouche",
+      "Natuurstenen waskom"
+    ],
+    "werk": [
+      "Oude badkamer gesloopt en afgevoerd",
+      "Leidingwerk en elektra vernieuwd",
+      "Twee boognissen opgebouwd en afgewerkt",
+      "Wanden en vloer betegeld, marmerlook en houtlook",
+      "Verlaagd plafond met inbouwverlichting aangebracht",
+      "Inloopdouche met glaswand geplaatst",
+      "Wastafelmeubel met natuurstenen waskom gemonteerd",
+      "Vrijstaand bad met vrijstaande kraan aangesloten"
+    ],
+    "plaats": "",
+    "duur": "",
+    "omslag_positie": ""
+  },
+  {
     "slug": "musters",
     "titel": "Badkamer met vrijstaand bad en natuurstenen waskommen",
     "label": "Warm en natuurlijk",
