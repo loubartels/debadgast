@@ -25,7 +25,7 @@ from pathlib import Path
 WORTEL = Path(__file__).resolve().parent.parent
 CONTENT = WORTEL / "content"
 FOTO_TYPES = {".jpg", ".jpeg", ".png", ".webp", ".avif"}
-ASSETVERSIE = "9"
+ASSETVERSIE = "10"
 SITE_URL = "https://debadgast.nl"
 
 # ---------------------------------------------------------------- iconen ----
@@ -98,8 +98,8 @@ def kop(titel, omschrijving, p="", pad="", deelfoto="assets/hero-badkamer.jpg", 
   <title>{e(titel)}</title>
   <meta name="description" content="{e(omschrijving)}">
   <link rel="canonical" href="{e(url)}">
-  <link rel="icon" href="{p}assets/favicon.png" type="image/png" sizes="any">
-  <link rel="apple-touch-icon" href="{p}assets/favicon-180.png">
+  <link rel="icon" href="{p}assets/favicon.png?v={ASSETVERSIE}" type="image/png" sizes="any">
+  <link rel="apple-touch-icon" href="{p}assets/favicon-180.png?v={ASSETVERSIE}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="De Badgast">
   <meta property="og:locale" content="nl_NL">
