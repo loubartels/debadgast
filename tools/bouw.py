@@ -411,7 +411,13 @@ def bouw_index(s, h, projecten):
         + header(s, home=True)
         + f'''
 <section class="hero">
-  <img class="hero-img" src="assets/hero-badkamer.jpg" alt="Door De Badgast gerenoveerde badkamer met vrijstaand bad" fetchpriority="high" decoding="async">
+  <!-- Op een telefoon is de hero een staande strook van ongeveer 1:2,7. Een
+       liggende foto houdt daarin nog maar een smalle verticale reep over, dus
+       daar staat een staande foto van de wastafelnis. -->
+  <picture>
+    <source media="(max-width: 719px)" srcset="assets/hero-badkamer-mobiel.jpg">
+    <img class="hero-img" src="assets/hero-badkamer.jpg" alt="Door De Badgast gerenoveerde badkamer met vrijstaand bad" fetchpriority="high" decoding="async">
+  </picture>
   <div class="hero-shade-side"></div>
   <div class="hero-shade-bottom"></div>
 
