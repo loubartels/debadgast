@@ -25,7 +25,7 @@ from pathlib import Path
 WORTEL = Path(__file__).resolve().parent.parent
 CONTENT = WORTEL / "content"
 FOTO_TYPES = {".jpg", ".jpeg", ".png", ".webp", ".avif"}
-ASSETVERSIE = "8"
+ASSETVERSIE = "9"
 SITE_URL = "https://debadgast.nl"
 
 # ---------------------------------------------------------------- iconen ----
@@ -106,7 +106,7 @@ def kop(titel, omschrijving, p="", pad="", deelfoto="assets/hero-badkamer.jpg", 
   <meta property="og:title" content="{e(titel)}">
   <meta property="og:description" content="{e(omschrijving)}">
   <meta property="og:url" content="{e(url)}">
-  <meta property="og:image" content="{SITE_URL}/{deelfoto}">
+  <meta property="og:image" content="{SITE_URL}/{deelfoto}?v={ASSETVERSIE}">
   <meta property="og:image:alt" content="Badkamer gerenoveerd door De Badgast">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -415,8 +415,8 @@ def bouw_index(s, h, projecten):
        liggende foto houdt daarin nog maar een smalle verticale reep over, dus
        daar staat een staande foto van de wastafelnis. -->
   <picture>
-    <source media="(max-width: 719px)" srcset="assets/hero-badkamer-mobiel.jpg">
-    <img class="hero-img" src="assets/hero-badkamer.jpg" alt="Door De Badgast gerenoveerde badkamer met vrijstaand bad" fetchpriority="high" decoding="async">
+    <source media="(max-width: 719px)" srcset="assets/hero-badkamer-mobiel.jpg?v={ASSETVERSIE}">
+    <img class="hero-img" src="assets/hero-badkamer.jpg?v={ASSETVERSIE}" alt="Door De Badgast gerenoveerde badkamer met vrijstaand bad" fetchpriority="high" decoding="async">
   </picture>
   <div class="hero-shade-side"></div>
   <div class="hero-shade-bottom"></div>
