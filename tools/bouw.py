@@ -25,7 +25,7 @@ from pathlib import Path
 WORTEL = Path(__file__).resolve().parent.parent
 CONTENT = WORTEL / "content"
 FOTO_TYPES = {".jpg", ".jpeg", ".png", ".webp", ".avif"}
-ASSETVERSIE = "15"
+ASSETVERSIE = "16"
 SITE_URL = "https://debadgast.nl"
 
 # ---------------------------------------------------------------- iconen ----
@@ -626,8 +626,17 @@ def bouw_recensies(s, recensies):
 <section class="rec-intro">
   <div class="rec-intro-deco" aria-hidden="true"></div>
   <a class="rec-terug" href="index.html" data-fu>{svg("pijl-links", 16)}Terug naar de homepage</a>
-  <h1 data-fu>Wat klanten over<br>mijn werk schrijven</h1>
-  <p data-fu>Bijna al mijn klanten komen via mond-tot-mondreclame. Hieronder leest u wat mensen zelf over de renovatie van hun badkamer of toilet schreven.</p>
+  <div class="rec-intro-boven">
+    <div class="rec-intro-tekst">
+      <h1 data-fu>Wat klanten over<br>mijn werk schrijven</h1>
+      <p data-fu>Bijna al mijn klanten komen via mond-tot-mondreclame. Hieronder leest u wat mensen zelf over de renovatie van hun badkamer of toilet schreven.</p>
+    </div>
+    <aside class="rec-uitnodiging" data-fu>
+      <div class="rec-uitnodiging-kop">{svg("bericht")}Ruimte voor uw recensie</div>
+      <p>Heb ik bij u gewerkt? Dan hoor ik graag wat u ervan vond.</p>
+      <a class="link-pill" href="#recensie-schrijven">Recensie achterlaten{svg("pijl-rechts", 17)}</a>
+    </aside>
+  </div>
   <div class="rec-intro-feiten" data-fu>
     <div><span class="sterren">★★★★★</span>Alleen vijf sterren tot nu toe</div>
     <div><span class="drop"></span>{len(recensies)} recensies · ±500 badkamers in 45 jaar</div>
@@ -636,13 +645,57 @@ def bouw_recensies(s, recensies):
 
 <section class="rec-lijst">
   <div class="rec-kolommen">
-    <figure class="rec-kaart rec-kaart--uitnodiging">
-      <div class="rec-uitnodiging-kop">{svg("bericht")}Ruimte voor uw recensie</div>
-      <p>Heb ik bij u gewerkt en wilt u iets achterlaten? Mail me gerust, dan zet ik het erbij.</p>
-      <a class="rec-mail-link" href="mailto:{e(s["email"])}">{e(s["email"])}{svg("pijl-rechtsboven", 16)}</a>
-    </figure>
 {kaarten}  </div>
   <p class="rec-bron" data-fu>Alle {len(recensies)} recensies zijn sinds 2011 door klanten zelf ingestuurd en staan hier ongewijzigd, met naam, plaats en datum.</p>
+</section>
+
+<section class="rec-formulier" id="recensie-schrijven">
+  <div class="rec-formulier-inner">
+    <div class="rec-formulier-tekst" data-fu>
+      <div class="kicker">Recensie achterlaten</div>
+      <h2>Heb ik bij u gewerkt?</h2>
+      <p>Dan hoor ik graag wat u ervan vond. Schrijf gerust op wat u opviel, of dat nu de badkamer zelf is of de manier van werken.</p>
+      <p class="rec-formulier-nb">Uw recensie komt eerst bij mij binnen. Ik lees hem, en pas daarna zet ik hem op de website. Dat kan een paar dagen duren, want ik sta meestal op de steiger.</p>
+    </div>
+
+    <div class="rec-formwrap" data-fu>
+      <form class="rec-form" novalidate>
+        <label>
+          <span>Naam</span>
+          <input type="text" name="naam" autocomplete="name" maxlength="80" required placeholder="Zoals u genoemd wilt worden">
+        </label>
+        <div class="rec-form-rij">
+          <label>
+            <span>Plaats</span>
+            <input type="text" name="plaats" autocomplete="address-level2" maxlength="60" required placeholder="Roosendaal">
+          </label>
+          <label>
+            <span>E-mail</span>
+            <input type="email" name="email" autocomplete="email" maxlength="120" required placeholder="naam@voorbeeld.nl">
+          </label>
+        </div>
+        <label>
+          <span>Uw ervaring</span>
+          <textarea name="recensie" rows="6" maxlength="2500" required placeholder="Wat heeft Gerard voor u gedaan, en wat vond u ervan?"></textarea>
+        </label>
+        <label class="rec-form-akkoord">
+          <input type="checkbox" name="toestemming" value="ja" required>
+          <span>Ik geef toestemming om deze recensie met mijn naam en woonplaats op de website te tonen. Mijn e-mailadres blijft priv&eacute;.</span>
+        </label>
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="rec-form-val">
+        <button class="btn-primary" type="submit">Recensie versturen</button>
+        <div class="form-error" role="alert">Versturen is niet gelukt. Probeer het nog eens, of mail uw recensie naar <a href="mailto:{e(s["email"])}">{e(s["email"])}</a>.</div>
+        <p class="form-privacy">Uw e-mailadres gebruik ik alleen om contact op te nemen over deze recensie. Zie de <a href="privacy.html">privacyverklaring</a>.</p>
+      </form>
+
+      <div class="rec-success" role="status">
+        <span class="ic-wrap">{svg("vinkje", 28)}</span>
+        <h3>Dank u wel</h3>
+        <p>Uw recensie staat bij mij in de mailbox. Ik lees hem eerst zelf en zet hem daarna op de website. Klopt er iets niet, dan neem ik contact met u op.</p>
+        <button type="button" class="btn-outline">Nog een recensie schrijven</button>
+      </div>
+    </div>
+  </div>
 </section>
 '''
         + cta_blok(s, "Ook op deze lijst komen?")
