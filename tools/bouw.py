@@ -25,7 +25,7 @@ from pathlib import Path
 WORTEL = Path(__file__).resolve().parent.parent
 CONTENT = WORTEL / "content"
 FOTO_TYPES = {".jpg", ".jpeg", ".png", ".webp", ".avif"}
-ASSETVERSIE = "10"
+ASSETVERSIE = "11"
 SITE_URL = "https://debadgast.nl"
 
 # ---------------------------------------------------------------- iconen ----
