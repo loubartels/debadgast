@@ -35,6 +35,22 @@ Na elke wijziging klik je op **Save**. Een paar minuten later staat het live. Ve
 
 Nieuwe recensies horen bovenaan; je kunt ze in de lijst omhoog slepen.
 
+## Een recensie die via de website binnenkomt
+
+Op de recensiepagina kunnen klanten zelf een recensie achterlaten. **Die komt
+niet automatisch op de site.** Hij wordt als e-mail naar info@debadgast.nl
+gestuurd, met het onderwerp *"Nieuwe recensie via debadgast.nl — nog niet
+geplaatst"*. Jij beslist of hij erop komt.
+
+Wil je hem plaatsen, neem dan de tekst over via **Recensies → Add an entry**,
+zoals hierboven beschreven. Wil je hem niet plaatsen, doe dan niets: er gebeurt
+verder niets met de mail.
+
+In de mail staat ook het e-mailadres van de inzender. Dat is voor jou, om
+contact op te nemen als er iets niet klopt. **Zet dat adres niet op de
+website** — de inzender heeft alleen toestemming gegeven voor zijn naam en
+woonplaats.
+
 ## Foto's toevoegen aan een project
 
 De foto's van elk project staan in een eigen map. Die maps staan onder `assets/projecten/`, met per project een korte naam (bijvoorbeeld `musters`).

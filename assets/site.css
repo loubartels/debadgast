@@ -1200,7 +1200,7 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   letter-spacing: -.032em;
   text-wrap: pretty;
 }
-.rec-intro > p {
+.rec-intro-tekst > p {
   position: relative;
   margin: 22px 0 0;
   max-width: 560px;
@@ -1226,6 +1226,137 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
 }
 .rec-intro-feiten .sterren { letter-spacing: .16em; color: var(--teal-dark); }
 .rec-intro-feiten .drop { background: var(--teal); }
+
+/* De uitnodiging stond onderaan tussen de kaarten. Wie hem zocht moest eerst
+   tweeënnegentig recensies door, terwijl hij juist bedoeld is voor mensen bij
+   wie Gerard net klaar is. Nu staat hij rechtsboven, naast de kop. */
+.rec-intro-boven {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px 48px;
+}
+.rec-intro-tekst { flex: 1 1 520px; min-width: 0; }
+.rec-uitnodiging {
+  flex: 0 1 330px;
+  margin-top: clamp(22px, 3vw, 44px);
+  padding: 26px 28px 28px;
+  background: #fff;
+  border: 1px solid rgba(0,179,172,.28);
+  border-radius: 8px;
+  box-shadow: 0 18px 44px rgba(10,10,10,.06);
+}
+.rec-uitnodiging p {
+  margin: 12px 0 20px;
+  font: 400 15px/1.65 Manrope, sans-serif;
+  color: rgba(10,10,10,.64);
+}
+.rec-uitnodiging .link-pill { padding: 13px 22px; font-size: 14px; }
+
+/* ---------- Recensie achterlaten ---------- */
+
+.rec-formulier {
+  scroll-margin-top: 88px;
+  padding: clamp(56px, 7vw, 96px) var(--pad-x);
+  background: #f7f8f9;
+  border-top: 1px solid rgba(10,10,10,.08);
+}
+.rec-formulier-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: clamp(32px, 5vw, 72px);
+}
+.rec-formulier-tekst { flex: 1 1 380px; min-width: 0; }
+.rec-formulier-tekst h2 {
+  margin: 16px 0 0;
+  font: 800 clamp(26px, 3vw, 38px)/1.12 Manrope, sans-serif;
+  letter-spacing: -.03em;
+  text-wrap: pretty;
+}
+.rec-formulier-tekst p {
+  margin: 18px 0 0;
+  max-width: 460px;
+  font: 400 16px/1.7 Manrope, sans-serif;
+  color: rgba(10,10,10,.64);
+}
+.rec-formulier-nb {
+  margin-top: 22px !important;
+  padding: 16px 18px;
+  background: #fff;
+  border-left: 3px solid var(--teal);
+  border-radius: 0 4px 4px 0;
+  font-size: 15px !important;
+  color: rgba(10,10,10,.7) !important;
+}
+.rec-formwrap {
+  position: relative;
+  flex: 1 1 460px;
+  min-width: 0;
+  padding: clamp(24px, 3vw, 34px);
+  background: #fff;
+  border: 1px solid rgba(10,10,10,.1);
+  border-radius: 8px;
+}
+.rec-form { display: flex; flex-direction: column; gap: 16px; }
+.rec-form-rij { display: flex; flex-wrap: wrap; gap: 16px; }
+.rec-form-rij label { flex: 1 1 180px; min-width: 0; }
+.rec-form label { display: flex; flex-direction: column; gap: 7px; }
+.rec-form label > span { font: 700 13.5px Manrope, sans-serif; color: rgba(10,10,10,.7); }
+.rec-form input[type=text],
+.rec-form input[type=email],
+.rec-form textarea {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1.5px solid rgba(10,10,10,.16);
+  border-radius: 4px;
+  font: 400 15.5px/1.5 Manrope, sans-serif;
+  color: var(--ink);
+  background: #fff;
+}
+.rec-form input:focus,
+.rec-form textarea:focus { outline: none; border-color: var(--teal-dark); }
+.rec-form textarea { resize: vertical; min-height: 130px; }
+.rec-form-akkoord {
+  flex-direction: row !important;
+  align-items: flex-start;
+  gap: 11px !important;
+  font: 400 14px/1.55 Manrope, sans-serif;
+  color: rgba(10,10,10,.7);
+}
+.rec-form-akkoord input { margin-top: 3px; width: 17px; height: 17px; flex: none; accent-color: var(--teal-dark); }
+.rec-form-akkoord span { font-weight: 400 !important; }
+/* Lokmiddel voor bots: onzichtbaar voor mensen, ingevuld door invulrobots. */
+.rec-form-val { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.rec-form .btn-primary { justify-content: center; border: 0; cursor: pointer; font-family: Manrope, sans-serif; }
+
+.rec-success {
+  display: none;
+  text-align: center;
+  padding: 20px 0 8px;
+}
+.rec-formwrap.is-sent .rec-form { display: none; }
+.rec-formwrap.is-sent .rec-success { display: block; }
+.rec-success .ic-wrap { color: var(--teal-dark); line-height: 0; display: inline-block; }
+.rec-success h3 {
+  margin: 14px 0 0;
+  font: 800 22px Manrope, sans-serif;
+  letter-spacing: -.02em;
+}
+.rec-success p {
+  margin: 12px auto 22px;
+  max-width: 380px;
+  font: 400 15.5px/1.65 Manrope, sans-serif;
+  color: rgba(10,10,10,.64);
+}
+.rec-success button { cursor: pointer; font-family: Manrope, sans-serif; }
+
+@media (max-width: 719px) {
+  .rec-uitnodiging { flex-basis: 100%; margin-top: 4px; }
+  .rec-uitnodiging .link-pill { width: 100%; justify-content: center; }
+}
 .rec-lijst { padding: clamp(48px, 7vw, 100px) var(--pad-x); }
 .rec-kolommen { columns: 3 320px; column-gap: 26px; }
 .rec-kaart {
