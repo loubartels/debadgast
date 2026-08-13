@@ -25,7 +25,7 @@ from pathlib import Path
 WORTEL = Path(__file__).resolve().parent.parent
 CONTENT = WORTEL / "content"
 FOTO_TYPES = {".jpg", ".jpeg", ".png", ".webp", ".avif"}
-ASSETVERSIE = "13"
+ASSETVERSIE = "14"
 SITE_URL = "https://debadgast.nl"
 
 # ---------------------------------------------------------------- iconen ----
@@ -642,7 +642,7 @@ def bouw_recensies(s, recensies):
       <a class="rec-mail-link" href="mailto:{e(s["email"])}">{e(s["email"])}{svg("pijl-rechtsboven", 16)}</a>
     </figure>
 {kaarten}  </div>
-  <p class="rec-bron" data-fu>Alle {len(recensies)} recensies, integraal overgenomen van debadgast.nl.</p>
+  <p class="rec-bron" data-fu>Alle {len(recensies)} recensies zijn sinds 2011 door klanten zelf ingestuurd en staan hier ongewijzigd, met naam, plaats en datum.</p>
 </section>
 '''
         + cta_blok(s, "Ook op deze lijst komen?")
