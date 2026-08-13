@@ -217,15 +217,15 @@ section[id] { scroll-margin-top: 88px; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 15px 24px;
-  border: 1.5px solid rgba(0,179,172,.4);
+  padding: 15px 26px;
+  background: var(--teal);
   border-radius: 999px;
-  font: 700 14.5px Manrope, sans-serif;
-  color: var(--teal-dark);
+  font: 800 14.5px Manrope, sans-serif;
+  color: #fff;
   text-decoration: none;
   flex: none;
 }
-.link-pill:hover { border-color: var(--teal-dark); background: rgba(0,114,109,.07); color: var(--teal-donkerder); }
+.link-pill:hover { background: var(--teal-dark); color: #fff; }
 .btn-outline {
   display: inline-flex;
   align-items: center;
