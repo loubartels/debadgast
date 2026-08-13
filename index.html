@@ -471,7 +471,9 @@
       </div>
     </div>
     <div class="offerte-formwrap" data-fu>
-      <form class="offerte-form">
+      <!-- method="post" zonder action: mocht het JavaScript niet laden, dan
+           komen de ingevulde gegevens niet als tekst in de adresbalk terecht. -->
+      <form class="offerte-form" method="post">
         <label><span>Naam</span><input name="naam" required placeholder="Voor- en achternaam"></label>
         <div class="form-row">
           <label><span>Telefoon</span><input name="telefoon" type="tel" required placeholder="06 12 34 56 78"></label>

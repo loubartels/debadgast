@@ -19,6 +19,7 @@ wijzig de inhoud in content/. Dat is ook wat de bewerkomgeving doet.
 
 import html
 import json
+import re
 import shutil
 from pathlib import Path
 
@@ -79,6 +80,28 @@ def laad(naam):
     return json.loads((CONTENT / naam).read_text(encoding="utf-8"))
 
 
+VEILIGE_SLEUTEL = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+
+
+def sleutel(waarde, waar):
+    """Controleert een waarde die in een bestandsnaam of anker terechtkomt.
+
+    Deze waarden komen uit de bewerkomgeving en worden gebruikt om paden mee
+    te bouwen en HTML-attributen mee te vullen. Zonder controle kan een punt
+    of een aanhalingsteken erin het bouwscript buiten zijn eigen map laten
+    schrijven of een attribuut laten openbreken. Liever hier stukbreken met
+    een leesbare melding dan stilletjes iets raars opleveren.
+    """
+    waarde = str(waarde)
+    if not VEILIGE_SLEUTEL.match(waarde):
+        raise SystemExit(
+            f"\nFout in {waar}: '{waarde}' mag hier niet.\n"
+            "Gebruik alleen kleine letters, cijfers en koppeltekens, "
+            "bijvoorbeeld 'badkamer-met-inloopdouche'.\n"
+        )
+    return waarde
+
+
 # ------------------------------------------------------- gedeelde stukken ----
 
 def kop(titel, omschrijving, p="", pad="", deelfoto="assets/hero-badkamer.jpg", extra=""):
@@ -106,7 +129,7 @@ def kop(titel, omschrijving, p="", pad="", deelfoto="assets/hero-badkamer.jpg", 
   <meta property="og:title" content="{e(titel)}">
   <meta property="og:description" content="{e(omschrijving)}">
   <meta property="og:url" content="{e(url)}">
-  <meta property="og:image" content="{SITE_URL}/{deelfoto}?v={ASSETVERSIE}">
+  <meta property="og:image" content="{e(SITE_URL + "/" + deelfoto)}?v={ASSETVERSIE}">
   <meta property="og:image:alt" content="Badkamer gerenoveerd door De Badgast">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -147,9 +170,11 @@ def bedrijfsgegevens(s, recensies):
             "reviewCount": str(len(recensies)),
         },
     }
-    return ('  <script type="application/ld+json">\n'
-            + json.dumps(gegevens, ensure_ascii=False, indent=2)
-            + "\n  </script>\n")
+    # json.dumps ontsnapt geen < en >, dus een waarde met </script> erin zou
+    # het scriptblok afsluiten en de rest als HTML laten uitvoeren.
+    ruw = json.dumps(gegevens, ensure_ascii=False, indent=2)
+    veilig = ruw.replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+    return ('  <script type="application/ld+json">\n' + veilig + "\n  </script>\n")
 
 
 def header(s, p="", home=False):
@@ -249,7 +274,7 @@ def voet(s, p="", lightbox=False, strak=True):
 # ------------------------------------------------------------- projecten ----
 
 def fotos(slug):
-    map_ = WORTEL / "assets" / "projecten" / slug
+    map_ = WORTEL / "assets" / "projecten" / sleutel(slug, "projecten.json → slug")
     if not map_.is_dir():
         return []
     return sorted((p for p in map_.iterdir() if p.suffix.lower() in FOTO_TYPES),
@@ -282,7 +307,7 @@ def projectkaart(pr, fs):
     teller = f"{len(fs)} foto's" if len(fs) != 1 else "1 foto"
     kenmerken = "".join(f'\n            <span class="chip">{e(k)}</span>'
                         for k in pr["kenmerken"])
-    return f'''      <a class="project" href="projecten/{pr["slug"]}.html" data-fu>
+    return f'''      <a class="project" href="projecten/{sleutel(pr["slug"], "projecten.json → slug")}.html" data-fu>
         <img src="{omslag}" alt="{e(pr["titel"])}{e(in_plaats(pr))}, gerenoveerd door De Badgast" loading="lazy" decoding="async"{stijl}>
         <div class="project-shade"></div>
         <div class="project-caption">
@@ -316,13 +341,13 @@ def projectpagina(s, pr, fs, vorige, volgende):
     if vorige or volgende:
         links = ""
         if vorige:
-            links += f'''      <a class="proj-nav-link proj-nav-link--vorige" href="{vorige["slug"]}.html">
+            links += f'''      <a class="proj-nav-link proj-nav-link--vorige" href="{sleutel(vorige["slug"], "projecten.json → slug")}.html">
         {svg("pijl-links")}
         <span><span class="proj-nav-label">Vorige project</span><span class="proj-nav-titel">{e(vorige["titel"])}</span></span>
       </a>
 '''
         if volgende:
-            links += f'''      <a class="proj-nav-link proj-nav-link--volgende" href="{volgende["slug"]}.html">
+            links += f'''      <a class="proj-nav-link proj-nav-link--volgende" href="{sleutel(volgende["slug"], "projecten.json → slug")}.html">
         <span><span class="proj-nav-label">Volgende project</span><span class="proj-nav-titel">{e(volgende["titel"])}</span></span>
         {svg("pijl-rechts")}
       </a>
@@ -331,7 +356,7 @@ def projectpagina(s, pr, fs, vorige, volgende):
 
     return (
         kop(f'{pr["titel"]}{in_plaats(pr)} | De Badgast', pr["lead"], "../",
-            f'projecten/{pr["slug"]}.html',
+            f'projecten/{sleutel(pr["slug"], "projecten.json → slug")}.html',
             fotopad(fs[0]) if fs else "assets/hero-badkamer.jpg")
         + header(s, "../")
         + f'''
@@ -562,7 +587,9 @@ def bouw_index(s, h, projecten):
       </div>
     </div>
     <div class="offerte-formwrap" data-fu>
-      <form class="offerte-form">
+      <!-- method="post" zonder action: mocht het JavaScript niet laden, dan
+           komen de ingevulde gegevens niet als tekst in de adresbalk terecht. -->
+      <form class="offerte-form" method="post">
         <label><span>{e(o["veld_naam"])}</span><input name="naam" required placeholder="{e(o["veld_naam_hint"])}"></label>
         <div class="form-row">
           <label><span>{e(o["veld_telefoon"])}</span><input name="telefoon" type="tel" required placeholder="{e(o["veld_telefoon_hint"])}"></label>
@@ -659,7 +686,7 @@ def bouw_recensies(s, recensies):
     </div>
 
     <div class="rec-formwrap" data-fu>
-      <form class="rec-form" novalidate>
+      <form class="rec-form" method="post" novalidate>
         <label>
           <span>Naam</span>
           <input type="text" name="naam" autocomplete="name" maxlength="80" required placeholder="Zoals u genoemd wilt worden">
@@ -705,10 +732,10 @@ def bouw_recensies(s, recensies):
 
 def bouw_voorwaarden(s, v):
     inhoud = "".join(
-        f'      <li><a href="#artikel-{a["nummer"]}">{a["nummer"]}. {e(a["titel"])}</a></li>\n'
+        f'      <li><a href="#artikel-{sleutel(a["nummer"], "voorwaarden.json → nummer")}">{a["nummer"]}. {e(a["titel"])}</a></li>\n'
         for a in v["artikelen"])
     artikelen = "".join(
-        f'''    <article class="vw-artikel" id="artikel-{a["nummer"]}" data-fu>
+        f'''    <article class="vw-artikel" id="artikel-{sleutel(a["nummer"], "voorwaarden.json → nummer")}" data-fu>
       <h2>Artikel {a["nummer"]}. {e(a["titel"])}</h2>
 {"".join(f'      <p>{e(t)}</p>{chr(10)}' for t in a["alineas"])}    </article>
 ''' for a in v["artikelen"])
@@ -741,10 +768,10 @@ def bouw_voorwaarden(s, v):
 
 def bouw_privacy(s, pv):
     inhoud = "".join(
-        f'      <li><a href="#deel-{o["nummer"]}">{o["nummer"]}. {e(o["titel"])}</a></li>\n'
+        f'      <li><a href="#deel-{sleutel(o["nummer"], "privacy.json → nummer")}">{o["nummer"]}. {e(o["titel"])}</a></li>\n'
         for o in pv["onderdelen"])
     onderdelen = "".join(
-        f'''    <article class="vw-artikel" id="deel-{o["nummer"]}" data-fu>
+        f'''    <article class="vw-artikel" id="deel-{sleutel(o["nummer"], "privacy.json → nummer")}" data-fu>
       <h2>{o["nummer"]}. {e(o["titel"])}</h2>
 {"".join(f'      <p>{e(t)}</p>{chr(10)}' for t in o["alineas"])}    </article>
 ''' for o in pv["onderdelen"])
@@ -798,7 +825,7 @@ def main():
     print(f"  privacy.html — {len(pv['onderdelen'])} onderdelen")
 
     paden = ["", "recensies.html", "voorwaarden.html", "privacy.html"]
-    paden += [f"projecten/{pr['slug']}.html" for pr in projecten]
+    paden += [f"projecten/{sleutel(pr['slug'], 'projecten.json → slug')}.html" for pr in projecten]
     regels = "".join(f"  <url><loc>{SITE_URL}/{q}</loc></url>\n" for q in paden)
     (WORTEL / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -819,7 +846,7 @@ def main():
             projecten[i - 1] if i > 0 else None,
             projecten[i + 1] if i + 1 < len(projecten) else None,
         )
-        (uit / f"{pr['slug']}.html").write_text(pagina, encoding="utf-8")
+        (uit / f"{sleutel(pr['slug'], 'projecten.json → slug')}.html").write_text(pagina, encoding="utf-8")
         print(f"  projecten/{pr['slug']}.html — {len(fs)} foto's")
 
 
