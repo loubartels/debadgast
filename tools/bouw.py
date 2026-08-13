@@ -25,7 +25,7 @@ from pathlib import Path
 WORTEL = Path(__file__).resolve().parent.parent
 CONTENT = WORTEL / "content"
 FOTO_TYPES = {".jpg", ".jpeg", ".png", ".webp", ".avif"}
-ASSETVERSIE = "12"
+ASSETVERSIE = "13"
 SITE_URL = "https://debadgast.nl"
 
 # ---------------------------------------------------------------- iconen ----
@@ -171,7 +171,8 @@ def header(s, p="", home=False):
     <a href="{h}werkwijze">Werkwijze</a>
     <a href="{h}projecten">Projecten</a>
     <a href="{recensies_link}">Recensies</a>
-    <a class="tel-pill" href="tel:{s["telefoon_link"]}">{e(s["telefoon_kort"])}</a>
+    <a class="nav-tel" href="tel:{s["telefoon_link"]}">{svg("telefoon", 17)}{e(s["telefoon_kort"])}</a>
+    <a class="nav-cta" href="{h}offerte">Vraag adviesgesprek aan</a>
   </nav>
 </header>
 '''
