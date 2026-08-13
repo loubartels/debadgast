@@ -111,14 +111,15 @@
     });
   }
 
-  // Formulieren: versturen via FormSubmit naar info@debadgast.nl en tonen
-  // daarna de bevestiging. De eerste inzending vraagt eenmalig om activatie
-  // via een mail aan dat adres — zie README.md.
+  // Formulieren. Twee soorten:
   //
-  // Recensies worden hier niet gepubliceerd. Ze komen als mail binnen en
-  // Gerard zet ze daarna zelf in de bewerkomgeving. Die tussenstap is met
-  // opzet handwerk: er is geen openbaar eindpunt dat iets op de site kan
-  // zetten, dus een bot kan hier hooguit een mail veroorzaken.
+  // De offerteaanvraag gaat via FormSubmit als mail naar info@debadgast.nl.
+  // De eerste inzending vraagt eenmalig om activatie via een mail aan dat
+  // adres — zie README.md.
+  //
+  // De recensie gaat naar /api/recensie op onze eigen site. Die zet hem
+  // meteen op de pagina en stuurt Gerard een seintje. Alle controle zit
+  // daar, op de server; wat hier gebeurt is niet meer dan netjes vragen.
   function koppelFormulier(opties) {
     var wrap = document.querySelector(opties.wrap);
     if (!wrap) return;
@@ -139,23 +140,43 @@
       btn.disabled = true;
       btn.textContent = 'Versturen…';
 
-      var data = new FormData(form);
-      data.append('_subject', opties.onderwerp);
-      data.append('_template', 'table');
-      data.append('_captcha', 'false');
+      var verzoek;
+      if (opties.endpoint) {
+        var velden = {};
+        new FormData(form).forEach(function (waarde, sleutel) { velden[sleutel] = waarde; });
+        verzoek = fetch(opties.endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(velden)
+        });
+      } else {
+        var data = new FormData(form);
+        data.append('_subject', opties.onderwerp);
+        data.append('_template', 'table');
+        data.append('_captcha', 'false');
+        verzoek = fetch('https://formsubmit.co/ajax/info@debadgast.nl', {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: data
+        });
+      }
 
-      fetch('https://formsubmit.co/ajax/info@debadgast.nl', {
-        method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: data
-      }).then(function (r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
+      verzoek.then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (uitslag) {
+          if (!r.ok) throw new Error(uitslag.fout || 'HTTP ' + r.status);
+          return uitslag;
+        });
       }).then(function () {
         wrap.classList.add('is-sent');
         form.reset();
-      }).catch(function () {
-        if (err) err.style.display = 'block';
+      }).catch(function (fout) {
+        // De server legt vaak precies uit wat er mis is ("er staat een link
+        // in uw ervaring"). Dat is nuttiger dan onze eigen standaardzin.
+        if (err) {
+          var uitleg = err.querySelector('.form-error-uitleg');
+          if (uitleg) uitleg.textContent = fout && fout.message && !/^HTTP /.test(fout.message) ? fout.message : '';
+          err.style.display = 'block';
+        }
       }).finally(function () {
         bezig = false;
         btn.disabled = false;
@@ -180,7 +201,7 @@
   koppelFormulier({
     wrap: '.rec-formwrap',
     reset: '.rec-success button',
-    onderwerp: 'Nieuwe recensie via debadgast.nl — nog niet geplaatst',
+    endpoint: '/api/recensie',
     knop: 'Recensie versturen'
   });
 })();

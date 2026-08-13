@@ -1301,6 +1301,43 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   border-radius: 8px;
 }
 .rec-form { display: flex; flex-direction: column; gap: 16px; }
+/* Alleen voor schermlezers: de sterren staan als tekst in de pagina, want
+   losse sterretjes worden hardop voorgelezen als "zwarte ster zwarte ster". */
+.vh {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Sterrenkeuze. De radio's staan in het document van 5 naar 1 en worden
+   omgekeerd getoond, zodat "alle sterren links van de aangeklikte" met een
+   gewone CSS-selector te vullen is. Zonder JavaScript dus, en met het
+   toetsenbord gewoon te bedienen. */
+.rec-form-sterren { border: 0; padding: 0; margin: 0; }
+.rec-form-sterren legend {
+  padding: 0 0 8px;
+  font: 700 13.5px/1.3 Manrope, sans-serif;
+  color: rgba(10,10,10,.72);
+}
+.sterkeuze { display: flex; flex-direction: row-reverse; justify-content: flex-end; gap: 2px; }
+.sterkeuze input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.sterkeuze label {
+  cursor: pointer;
+  padding: 2px 3px;
+  font-size: 30px;
+  line-height: 1;
+  color: rgba(10,10,10,.22);
+  border-radius: 4px;
+  transition: color .12s;
+}
+.sterkeuze input:checked ~ label,
+.sterkeuze label:hover,
+.sterkeuze label:hover ~ label { color: #f2b01e; }
+.sterkeuze input:focus-visible + label { outline: 2px solid var(--teal-dark); outline-offset: 2px; }
+
 .rec-form-rij { display: flex; flex-wrap: wrap; gap: 16px; }
 .rec-form-rij label { flex: 1 1 180px; min-width: 0; }
 .rec-form label { display: flex; flex-direction: column; gap: 7px; }

@@ -3,6 +3,11 @@
   "buildCommand": "python3 tools/bouw.py",
   "outputDirectory": ".",
   "framework": null,
+  "functions": {
+    "api/recensie.py": {
+      "maxDuration": 25
+    }
+  },
   "redirects": [
     {
       "source": "/startpagina",

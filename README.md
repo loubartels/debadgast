@@ -8,7 +8,8 @@ One-pager voor **De Badgast**, het badkamerrenovatiebedrijf van Gerard Bartels i
 |---------|-----|
 | `index.html`, `recensies.html`, `voorwaarden.html`, `privacy.html`, `projecten/*.html`, `sitemap.xml`, `robots.txt` | **Gegenereerd** — niet met de hand aanpassen, wijzigingen worden overschreven. |
 | `assets/site.css` | Gedeelde stylesheet voor beide pagina's. |
-| `assets/site.js` | Gedeeld gedrag: sticky header met glas-effect, fade-in bij scrollen, projectencarrousel, offerteformulier. |
+| `assets/site.js` | Gedeeld gedrag: sticky header met glas-effect, fade-in bij scrollen, projectencarrousel, beide formulieren. |
+| `api/recensie.py` | Neemt een ingestuurde recensie aan, controleert hem en zet hem op de site. Het enige stuk dat niet statisch is. |
 | `content/*.json` | **De inhoud**: teksten, projecten, recensies, voorwaarden, privacyverklaring en contactgegevens. Dit is wat de bewerkomgeving aanpast. |
 | `tools/bouw.py` | Bouwt uit `content/` de complete site. |
 | `.pages.yml` | Instellingen van de bewerkomgeving (Pages CMS). |
@@ -60,6 +61,31 @@ Nadeel: elke wijziging moet dan handmatig geüpload worden, en de bewerkomgeving
 
 **Let op bij verhuizen:** de oude site heeft losse pagina's (`/wiebenik`, `/werkwijze`, `/fotos`, `/contact`, `/recensies`) die nu secties op de homepage zijn. Zowel `vercel.json` als `.htaccess` stuurt die door, zodat bestaande links uit Google blijven werken.
 
+## Recensieformulier
+
+Op de recensiepagina kan een bezoeker zelf een recensie achterlaten. Die wordt **direct gepubliceerd**: `api/recensie.py` controleert de inzending, zet hem in `content/recensies.json` en stuurt dat als commit naar GitHub. Die commit start een publicatie op Vercel, dus ongeveer een minuut later staat de recensie op de pagina. Gerard krijgt een seintje per mail; het e-mailadres van de inzender gaat alleen die kant op en wordt nooit opgeslagen.
+
+Dit is het enige stuk van de site dat op verzoek van een bezoeker draait. Alles wat het weigert staat bovenin dat bestand; de belangrijkste grenzen zijn: geen links in de tekst, geen HTML, tussen 40 en 2000 tekens, maximaal acht recensies per dag, en een onzichtbaar veld dat alleen bots invullen.
+
+### Eenmalig instellen
+
+Zonder token weigert het formulier elke inzending, met een nette melding. Nodig in Vercel onder **Settings → Environment Variables**:
+
+| Variabele | Waarde |
+|---|---|
+| `RECENSIE_TOKEN` | Een fijnmazige GitHub-token (*Settings → Developer settings → Personal access tokens → Fine-grained*), **alleen voor deze repository**, met één recht: *Contents: Read and write*. |
+| `RECENSIE_REPO` | Optioneel, standaard `loubartels/debadgast` |
+| `RECENSIE_BRANCH` | Optioneel, standaard de tak waarvan Vercel publiceert |
+| `RECENSIE_MELDADRES` | Optioneel, standaard `info@debadgast.nl` |
+
+Geef die token niets meer dan Contents op deze ene repository, en zet er een vervaldatum op. Wie hem in handen krijgt, kan schrijven in de repository en dus op de website.
+
+**Let op bij overzetten naar een ander account:** de token hoort bij een persoon. Verhuist de repository, maak dan een nieuwe token aan en gooi de oude weg.
+
+### Wat dit niet tegenhoudt
+
+Het formulier zit achter controles, geen slot. Iemand die een script schrijft kan langs het onzichtbare veld en langs de herkomstcontrole, en dan gelden alleen nog de inhoudelijke eisen en de dagelijkse limiet. Wordt dat een probleem, dan is een echte captcha (hCaptcha of Turnstile) de volgende stap; die vraagt een extra regel in de `Content-Security-Policy` in `vercel.json`.
+
 ## Offerteformulier
 
 Het formulier verstuurt via [FormSubmit](https://formsubmit.co) naar `info@debadgast.nl` (geen account nodig). **Bij de allereerste inzending stuurt FormSubmit één activatiemail naar dat adres — klik daarin op de bevestigingsknop, daarna komen aanvragen gewoon per mail binnen.** Ander e-mailadres? Pas het adres aan in `assets/site.js` bij het blok "Offerteformulier".
@@ -80,6 +106,7 @@ Voor het dagelijks beheer is dat allemaal niet nodig: zie `OVERDRACHT.md` voor d
 
 ## Nog regelen
 
+- [ ] **`RECENSIE_TOKEN` in Vercel zetten.** Zonder die token doet het recensieformulier niets. Zie hierboven.
 - [ ] **FormSubmit activeren.** Doe één testinzending op de live site en klik op de link in de activatiemail aan info@debadgast.nl.
 - [ ] **Plaats en doorlooptijd per project invullen** via de bewerkomgeving.
 - [ ] **Projecttitels en -omschrijvingen laten nakijken door Gerard.** Ze zijn geschreven op wat op de foto's te zien is, niet op zijn eigen aantekeningen.

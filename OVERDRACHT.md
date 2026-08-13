@@ -33,23 +33,41 @@ Na elke wijziging klik je op **Save**. Een paar minuten later staat het live. Ve
 - **Recensie** — de tekst zelf
 - **Op de homepage tonen** — aanvinken als je hem bij de drie uitgelichte wilt. Zet er dan ook een **ingekorte versie** bij, anders wordt de kaart op de homepage erg lang.
 
-Nieuwe recensies horen bovenaan; je kunt ze in de lijst omhoog slepen.
+De volgorde regelt zichzelf: de website sorteert op datum, nieuwste bovenaan.
+Slepen hoeft dus niet. Zorg wel dat de datum klopt en geschreven is als
+`18 juli 2026`, anders belandt de recensie onderaan.
 
 ## Een recensie die via de website binnenkomt
 
 Op de recensiepagina kunnen klanten zelf een recensie achterlaten. **Die komt
-niet automatisch op de site.** Hij wordt als e-mail naar info@debadgast.nl
-gestuurd, met het onderwerp *"Nieuwe recensie via debadgast.nl — nog niet
-geplaatst"*. Jij beslist of hij erop komt.
+er meteen op te staan**, ongeveer een minuut nadat iemand op versturen drukt.
+Jij hoeft er niets voor te doen.
 
-Wil je hem plaatsen, neem dan de tekst over via **Recensies → Add an entry**,
-zoals hierboven beschreven. Wil je hem niet plaatsen, doe dan niets: er gebeurt
-verder niets met de mail.
+Je krijgt wel bij elke recensie een mail, met het onderwerp *"Nieuwe recensie
+op debadgast.nl"*. Daarin staat de tekst, het aantal sterren, en het
+e-mailadres van de inzender. Dat adres staat **niet** op de website en hoort
+daar ook niet: het is er alleen zodat jij contact kunt opnemen als er iets niet
+klopt.
 
-In de mail staat ook het e-mailadres van de inzender. Dat is voor jou, om
-contact op te nemen als er iets niet klopt. **Zet dat adres niet op de
-website** — de inzender heeft alleen toestemming gegeven voor zijn naam en
-woonplaats.
+**Wil je een recensie eraf halen?** Ga naar **Recensies**, zoek hem op en
+verwijder de regel. Een minuut later is hij weg. Dat mag altijd als iemand
+onzin instuurt of als een klant erom vraagt. Doe het niet met een eerlijke
+recensie alleen omdat hij niet vleiend is: negatieve recensies wegpoetsen
+terwijl je positieve laat staan mag wettelijk niet, en één nette reactie eronder
+doet meer goed dan een pagina waar alleen maar tienen op staan.
+
+Het formulier weigert zelf al het meeste: berichten met links erin, teksten die
+te kort zijn, en meer dan acht recensies op één dag. Komt er toch rotzooi
+doorheen, dan haal je die er zo weer af.
+
+## Sterren
+
+Elke recensie heeft een aantal sterren, van 1 tot 5. Wie via de website een
+recensie achterlaat kiest ze zelf. Bij de recensies van vroeger staat overal 5,
+want die kwamen van de oude site waar geen sterren bij zaten.
+
+Het gemiddelde bovenaan de recensiepagina rekent zichzelf uit. Verander dat
+cijfer dus niet met de hand; het klopt vanzelf.
 
 ## Foto's toevoegen aan een project
 

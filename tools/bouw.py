@@ -80,6 +80,50 @@ def laad(naam):
     return json.loads((CONTENT / naam).read_text(encoding="utf-8"))
 
 
+MAANDEN = {n: i for i, n in enumerate(
+    ("januari februari maart april mei juni juli "
+     "augustus september oktober november december").split(), 1)}
+
+DATUM = re.compile(r"^\s*(\d{1,2})\s+([a-zA-Z]+)\s+(\d{4})\s*$")
+
+
+def datumsleutel(r):
+    """Zet '18 juli 2026' om in iets waarop gesorteerd kan worden."""
+    m = DATUM.match(str(r.get("datum", "")))
+    if m and m.group(2).lower() in MAANDEN:
+        dag, maand, jaar = m.groups()
+        return (int(jaar), MAANDEN[maand.lower()], int(dag))
+    print(f"  Let op: de datum '{r.get('datum')}' van {r.get('naam')} is niet te "
+          "lezen. Schrijf hem als '18 juli 2026'. Deze recensie komt onderaan.")
+    return (0, 0, 0)
+
+
+def laad_recensies():
+    """Recensies, altijd nieuwste bovenaan.
+
+    De volgorde komt hier uit de datum en niet uit de volgorde in het bestand.
+    Zo staat een recensie die via het formulier binnenkomt vanzelf bovenaan, en
+    hoeft niemand in de bewerkomgeving met slepen de volgorde goed te houden.
+    """
+    return sorted(laad("recensies.json"), key=datumsleutel, reverse=True)
+
+
+def sterrenbalk(r):
+    """Vijf sterretjes, waarvan er n gevuld zijn."""
+    n = r.get("sterren", 5)
+    n = n if isinstance(n, int) and 1 <= n <= 5 else 5
+    return (f'<div class="review-stars" title="{n} van de 5 sterren">'
+            f'<span aria-hidden="true">{"★" * n}{"☆" * (5 - n)}</span>'
+            f'<span class="vh">{n} van de 5 sterren</span></div>')
+
+
+def gemiddelde(recensies):
+    """Het echte gemiddelde, op n decimaal."""
+    scores = [r.get("sterren", 5) for r in recensies]
+    scores = [s if isinstance(s, int) and 1 <= s <= 5 else 5 for s in scores]
+    return round(sum(scores) / len(scores), 1) if scores else 5.0
+
+
 VEILIGE_SLEUTEL = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 
@@ -144,9 +188,10 @@ def kop(titel, omschrijving, p="", pad="", deelfoto="assets/hero-badkamer.jpg", 
 def bedrijfsgegevens(s, recensies):
     """Structured data: vertelt Google wie De Badgast is en hoe klanten oordelen.
 
-    Alle recensies op de site zijn vijf sterren, dus het gemiddelde is 5,0. Ze
-    komen uit het formulier op de oude site en zijn dus echt; markeren mag.
-    Google beslist zelf of hij er sterretjes bij zet.
+    Het cijfer is het echte gemiddelde over alle recensies op de site, dus het
+    beweegt mee zodra er via het formulier een nieuwe binnenkomt. Een vast 5,0
+    zou niet meer kloppen zodra iemand minder dan vijf sterren geeft, en een
+    cijfer opgeven dat niet klopt is precies wat je hier niet moet doen.
     """
     gegevens = {
         "@context": "https://schema.org",
@@ -165,8 +210,9 @@ def bedrijfsgegevens(s, recensies):
         "areaServed": s["werkgebied"],
         "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": "5",
+            "ratingValue": str(gemiddelde(recensies)),
             "bestRating": "5",
+            "worstRating": "1",
             "reviewCount": str(len(recensies)),
         },
     }
@@ -418,11 +464,11 @@ def bouw_index(s, h, projecten):
                     for m in h["werkwijze"]["meta"])
     kaarten = "".join(projectkaart(pr, fotos(pr["slug"])) for pr in projecten)
 
-    recensies = laad("recensies.json")
+    recensies = laad_recensies()
     uitgelicht = [r for r in recensies if r.get("uitgelicht")]
     rec_kaarten = "".join(f'''    <figure class="review" data-fu>
       <span class="review-quote-drop"><span>{svg("citaat", 17)}</span></span>
-      <div class="review-stars">★★★★★</div>
+      {sterrenbalk(r)}
       <blockquote>“{e(r.get("kort") or r["tekst"])}”</blockquote>
       <figcaption>
         <span class="review-avatar"><span>{e(initialen(r["naam"]))}</span></span>
@@ -634,8 +680,10 @@ def initialen(naam):
 # ------------------------------------------------------ recensiepagina ----
 
 def bouw_recensies(s, recensies):
+    gem = f"{gemiddelde(recensies):.1f}".replace(".", ",")
+    vol = round(gemiddelde(recensies))
     kaarten = "".join(f'''    <figure class="rec-kaart" data-fu>
-      <div class="review-stars">★★★★★</div>
+      {sterrenbalk(r)}
       <blockquote>“{e(r["tekst"])}”</blockquote>
       <figcaption>
         <span class="review-avatar"><span>{e(initialen(r["naam"]))}</span></span>
@@ -646,7 +694,7 @@ def bouw_recensies(s, recensies):
 
     return (
         kop("Recensies | De Badgast, badkamerrenovaties Roosendaal",
-            "Wat klanten schrijven over de badkamer- en toiletrenovaties van Gerard Bartels (De Badgast) in Roosendaal en omgeving. Alleen vijf sterren tot nu toe.",
+            f"Wat klanten schrijven over de badkamer- en toiletrenovaties van Gerard Bartels (De Badgast) in Roosendaal en omgeving. Gemiddeld {gem} uit {len(recensies)} recensies.",
             pad="recensies.html")
         + header(s)
         + f'''
@@ -665,15 +713,15 @@ def bouw_recensies(s, recensies):
     </aside>
   </div>
   <div class="rec-intro-feiten" data-fu>
-    <div><span class="sterren">★★★★★</span>Alleen vijf sterren tot nu toe</div>
-    <div><span class="drop"></span>{len(recensies)} recensies · ±500 badkamers in 45 jaar</div>
+    <div><span class="sterren">{"★" * vol}{"☆" * (5 - vol)}</span>Gemiddeld {gem} uit {len(recensies)} recensies</div>
+    <div><span class="drop"></span>±500 badkamers in 45 jaar</div>
   </div>
 </section>
 
 <section class="rec-lijst">
   <div class="rec-kolommen">
 {kaarten}  </div>
-  <p class="rec-bron" data-fu>Alle {len(recensies)} recensies zijn sinds 2011 door klanten zelf ingestuurd en staan hier ongewijzigd, met naam, plaats en datum.</p>
+  <p class="rec-bron" data-fu>Alle {len(recensies)} recensies zijn sinds 2011 door klanten zelf ingestuurd en staan hier ongewijzigd, met naam, plaats en datum. Nieuwste bovenaan.</p>
 </section>
 
 <section class="rec-formulier" id="recensie-schrijven">
@@ -682,7 +730,7 @@ def bouw_recensies(s, recensies):
       <div class="kicker">Recensie achterlaten</div>
       <h2>Heb ik bij u gewerkt?</h2>
       <p>Dan hoor ik graag wat u ervan vond. Schrijf gerust op wat u opviel, of dat nu de badkamer zelf is of de manier van werken.</p>
-      <p class="rec-formulier-nb">Uw recensie komt eerst bij mij binnen. Ik lees hem, en pas daarna zet ik hem op de website. Dat kan een paar dagen duren, want ik sta meestal op de steiger.</p>
+      <p class="rec-formulier-nb">Uw recensie komt met uw naam en woonplaats op deze pagina te staan, een minuut nadat u hem verstuurt. Uw e-mailadres blijft privé; dat gebruik ik alleen om contact op te nemen als er iets niet klopt.</p>
     </div>
 
     <div class="rec-formwrap" data-fu>
@@ -701,6 +749,13 @@ def bouw_recensies(s, recensies):
             <input type="email" name="email" autocomplete="email" maxlength="120" required placeholder="naam@voorbeeld.nl">
           </label>
         </div>
+        <fieldset class="rec-form-sterren">
+          <legend>Uw oordeel</legend>
+          <div class="sterkeuze">
+{"".join(f"""            <input type="radio" id="ster{n}" name="sterren" value="{n}" required>
+            <label for="ster{n}" title="{n} {'ster' if n == 1 else 'sterren'}"><span aria-hidden="true">★</span><span class="vh">{n} {'ster' if n == 1 else 'sterren'}</span></label>
+""" for n in (5, 4, 3, 2, 1))}          </div>
+        </fieldset>
         <label>
           <span>Uw ervaring</span>
           <textarea name="recensie" rows="6" maxlength="2500" required placeholder="Wat heeft Gerard voor u gedaan, en wat vond u ervan?"></textarea>
@@ -711,14 +766,14 @@ def bouw_recensies(s, recensies):
         </label>
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="rec-form-val">
         <button class="btn-primary" type="submit">Recensie versturen</button>
-        <div class="form-error" role="alert">Versturen is niet gelukt. Probeer het nog eens, of mail uw recensie naar <a href="mailto:{e(s["email"])}">{e(s["email"])}</a>.</div>
+        <div class="form-error" role="alert"><span class="form-error-uitleg"></span> Lukt het niet? Mail uw recensie dan naar <a href="mailto:{e(s["email"])}">{e(s["email"])}</a>.</div>
         <p class="form-privacy">Uw e-mailadres gebruik ik alleen om contact op te nemen over deze recensie. Zie de <a href="privacy.html">privacyverklaring</a>.</p>
       </form>
 
       <div class="rec-success" role="status">
         <span class="ic-wrap">{svg("vinkje", 28)}</span>
         <h3>Dank u wel</h3>
-        <p>Uw recensie staat bij mij in de mailbox. Ik lees hem eerst zelf en zet hem daarna op de website. Klopt er iets niet, dan neem ik contact met u op.</p>
+        <p>Uw recensie is geplaatst. Ververs deze pagina over een minuutje, dan staat hij erbij. Klopt er iets niet, dan neem ik contact met u op.</p>
         <button type="button" class="btn-outline">Nog een recensie schrijven</button>
       </div>
     </div>
@@ -807,7 +862,7 @@ def main():
     s = laad("site.json")
     h = laad("home.json")
     projecten = laad("projecten.json")
-    recensies = laad("recensies.json")
+    recensies = laad_recensies()
 
     (WORTEL / "index.html").write_text(bouw_index(s, h, projecten), encoding="utf-8")
     print(f"  index.html — {len(projecten)} projecten, "
