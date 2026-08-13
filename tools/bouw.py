@@ -25,7 +25,7 @@ from pathlib import Path
 WORTEL = Path(__file__).resolve().parent.parent
 CONTENT = WORTEL / "content"
 FOTO_TYPES = {".jpg", ".jpeg", ".png", ".webp", ".avif"}
-ASSETVERSIE = "11"
+ASSETVERSIE = "12"
 SITE_URL = "https://debadgast.nl"
 
 # ---------------------------------------------------------------- iconen ----
@@ -184,7 +184,7 @@ def cta_blok(s, titel, p=""):
     <div class="cta-blok-deco" aria-hidden="true"></div>
     <div class="cta-blok-tekst">
       <h2>{e(titel)}</h2>
-      <p>Ik kom vrijblijvend langs, meet op en denk met u mee. Geen verkooppraatje, wel een eerlijk verhaal over wat er kan.</p>
+      <p>Ik kom vrijblijvend langs en denk met u mee. Geen verkooppraatje, wel een eerlijk verhaal over wat er kan.</p>
       <p class="cta-blok-nb">{e(s["planning_notitie"])}</p>
     </div>
     <div class="cta-blok-knoppen">
@@ -635,12 +635,12 @@ def bouw_recensies(s, recensies):
 
 <section class="rec-lijst">
   <div class="rec-kolommen">
-{kaarten}    <figure class="rec-kaart rec-kaart--uitnodiging">
+    <figure class="rec-kaart rec-kaart--uitnodiging">
       <div class="rec-uitnodiging-kop">{svg("bericht")}Ruimte voor uw recensie</div>
       <p>Heb ik bij u gewerkt en wilt u iets achterlaten? Mail me gerust, dan zet ik het erbij.</p>
       <a class="rec-mail-link" href="mailto:{e(s["email"])}">{e(s["email"])}{svg("pijl-rechtsboven", 16)}</a>
     </figure>
-  </div>
+{kaarten}  </div>
   <p class="rec-bron" data-fu>Alle {len(recensies)} recensies, integraal overgenomen van debadgast.nl.</p>
 </section>
 '''
