@@ -48,7 +48,9 @@ content:
       - { name: naam, label: Naam, type: string, required: true }
       - { name: plaats, label: Plaats, type: string, required: true }
       - { name: datum, label: Datum, type: string, required: true,
-          description: "Zoals '18 juli 2026'" }
+          description: "Zoals '18 juli 2026'. Hierop wordt gesorteerd: de nieuwste staat vanzelf bovenaan, slepen hoeft niet." }
+      - { name: sterren, label: Aantal sterren, type: number, default: 5,
+          description: "1 tot en met 5. Laat leeg voor vijf sterren." }
       - { name: tekst, label: Recensie, type: text, required: true }
       - { name: uitgelicht, label: Op de homepage tonen, type: boolean, default: false }
       - { name: kort, label: Ingekorte versie voor de homepage, type: text,
