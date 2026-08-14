@@ -337,7 +337,7 @@ section[id] { scroll-margin-top: 88px; }
   box-shadow: 0 18px 50px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.5);
 }
 .hero-card-head { display: flex; align-items: center; gap: 10px; }
-.hero-card-stars { font: 600 15px Manrope, sans-serif; letter-spacing: .16em; color: var(--teal-light); }
+.hero-card-stars { display: inline-flex; gap: 2px; color: var(--teal-light); }
 .hero-card-label { font: 600 13px Manrope, sans-serif; color: rgba(255,255,255,.75); }
 .hero-card blockquote {
   margin: 14px 0 0;
@@ -906,7 +906,7 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   box-shadow: 0 8px 20px rgba(0,179,172,.32);
 }
 .review-quote-drop span { transform: rotate(-135deg); color: #fff; line-height: 0; }
-.review-stars { font: 600 15px Manrope, sans-serif; color: var(--teal-dark); letter-spacing: .14em; }
+.review-stars { display: flex; gap: 2px; color: var(--teal-dark); }
 .review blockquote {
   margin: 16px 0 0;
   font: 500 17px/1.66 Manrope, sans-serif;
@@ -1224,7 +1224,7 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   font: 700 15px Manrope, sans-serif;
   color: rgba(10,10,10,.7);
 }
-.rec-intro-feiten .sterren { letter-spacing: .16em; color: var(--teal-dark); }
+.rec-intro-feiten .sterren { display: inline-flex; gap: 2px; color: var(--teal-dark); }
 .rec-intro-feiten .drop { background: var(--teal); }
 
 /* De uitnodiging stond onderaan tussen de kaarten. Wie hem zocht moest eerst
@@ -1312,36 +1312,89 @@ a.project:focus-visible { outline: 2px solid var(--teal-light); outline-offset: 
   white-space: nowrap;
 }
 
-/* Sterrenkeuze. De radio's staan in het document van 5 naar 1 en worden
-   omgekeerd getoond, zodat "alle sterren links van de aangeklikte" met een
-   gewone CSS-selector te vullen is. Zonder JavaScript dus, en met het
-   toetsenbord gewoon te bedienen. */
-.rec-form-sterren { border: 0; padding: 0; margin: 0; }
-.rec-form-sterren legend {
-  padding: 0 0 8px;
-  font: 700 13.5px/1.3 Manrope, sans-serif;
-  color: rgba(10,10,10,.72);
-}
-.sterkeuze { display: flex; flex-direction: row-reverse; justify-content: flex-end; gap: 2px; }
-.sterkeuze input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-.sterkeuze label {
-  cursor: pointer;
-  padding: 2px 3px;
-  font-size: 30px;
-  line-height: 1;
-  color: rgba(10,10,10,.22);
-  border-radius: 4px;
-  transition: color .12s;
-}
-.sterkeuze input:checked ~ label,
-.sterkeuze label:hover,
-.sterkeuze label:hover ~ label { color: #f2b01e; }
-.sterkeuze input:focus-visible + label { outline: 2px solid var(--teal-dark); outline-offset: 2px; }
-
 .rec-form-rij { display: flex; flex-wrap: wrap; gap: 16px; }
 .rec-form-rij label { flex: 1 1 180px; min-width: 0; }
 .rec-form label { display: flex; flex-direction: column; gap: 7px; }
 .rec-form label > span { font: 700 13.5px Manrope, sans-serif; color: rgba(10,10,10,.7); }
+
+/* Sterren worden als SVG getekend, niet als het teken ★: dat teken komt op
+   Android en op sommige Linux-systemen uit een kleurenfont, dat de kleur uit
+   CSS negeert. Alles zag er dan even donker uit. */
+.ster { flex: none; }
+.ster:not(.ster--aan) { opacity: .28; }
+
+/* Sterrenkeuze. De radio's staan in het document van 5 naar 1 en worden
+   omgekeerd getoond, zodat "alle sterren links van de aangeklikte" met een
+   gewone CSS-selector te vullen is. Zonder JavaScript dus, en met het
+   toetsenbord te bedienen: pijltjestoetsen lopen de sterren langs.
+
+   Staat bewust ná .rec-form label hierboven, en overal met .rec-form ervoor,
+   want anders wint die regel en komen de sterren onder elkaar te staan. */
+.rec-form .rec-form-sterren { border: 0; padding: 0; margin: 0; min-width: 0; }
+.rec-form .rec-form-sterren legend {
+  padding: 0;
+  margin-bottom: 7px;
+  font: 700 13.5px Manrope, sans-serif;
+  color: rgba(10,10,10,.7);
+}
+/* Op smalle telefoons past het woord niet meer naast vijf sterren van 48px;
+   dan zakt het naar de regel eronder in plaats van buiten beeld te vallen. */
+.rec-form .sterrij {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  min-height: 44px;
+}
+.rec-form .sterkeuze {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 2px;
+}
+.rec-form .sterkeuze input {
+  position: absolute;
+  width: 1px; height: 1px;
+  opacity: 0;
+  margin: 0;
+  pointer-events: none;
+}
+.rec-form .sterkeuze label {
+  display: flex;
+  cursor: pointer;
+  /* 32px ster plus 6px rondom komt op 44, het formaat waarop een vinger
+     betrouwbaar de goede ster raakt. */
+  padding: 6px;
+  color: rgba(10,10,10,.19);
+  border-radius: 4px;
+  transition: color .12s, transform .12s;
+}
+.rec-form .sterkeuze input:checked ~ label,
+.rec-form .sterkeuze label:hover,
+.rec-form .sterkeuze label:hover ~ label { color: #f5a623; }
+.rec-form .sterkeuze label:hover { transform: scale(1.1); }
+.rec-form .sterkeuze input:focus-visible + label {
+  outline: 2px solid var(--teal-dark);
+  outline-offset: 3px;
+}
+
+/* Het woord naast de sterren. Puur meegenomen: browsers zonder :has() laten
+   het weg, en dan blijven de sterren gewoon werken. Voor schermlezers staat
+   het woord al in het label zelf, dus hier hoeft het niet nog eens. */
+.rec-form .ster-uitleg {
+  font: 700 14px Manrope, sans-serif;
+  color: var(--teal-dark);
+}
+.rec-form-sterren:has(#ster5:checked) .ster-uitleg::after { content: "Uitstekend"; }
+.rec-form-sterren:has(#ster4:checked) .ster-uitleg::after { content: "Goed"; }
+.rec-form-sterren:has(#ster3:checked) .ster-uitleg::after { content: "Redelijk"; }
+.rec-form-sterren:has(#ster2:checked) .ster-uitleg::after { content: "Matig"; }
+.rec-form-sterren:has(#ster1:checked) .ster-uitleg::after { content: "Slecht"; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rec-form .sterkeuze label { transition: none; }
+  .rec-form .sterkeuze label:hover { transform: none; }
+}
 .rec-form input[type=text],
 .rec-form input[type=email],
 .rec-form textarea {
